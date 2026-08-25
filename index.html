@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Martín Caicedo Sánchez — Portafolio</title>
+<meta name="description" content="Portafolio de diseño y arquitectura de Martín Alejandro Caicedo Sánchez. Bogotá, Colombia.">
+
+<!--
+  QUÉ CAMBIAR:  TU_EMAIL (3 veces) · TU_LINKEDIN
+  El PDF va en la ruta fija  portafolio.pdf  — no cambies ese nombre.
+  Textos bilingües: cada uno lleva  data-es  y  data-en . Edita el atributo.
+  Del atlas: tokens de color, plano de color (F.09), flecha-tri (F.02),
+  marcas de máquina (F.08). La retícula no se dibuja.
+-->
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --papel:#EFEFEC; --tinta:#101010;
+  --naranja:#F4470B; --amarillo:#F2E500; --ultramar:#2B1BE8; --cemento:#C9C9C4;
+  --grot:'Archivo',Helvetica,Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --pad:clamp(16px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font-family:var(--grot);line-height:1.25;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--naranja);outline-offset:2px}
+
+.micro{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.name{font-weight:800;letter-spacing:-.045em;line-height:.85;text-transform:uppercase;overflow-wrap:break-word}
+.tri{background:currentColor;clip-path:polygon(0 22%,58% 22%,58% 0,100% 50%,58% 100%,58% 78%,0 78%);width:34px;height:22px;flex:none}
+.crop{position:absolute;width:13px;height:13px;pointer-events:none}
+.crop.tl{top:9px;left:9px;border-left:1px solid currentColor;border-top:1px solid currentColor}
+.crop.br{bottom:9px;right:9px;border-right:1px solid currentColor;border-bottom:1px solid currentColor}
+
+/* Botón grande = plano de color. Mismo componente en el portal y en el home. */
+.btn{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;
+  width:100%;border:0;cursor:pointer;text-decoration:none;text-align:left;
+  font-family:var(--grot);color:var(--tinta);
+  padding:clamp(18px,4vw,30px) clamp(16px,3.5vw,28px);
+  transition:filter .15s,transform .15s;
+}
+.btn:hover,.btn:focus-visible{filter:brightness(1.12);transform:translateX(5px)}
+.btn .lab{display:block;font-size:clamp(28px,8vw,56px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.95}
+.btn .sub{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-top:6px;opacity:.75}
+.btn.es{background:var(--naranja);color:var(--papel)}
+.btn.en{background:var(--amarillo)}
+.btn.pdf{background:var(--ultramar);color:var(--papel)}
+
+/* ── PORTAL ─────────────────────────────────────────────────────────────── */
+#portal{
+  position:fixed;inset:0;z-index:10;overflow-y:auto;
+  background:var(--tinta);color:var(--papel);
+  display:flex;flex-direction:column;padding:var(--pad);
+}
+#portal .top{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;border-bottom:1px solid currentColor;padding-bottom:8px}
+#portal .name{flex:1;display:grid;align-content:center;font-size:clamp(32px,9.5vw,84px);padding:clamp(20px,5vh,48px) 0}
+#portal .picks{display:grid;gap:2px;margin-top:auto}
+#portal .say{text-align:center;padding-top:14px;opacity:.6}
+#portal.out{opacity:0;visibility:hidden;transition:opacity .4s,visibility 0s .4s}
+
+/* ── HOME ───────────────────────────────────────────────────────────────── */
+#home{display:none}
+#home.on{display:block}
+.head{padding:var(--pad) var(--pad) 0}
+.top{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;border-bottom:1px solid var(--tinta);padding-bottom:8px}
+.sw{display:flex;gap:2px}
+.sw button{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;border:0;background:var(--cemento);color:var(--tinta);padding:6px 13px;cursor:pointer}
+.sw button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.head .name{font-size:clamp(30px,8.8vw,100px);padding:clamp(20px,4vw,36px) 0 14px}
+.lead{max-width:48ch;font-size:14px;line-height:1.5;padding-bottom:clamp(22px,5vw,40px)}
+.links{display:flex;flex-wrap:wrap;gap:18px 26px;padding:16px var(--pad);border-bottom:1px solid var(--tinta)}
+.links a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.foot{padding:clamp(28px,6vw,52px) var(--pad);position:relative}
+
+@media (max-height:520px){
+  #portal .name{font-size:clamp(24px,6vw,40px);padding:14px 0}
+  #portal .btn{padding:12px 16px}
+  #portal .btn .lab{font-size:clamp(22px,4.5vw,32px)}
+  #portal .say{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<noscript><style>#portal{display:none}#home{display:block}.sw{display:none}</style></noscript>
+</head>
+<body>
+
+<div id="portal">
+  <span class="crop tl"></span><span class="crop br"></span>
+
+  <div class="top">
+    <span class="micro">Martín Caicedo Sánchez</span>
+    <span class="micro">Bogotá CO · 2026</span>
+  </div>
+
+  <h1 class="name">Martín<br>Caicedo<br>Sánchez</h1>
+
+  <div class="picks">
+    <button class="btn es" data-go="es">
+      <span style="min-width:0"><span class="lab">Español</span><span class="sub">Entrar</span></span>
+      <span class="tri"></span>
+    </button>
+    <button class="btn en" data-go="en">
+      <span style="min-width:0"><span class="lab">English</span><span class="sub">Enter</span></span>
+      <span class="tri"></span>
+    </button>
+  </div>
+
+  <p class="micro say">Elige idioma · Select language</p>
+</div>
+
+<main id="home">
+  <div class="head">
+    <div class="top">
+      <span class="micro" data-es="Portafolio · Rev. A" data-en="Portfolio · Rev. A"></span>
+      <span class="sw">
+        <button data-set="es" aria-pressed="true">ES</button>
+        <button data-set="en" aria-pressed="false">EN</button>
+      </span>
+    </div>
+
+    <h1 class="name">Martín<br>Caicedo Sánchez</h1>
+
+    <p class="lead"
+       data-es="Diseñador y arquitecto. Trabajo entre el diseño gráfico, la experiencia de usuario y la visualización geoespacial aplicada a proyectos de renovación urbana. Bogotá, Colombia."
+       data-en="Designer and architect. I work across graphic design, user experience and geospatial visualisation applied to urban renewal projects. Bogotá, Colombia."></p>
+  </div>
+
+  <a class="btn pdf" href="portafolio.pdf" target="_blank" rel="noopener">
+    <span style="min-width:0">
+      <span class="lab" data-es="Ver portafolio" data-en="View portfolio"></span>
+      <span class="sub" data-es="PDF · abre en pestaña nueva" data-en="PDF · opens in a new tab"></span>
+    </span>
+    <span class="tri"></span>
+  </a>
+
+  <div class="links">
+    <a href="portafolio.pdf" download data-es="Descargar PDF" data-en="Download PDF"></a>
+    <a href="mailto:TU_EMAIL" data-es="Escribirme" data-en="Get in touch"></a>
+  </div>
+
+  <div class="foot">
+    <span class="crop br"></span>
+    <div class="links" style="padding:0;border:0">
+      <a href="mailto:TU_EMAIL">TU_EMAIL</a>
+      <a href="TU_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/macaicedosanchez-designer" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+  var portal=document.getElementById('portal'), home=document.getElementById('home');
+
+  function t(lang){
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var v=el.getAttribute('data-'+lang); if(v!==null) el.textContent=v;
+    });
+    document.querySelectorAll('.sw button').forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.set===lang ? 'true':'false');
+    });
+    document.title='Martín Caicedo Sánchez — '+(lang==='en'?'Portfolio':'Portafolio');
+    if(history.replaceState) history.replaceState(null,'','#'+lang);
+  }
+  function enter(lang){ t(lang); home.classList.add('on'); portal.classList.add('out'); scrollTo(0,0); }
+
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click',function(){ enter(b.dataset.go); });
+  });
+  document.querySelectorAll('.sw button').forEach(function(b){
+    b.addEventListener('click',function(){ t(b.dataset.set); });
+  });
+
+  var h=(location.hash||'').slice(1);
+  if(h==='es'||h==='en') enter(h); else t('es');
+})();
+</script>
+</body>
+</html>
