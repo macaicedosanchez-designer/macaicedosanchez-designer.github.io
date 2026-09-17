@@ -69,7 +69,7 @@ css: [/home/home.css]
         {%- for p in lista %}
         <img src="{{ site.media_url }}/{{ p.banco }}" alt="" width="1080" height="1080" class="{% if forloop.first %}activa{% endif %}" {% unless forloop.first %}loading="lazy"{% endunless %}>
         {%- endfor %}
-        {%- if lista.size == 0 %}<img src="{{ site.media_url }}/home_icono_01_cubo.png" alt="" class="activa">{% endif %}
+        {%- if lista.size == 0 %}<img src="{{ site.media_url }}/home_icono_01_cubo-01.png" alt="" class="activa">{% endif %}
       </a>
       <a class="btn-pildora" href="/{{ a.id }}/" data-evento="area-{{ a.id }}">
         <span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span><span class="flecha">↗</span>
