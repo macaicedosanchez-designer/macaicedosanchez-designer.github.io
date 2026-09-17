@@ -1,0 +1,169 @@
+---
+# ─────────────────────────────────────────────────────────────
+# CASO 1 — RENOBO · "De la calle al manual"
+# Primero se ve la marca funcionando en la ciudad; después se explica cómo se construyó.
+# Secciones: hero · carrete horizontal · banda de ficha · 3 candados · el sistema (pestañas) · cierre.
+# Textos: busca los <span lang="es"> / <span lang="en">. Imágenes: nombres del repositorio media.
+# ─────────────────────────────────────────────────────────────
+layout: caso
+proyecto: renobo
+area: direccion-creativa
+titulo_es: "Modernización de la marca RenoBo — Martín Caicedo Sánchez"
+titulo_en: "RenoBo Brand Refresh — Martín Caicedo Sánchez"
+descripcion_es: "Reimaginé cómo se presenta la Empresa de Renovación y Desarrollo Urbano de Bogotá, sin tocar el logo, los colores ni la tipografía."
+imagen: renobo_portada_01_panel-comercial.jpg
+css: [/direccion-creativa/renobo/caso.css]
+---
+{%- assign m = site.media_url -%}
+
+<!-- 1 · HERO a pantalla completa. La imagen se aleja ligeramente al hacer scroll. -->
+<section class="hero-lleno">
+  <img class="fondo" data-bloque="parallax" data-factor="0.18" src="{{ m }}/renobo_portada_01_panel-comercial.jpg" alt="" fetchpriority="high">
+  <div class="velo"></div>
+  <div class="texto">
+    <p class="etiqueta"><span lang="es">Dirección Creativa · 2025</span><span lang="en">Creative Direction · 2025</span></p>
+    <h1 class="h1"><span lang="es">Modernización de la marca RenoBo</span><span lang="en">RenoBo Brand Refresh</span></h1>
+    <p class="bajada"><span lang="es">Reimaginé cómo se presenta la Empresa de Renovación y Desarrollo Urbano de Bogotá, sin tocar el logo, los colores ni la tipografía que exige una entidad pública.</span><span lang="en">I reimagined how Bogotá's Urban Renewal and Development Company presents itself, without changing the logo, colors or typeface a public institution must keep.</span></p>
+  </div>
+</section>
+
+<!-- 2 · CARRETE: la página se detiene y las imágenes pasan de lado, una por pantalla. -->
+<section class="carrete" data-bloque="carrete" aria-label="La marca en la calle">
+  <div class="ventana">
+    <div class="tira">
+      <figure><img src="{{ m }}/renobo_destacada_01_poster-impreso.jpg" alt="" loading="lazy"><figcaption><span lang="es">Impreso</span><span lang="en">Print</span></figcaption></figure>
+      <figure><img src="{{ m }}/renobo_destacada_02_cerramiento-obra.jpg" alt="" loading="lazy"><figcaption><span lang="es">Obra</span><span lang="en">Construction site</span></figcaption></figure>
+      <figure><img src="{{ m }}/renobo_destacada_03_uso-web.jpg" alt="" loading="lazy"><figcaption><span lang="es">Web</span><span lang="en">Web</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · BANDA DE FICHA: los datos en una sola línea. -->
+<div class="ficha-banda">
+  <span><b><span lang="es">Cliente</span><span lang="en">Client</span></b><span lang="es">RenoBo — Empresa de Renovación y Desarrollo Urbano de Bogotá</span><span lang="en">RenoBo — Bogotá Urban Renewal and Development Company</span></span>
+  <span><b><span lang="es">Año</span><span lang="en">Year</span></b>2025</span>
+  <span><b><span lang="es">Mi rol</span><span lang="en">My role</span></b><span lang="es">Director creativo</span><span lang="en">Creative director</span></span>
+  <span><b><span lang="es">Duración</span><span lang="en">Duration</span></b><span lang="es">2 meses y medio, en dos etapas</span><span lang="en">2.5 months, in two stages</span></span>
+  <span><b><span lang="es">Equipo</span><span lang="en">Team</span></b><span lang="es">Diseñador web, diseñador gráfico y periodistas de la Oficina de Comunicaciones</span><span lang="en">Web designer, graphic designer and journalists from the Communications Office</span></span>
+  <span><b><span lang="es">Herramientas</span><span lang="en">Tools</span></b>Adobe Creative Suite, Figma, Google Slides, PowerPoint</span>
+</div>
+<div class="marco etiquetas-caso">
+  <ul class="etiquetas">
+    <li class="principal"><span lang="es">Dirección Creativa</span><span lang="en">Creative Direction</span></li>
+    <li><span lang="es">Productos & Servicios</span><span lang="en">Products & Services</span></li>
+    <li><span lang="es">Identidad visual</span><span lang="en">Visual identity</span></li>
+    <li><span lang="es">Manual de marca</span><span lang="en">Brand manual</span></li>
+    <li><span lang="es">Sistemas gráficos</span><span lang="en">Graphic systems</span></li>
+    <li><span lang="es">Diseño de plantillas</span><span lang="en">Template design</span></li>
+    <li>Mockups</li>
+    <li><span lang="es">Coordinación de equipos</span><span lang="en">Team coordination</span></li>
+    <li>Adobe Creative Suite</li><li>Figma</li><li>Google Slides</li><li>PowerPoint</li>
+  </ul>
+</div>
+
+<!-- 4 · LOS 3 CANDADOS: Logo, Color y Tipografía no se podían tocar. -->
+<section class="marco seccion candados">
+  <div class="dos-columnas">
+    <div class="tarjetas candados-grid">
+      <div class="tarjeta azul revelar" data-retraso="0"><span class="candado" aria-hidden="true"></span><h3>Logo</h3><p><span lang="es">Intocable</span><span lang="en">Untouchable</span></p></div>
+      <div class="tarjeta azul revelar" data-retraso="1"><span class="candado" aria-hidden="true"></span><h3>Color</h3><p><span lang="es">Intocable</span><span lang="en">Untouchable</span></p></div>
+      <div class="tarjeta azul revelar" data-retraso="2"><span class="candado" aria-hidden="true"></span><h3><span lang="es">Tipografía</span><span lang="en">Typeface</span></h3><p><span lang="es">Intocable</span><span lang="en">Untouchable</span></p></div>
+    </div>
+    <div class="cuerpo">
+      <h2 class="h2"><span lang="es">El reto</span><span lang="en">The challenge</span></h2>
+      <div lang="es">
+        <p>RenoBo, antes conocida como ERU, es la empresa pública del Distrito que transforma el suelo urbano de Bogotá para revitalizar zonas deterioradas o subutilizadas.</p>
+        <p>Este proyecto no nació en la Oficina de Comunicaciones. Lo impulsó un área misional: fueron los propios directivos quienes decidieron cómo querían ser representados.</p>
+        <p>En una entidad pública, la identidad visual es un compromiso formal, casi tan difícil de cambiar como su estructura. La imagen de RenoBo se creó en la reestructuración de 2023, pero en 2025, con una nueva administración, ya no reflejaba sus valores.</p>
+        <p>El reto era renovarla sin romper las reglas: el logo, la paleta y la tipografía tenían que quedarse igual.</p>
+        <p><strong>Objetivo.</strong> Pasar de un sistema pesado y cargado de color a uno liviano, moderno y fácil de leer. Una imagen que hablara de innovación urbana, pero también de conservación del patrimonio y reúso, y que funcionara sobre todo en canales digitales.</p>
+      </div>
+      <div lang="en">
+        <p>RenoBo, formerly ERU, is the City of Bogotá's public company that transforms urban land to revitalize run-down or underused areas.</p>
+        <p>This project didn't start in the Communications Office. It came from an operational area: the directors themselves decided how they wanted to be represented.</p>
+        <p>For a public institution, visual identity is a formal commitment, almost as hard to change as its structure. RenoBo's identity was created during its 2023 restructuring, but by 2025, under a new administration, it no longer reflected its values.</p>
+        <p>The challenge was to refresh it without breaking the rules: the logo, palette and typeface had to stay.</p>
+        <p><strong>Goal.</strong> Move from a heavy, color-packed system to a light, modern and readable one. An identity that speaks of urban innovation, but also of heritage conservation and reuse, and that works especially well on digital channels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · EL SISTEMA: dos etapas arriba y tres pestañas (Manual · Piezas · En uso). -->
+<section class="marco seccion sistema">
+  <div class="seccion-titulo">
+    <span class="num">02</span>
+    <h2><span lang="es">El sistema</span><span lang="en">The system</span></h2>
+  </div>
+  <div class="etapas">
+    <div><p class="n"><span lang="es">Etapa 1 · 1 mes y medio</span><span lang="en">Stage 1 · 6 weeks</span></p><h3><span lang="es">Concepto</span><span lang="en">Concept</span></h3><p><span lang="es">Definí la nueva dirección gráfica y produje el manual de marca con ejemplos de uso.</span><span lang="en">I defined the new visual direction and produced the brand manual with usage examples.</span></p></div>
+    <div><p class="n"><span lang="es">Etapa 2 · 1 mes</span><span lang="en">Stage 2 · 1 month</span></p><h3><span lang="es">Implementación</span><span lang="en">Rollout</span></h3><p><span lang="es">Coordiné con la Oficina de Comunicaciones la adopción del sistema en redes sociales, comunicaciones internas y presentaciones de los directivos.</span><span lang="en">I worked with the Communications Office to apply the system to social media, internal communications and executive presentations.</span></p></div>
+  </div>
+  <div class="cuerpo solucion">
+    <div lang="es"><p>Entregué un manual de marca detallado, mockups de aplicación y un kit de plantillas y recursos listos para usar. Pensé el sistema para dos escenarios: las grandes campañas y eventos, donde se invierte mucho en comunicación, y el día a día de los servidores públicos que hacen presentaciones, informes y tableros de control.</p></div>
+    <div lang="en"><p>I delivered a detailed brand manual, application mockups and a kit of ready-to-use templates and assets. I designed the system for two scenarios: large campaigns and events with big communication budgets, and the everyday work of public servants building presentations, reports and dashboards.</p></div>
+  </div>
+
+  <div class="pestanas" role="tablist" data-bloque="pestanas">
+    <button class="pestana" role="tab" id="tab-manual" aria-controls="panel-manual" aria-selected="true"><span lang="es">Manual</span><span lang="en">Manual</span></button>
+    <button class="pestana" role="tab" id="tab-piezas" aria-controls="panel-piezas" aria-selected="false"><span lang="es">Piezas</span><span lang="en">Pieces</span></button>
+    <button class="pestana" role="tab" id="tab-uso" aria-controls="panel-uso" aria-selected="false"><span lang="es">En uso</span><span lang="en">In use</span></button>
+  </div>
+
+  <!-- 5a · Pestaña Manual: carrusel tipo libro -->
+  <div class="panel" id="panel-manual" role="tabpanel">
+    <div class="libro" data-bloque="libro">
+      <div class="paginas">
+        <div class="pagina"><img src="{{ m }}/renobo_manual_01_pagina.jpg" alt="" loading="lazy"></div>
+        <div class="pagina"><img src="{{ m }}/renobo_manual_02_pagina.jpg" alt="" loading="lazy"></div>
+        <div class="pagina"><img src="{{ m }}/renobo_manual_03_pagina.jpg" alt="" loading="lazy"></div>
+        <div class="pagina"><img src="{{ m }}/renobo_manual_04_pagina.jpg" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5b · Pestaña Piezas: mosaico irregular; el hoodie ocupa el doble. Clic amplía en su lugar. -->
+  <div class="panel" id="panel-piezas" role="tabpanel" hidden>
+    <div class="mosaico" data-bloque="mosaico">
+      <figure class="doble"><img src="{{ m }}/renobo_pieza_01_hoodie.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="{{ m }}/renobo_pieza_02_contenido.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="{{ m }}/renobo_pieza_03_contenido.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="{{ m }}/renobo_pieza_04_contenido.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="{{ m }}/renobo_pieza_05_contenido.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="{{ m }}/renobo_pieza_06_contenido.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="{{ m }}/renobo_pieza_07_contenido.jpg" alt="" loading="lazy"></figure>
+      <figure><img src="{{ m }}/renobo_pieza_08_contenido.jpg" alt="" loading="lazy"></figure>
+    </div>
+  </div>
+
+  <!-- 5c · Pestaña En uso: carrusel grande, avance automático cada 5 s. -->
+  <div class="panel" id="panel-uso" role="tabpanel" hidden>
+    <div class="carrusel ratio-16-9" data-bloque="carrusel" data-auto="5">
+      <div class="pista">
+        <figure><img src="{{ m }}/renobo_aplicacion_01_en-uso.jpg" alt="" loading="lazy"></figure>
+        <figure><img src="{{ m }}/renobo_aplicacion_02_en-uso.jpg" alt="" loading="lazy"></figure>
+        <figure><img src="{{ m }}/renobo_aplicacion_03_en-uso.jpg" alt="" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · CIERRE sobre imagen: la frase aparece palabra por palabra. -->
+<section class="cierre-imagen seccion">
+  <img src="{{ m }}/renobo_aplicacion_04_en-uso.jpg" alt="" loading="lazy">
+  <div class="texto">
+    <p class="frase" data-bloque="palabras"><span lang="es">Hoy el sistema sigue funcionando sin mí.</span><span lang="en">Today the system still works without me.</span></p>
+    <div class="resultado">
+      <div lang="es">
+        <p>La adopción fue un éxito. El equipo de comunicaciones lo usa para producir piezas, pero también el resto de la organización, que lo aplica por su cuenta en presentaciones estratégicas, sistemas de seguimiento y tableros de control.</p>
+        <p>También unifiqué la presencia digital de la empresa y la volví fácil de distribuir, para que cualquier persona pudiera usarla.</p>
+        <p>Así trabajo: llego a un contexto, encuentro el punto de dolor, lo soluciono y lo dejo funcionando.</p>
+      </div>
+      <div lang="en">
+        <p>Adoption was a success. The communications team uses it to produce content, and so does the rest of the organization, applying it on its own to strategic presentations, tracking systems and dashboards.</p>
+        <p>I also unified the company's digital presence and made it easy to share, so anyone could use it.</p>
+        <p>That's how I work: I step into a context, find the pain point, solve it and leave it running.</p>
+      </div>
+    </div>
+  </div>
+</section>

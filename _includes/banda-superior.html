@@ -1,0 +1,18 @@
+{%- comment -%} BANDA SUPERIOR: nombre, selector ES/EN, LinkedIn, HV/CV. Igual en todas las páginas. {%- endcomment -%}
+<header class="banda-superior">
+  <div class="marco">
+    <a class="nombre" href="/" data-evento="home">
+      Martín Caicedo Sánchez
+      {%- if page.url != "/" %}<small><span lang="es">← Volver al Home</span><span lang="en">← Back to Home</span></small>{% endif %}
+    </a>
+    <nav class="menu" aria-label="Menú">
+      <div class="selector-idioma" role="group" aria-label="Idioma / Language">
+        <button type="button" data-idioma="es" aria-pressed="true">Español</button>
+        <button type="button" data-idioma="en" aria-pressed="false">English</button>
+      </div>
+      <a class="icono-in" href="{{ site.links_url }}{{ site.data.links.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" data-evento="linkedin">in</a>
+      <a class="link-hv" href="{{ site.links_url }}{{ site.data.links.hv }}" target="_blank" rel="noopener" data-evento="hv" lang="es">HV</a>
+      <a class="link-hv" href="{{ site.links_url }}{{ site.data.links.cv }}" target="_blank" rel="noopener" data-evento="cv" lang="en">CV</a>
+    </nav>
+  </div>
+</header>

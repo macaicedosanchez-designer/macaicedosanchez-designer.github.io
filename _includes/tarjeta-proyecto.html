@@ -1,0 +1,18 @@
+{%- comment -%}
+TARJETA DE PROYECTO. Uso: {% include tarjeta-proyecto.html p=proyecto area=area_actual %}
+"area" es el área desde la que se mira (para marcar la etiqueta principal).
+{%- endcomment -%}
+{%- assign p = include.p -%}
+{%- assign a = site.data.areas | where: "id", p.area | first -%}
+<a class="tarjeta-proyecto" href="{{ p.url }}" data-etiquetas="{{ p.etiquetas.es | join: '|' }}" data-evento="proyecto-{{ p.id }}">
+  <div class="cuadro"><img src="{{ site.media_url }}/{{ p.banco }}" alt="" width="1080" height="1080" loading="lazy"></div>
+  <p class="anio">{{ p.anio }}</p>
+  <p class="titulo"><span lang="es">{{ p.titulo.es }}</span><span lang="en">{{ p.titulo.en }}</span></p>
+  <p class="linea"><span lang="es">{{ p.linea.es }}</span><span lang="en">{{ p.linea.en }}</span></p>
+  <ul class="etiquetas">
+    <li class="principal"><span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span></li>
+    {%- for e in p.etiquetas.es limit: 4 %}{% assign k = forloop.index0 %}
+    <li><span lang="es">{{ e }}</span><span lang="en">{{ p.etiquetas.en[k] }}</span></li>
+    {%- endfor %}
+  </ul>
+</a>

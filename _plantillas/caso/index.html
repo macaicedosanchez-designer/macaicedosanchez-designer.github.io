@@ -1,0 +1,292 @@
+---
+# ═══════════════════════════════════════════════════════════════
+# PLANTILLA DE CASO NUEVO — copia esta carpeta a /<area>/<id-del-proyecto>/
+# y borra los bloques que no uses. Cada bloque es independiente:
+# puedes reordenarlos, repetirlos o quitarlos sin tocar nada más.
+#
+# PASOS:
+#  1. Copia _plantillas/caso/ a, por ejemplo, /direccion-creativa/miproyecto/
+#  2. Cambia los 6 campos de aquí abajo.
+#  3. Agrega el proyecto a _data/proyectos.yml (con el mismo id).
+#  4. Sube las imágenes al repositorio "media" con la nomenclatura
+#     proyecto_tipo_número_descripción.
+#  5. Publica. La tarjeta, la rotación del Home y el "siguiente proyecto" salen solos.
+# ═══════════════════════════════════════════════════════════════
+layout: caso
+proyecto: miproyecto                      # ← el mismo id que en _data/proyectos.yml
+area: direccion-creativa                  # ← área principal (carpeta donde está)
+titulo_es: "Nombre del proyecto — Martín Caicedo Sánchez"
+titulo_en: "Project name — Martín Caicedo Sánchez"
+descripcion_es: "Una frase que resuma el caso (aparece en Google y al compartir el link)."
+imagen: miproyecto_portada_01_descripcion.jpg   # ← imagen al compartir el link
+css: [/direccion-creativa/miproyecto/caso.css]   # ← estilos propios del caso (opcional)
+---
+{%- assign m = site.media_url -%}
+
+<!-- ══════════════════════════════════════════════════════════════
+     BLOQUES DE HERO (elige uno)
+     ══════════════════════════════════════════════════════════════ -->
+
+<!-- HERO A PANTALLA COMPLETA con parallax. data-factor: 0.18 se aleja; -0.12 se acerca -->
+<section class="hero-lleno">
+  <img class="fondo" data-bloque="parallax" data-factor="0.18" src="{{ m }}/miproyecto_portada_01_descripcion.jpg" alt="">
+  <div class="velo"></div>
+  <div class="texto">
+    <p class="etiqueta"><span lang="es">Área · Año</span><span lang="en">Area · Year</span></p>
+    <h1 class="h1"><span lang="es">Título del caso</span><span lang="en">Case title</span></h1>
+    <p><span lang="es">Bajada en una o dos frases.</span><span lang="en">One or two sentence subhead.</span></p>
+  </div>
+</section>
+
+<!-- HERO DIVIDIDO: texto + foto
+<section class="hero-dividido">
+  <div class="texto">
+    <p class="meta"><span lang="es">Área · Año</span><span lang="en">Area · Year</span></p>
+    <h1 class="h1"><span lang="es">Título</span><span lang="en">Title</span></h1>
+    <p><span lang="es">Bajada.</span><span lang="en">Subhead.</span></p>
+  </div>
+  <div class="foto"><img data-bloque="parallax" data-factor="0.12" src="{{ m }}/miproyecto_portada_01_descripcion.jpg" alt=""></div>
+</section>
+-->
+
+<!-- ══════════════════════════════════════════════════════════════
+     FICHA TÉCNICA (elige una forma: banda, acordeón o panel)
+     ══════════════════════════════════════════════════════════════ -->
+
+<!-- FICHA EN BANDA (una sola línea de color) -->
+<div class="ficha-banda">
+  <span><b><span lang="es">Cliente</span><span lang="en">Client</span></b>Nombre</span>
+  <span><b><span lang="es">Año</span><span lang="en">Year</span></b>2026</span>
+  <span><b><span lang="es">Mi rol</span><span lang="en">My role</span></b><span lang="es">Rol</span><span lang="en">Role</span></span>
+  <span><b><span lang="es">Herramientas</span><span lang="en">Tools</span></b>Figma, Illustrator</span>
+</div>
+
+<!-- FICHA EN ACORDEÓN -->
+<section class="marco seccion">
+  <details class="acordeon">
+    <summary><span lang="es">Ficha técnica</span><span lang="en">Fact sheet</span></summary>
+    <div class="contenido">
+      <dl class="ficha">
+        <dt><span lang="es">Cliente</span><span lang="en">Client</span></dt><dd>Nombre</dd>
+        <dt><span lang="es">Año</span><span lang="en">Year</span></dt><dd>2026</dd>
+      </dl>
+      <ul class="etiquetas">
+        <li class="principal"><span lang="es">Área principal</span><span lang="en">Main area</span></li>
+        <li><span lang="es">Etiqueta</span><span lang="en">Tag</span></li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     BLOQUES DE CONTENIDO (usa los que necesites, en el orden que quieras)
+     ══════════════════════════════════════════════════════════════ -->
+
+<!-- TÍTULO DE SECCIÓN + DOS COLUMNAS DE TEXTO -->
+<section class="marco seccion">
+  <div class="seccion-titulo"><span class="num">01</span><h2><span lang="es">Título de sección</span><span lang="en">Section title</span></h2></div>
+  <div class="dos-columnas">
+    <div class="cuerpo">
+      <div lang="es"><p>Texto en español.</p><p>Otro párrafo.</p></div>
+      <div lang="en"><p>Text in English.</p><p>Another paragraph.</p></div>
+    </div>
+    <div class="cuerpo">
+      <div lang="es"><p>Columna derecha.</p></div>
+      <div lang="en"><p>Right column.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CIFRAS que cuentan desde cero -->
+<section class="marco seccion">
+  <div class="cifras">
+    <div class="cifra"><p class="numero" data-bloque="contador" data-valor="12">12</p><p class="rotulo"><span lang="es">rótulo</span><span lang="en">label</span></p></div>
+    <div class="cifra"><p class="numero" data-bloque="contador" data-valor="340" data-sufijo="%">340%</p><p class="rotulo"><span lang="es">rótulo</span><span lang="en">label</span></p></div>
+  </div>
+</section>
+
+<!-- CARRUSEL: una imagen a la vez. data-auto="5" = avanza cada 5 s (quítalo para manual). ratio-16-9 / ratio-4-3 / ratio-3-2 -->
+<section class="marco seccion">
+  <div class="carrusel ratio-16-9" data-bloque="carrusel" data-auto="5">
+    <span class="rotulo"></span>
+    <div class="pista">
+      <figure data-rotulo="Rótulo 1"><img src="{{ m }}/miproyecto_aplicacion_01_descripcion.jpg" alt="" loading="lazy"></figure>
+      <figure data-rotulo="Rótulo 2"><img src="{{ m }}/miproyecto_aplicacion_02_descripcion.jpg" alt="" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PESTAÑAS: cada botón abre su panel (aria-controls = id del panel) -->
+<section class="marco seccion">
+  <div class="pestanas" role="tablist" data-bloque="pestanas">
+    <button class="pestana" role="tab" aria-controls="p-uno" aria-selected="true"><span lang="es">Uno</span><span lang="en">One</span></button>
+    <button class="pestana" role="tab" aria-controls="p-dos" aria-selected="false"><span lang="es">Dos</span><span lang="en">Two</span></button>
+  </div>
+  <div class="panel" id="p-uno" role="tabpanel"><p class="cuerpo">Contenido uno.</p></div>
+  <div class="panel" id="p-dos" role="tabpanel" hidden><p class="cuerpo">Contenido dos.</p></div>
+</section>
+
+<!-- LIBRO: se hojea, con miniaturas (data-miniaturas="no" para quitarlas) -->
+<section class="marco seccion">
+  <div class="libro" data-bloque="libro">
+    <div class="paginas">
+      <div class="pagina"><img src="{{ m }}/miproyecto_manual_01_pagina.jpg" alt="" loading="lazy"></div>
+      <div class="pagina"><img src="{{ m }}/miproyecto_manual_02_pagina.jpg" alt="" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOSAICO irregular: class="doble" ocupa el doble; clic amplía en su lugar -->
+<section class="marco seccion">
+  <div class="mosaico" data-bloque="mosaico">
+    <figure class="doble"><img src="{{ m }}/miproyecto_pieza_01_descripcion.jpg" alt="" loading="lazy"></figure>
+    <figure><img src="{{ m }}/miproyecto_pieza_02_descripcion.jpg" alt="" loading="lazy"></figure>
+    <figure><img src="{{ m }}/miproyecto_pieza_03_descripcion.jpg" alt="" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- CARRETE: la página se detiene y las imágenes pasan de lado -->
+<section class="carrete" data-bloque="carrete">
+  <div class="ventana">
+    <div class="tira">
+      <figure><img src="{{ m }}/miproyecto_destacada_01_descripcion.jpg" alt="" loading="lazy"><figcaption>Rótulo</figcaption></figure>
+      <figure><img src="{{ m }}/miproyecto_destacada_02_descripcion.jpg" alt="" loading="lazy"><figcaption>Rótulo</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FIJO + SCROLL: imagen anclada, texto por tramos; data-imagen indica qué imagen (0, 1…) mostrar en cada tramo -->
+<section class="marco seccion">
+  <div class="fijo-scroll" data-bloque="fijo-scroll">
+    <div class="ancla">
+      <img src="{{ m }}/miproyecto_diagrama_01_descripcion.png" alt="">
+      <img src="{{ m }}/miproyecto_diagrama_02_descripcion.png" alt="" loading="lazy">
+    </div>
+    <div class="tramos">
+      <div class="tramo cuerpo" data-imagen="0"><div lang="es"><p>Tramo uno.</p></div><div lang="en"><p>Step one.</p></div></div>
+      <div class="tramo cuerpo" data-imagen="1"><div lang="es"><p>Tramo dos.</p></div><div lang="en"><p>Step two.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAUSA: una palabra a pantalla completa -->
+<section class="pausa seccion">
+  <p class="palabra" data-bloque="palabras"><span lang="es">Palabra grande</span><span lang="en">Big word</span></p>
+</section>
+
+<!-- TARJETAS QUE GIRAN -->
+<section class="marco seccion">
+  <div class="tarjetas-giro">
+    <div class="tarjeta-giro" data-bloque="giro"><div class="caras">
+      <div class="cara frente"><span class="n">1</span><p class="meta">Frente</p></div>
+      <div class="cara dorso"><p class="h3">Dorso</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ZOOM con puntos: left/top en % ubican cada punto sobre la imagen -->
+<section class="marco seccion">
+  <div class="zoom" data-bloque="zoom">
+    <div class="lienzo">
+      <img src="{{ m }}/miproyecto_ux_01_descripcion.png" alt="">
+      <button class="punto" style="left:30%; top:40%" aria-controls="n-1" aria-expanded="false">1</button>
+      <div class="nota" id="n-1" hidden><span lang="es">Nota corta.</span><span lang="en">Short note.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECUENCIA: visor animado con barra de progreso; data-segundos entre imágenes -->
+<section class="marco seccion">
+  <div class="secuencia" data-bloque="secuencia" data-segundos="7">
+    <img src="{{ m }}/miproyecto_secuencia_01_descripcion.jpg" alt="" data-rotulo="Paso 1">
+    <img src="{{ m }}/miproyecto_secuencia_02_descripcion.jpg" alt="" data-rotulo="Paso 2" loading="lazy">
+  </div>
+</section>
+
+<!-- WEB INCRUSTADA (se carga al tocar; agrega data-al-llegar para que cargue sola al llegar) -->
+<section class="marco seccion">
+  <div class="iframe-diferido" data-bloque="iframe-diferido" data-src="https://ejemplo.com" data-titulo="Título">
+    <img src="{{ m }}/miproyecto_portada_01_descripcion.jpg" alt="" loading="lazy">
+    <button class="btn-pildora claro" type="button"><span lang="es">Cargar</span><span lang="en">Load</span><span class="flecha">↗</span></button>
+  </div>
+</section>
+
+<!-- BARRAS: data-valor de cada fila; crecen al aparecer -->
+<section class="marco seccion">
+  <div class="barras" data-bloque="barras">
+    <div class="fila" data-valor="30"><span class="nombre-barra">A</span><span class="barra"><span></span></span><span class="valor">30</span></div>
+    <div class="fila" data-valor="12"><span class="nombre-barra">B</span><span class="barra"><span></span></span><span class="valor">12</span></div>
+  </div>
+</section>
+
+<!-- LÍNEA DE TIEMPO: data-min = duración de cada bloque; el detalle N corresponde al botón N -->
+<section class="marco seccion" data-bloque="linea-tiempo">
+  <div class="linea-tiempo">
+    <button type="button" data-min="10" aria-expanded="false"><span class="min">10 min</span><span class="t">Bloque 1</span></button>
+    <button type="button" data-min="50" aria-expanded="false"><span class="min">50 min</span><span class="t">Bloque 2</span></button>
+  </div>
+  <div class="linea-tiempo-detalle cuerpo">
+    <div>Detalle del bloque 1.</div>
+    <div>Detalle del bloque 2. <ol><li>Paso a</li><li>Paso b</li></ol></div>
+  </div>
+</section>
+
+<!-- BARRA DE SALAS: fija bajo el header; cada link apunta al id de una sección -->
+<nav class="barra-salas" data-bloque="salas" aria-label="Secciones">
+  <ul>
+    <li><a href="#sala-1">Sala 1</a></li>
+    <li><a href="#sala-2">Sala 2</a></li>
+  </ul>
+</nav>
+<section class="marco seccion" id="sala-1"><p class="cuerpo">Sala 1</p></section>
+<section class="marco seccion" id="sala-2"><p class="cuerpo">Sala 2</p></section>
+
+<!-- VISOR 360° arrastrable (imagen equirectangular) -->
+<section class="marco seccion">
+  <div class="visor-360" data-bloque="360" data-src="{{ m }}/miproyecto_360_01_descripcion.jpg">
+    <span class="arrastra"><span lang="es">Arrastra para mirar</span><span lang="en">Drag to look around</span></span>
+  </div>
+</section>
+
+<!-- PALABRAS GRANDES que se encienden con el scroll -->
+<section class="marco seccion">
+  <div class="palabras-grandes" data-bloque="palabras-grandes">
+    <span>Uno</span><span>Dos</span><span>Tres</span>
+  </div>
+</section>
+
+<!-- TARJETAS simples (entregables) -->
+<section class="marco seccion">
+  <div class="tarjetas">
+    <div class="tarjeta"><span class="simbolo">01</span><h3>Título</h3><p>Descripción.</p></div>
+    <div class="tarjeta azul"><span class="simbolo">02</span><h3>Título</h3><p>Descripción.</p></div>
+  </div>
+</section>
+
+<!-- GALERÍA documental -->
+<section class="marco seccion">
+  <div class="galeria">
+    <img src="{{ m }}/miproyecto_evidencia_01_descripcion.jpg" alt="" loading="lazy">
+    <img src="{{ m }}/miproyecto_evidencia_02_descripcion.jpg" alt="" loading="lazy">
+  </div>
+</section>
+
+<!-- FRASE DESTACADA sobre imagen (palabra por palabra) + resultado -->
+<section class="cierre-imagen seccion">
+  <img src="{{ m }}/miproyecto_aplicacion_03_descripcion.jpg" alt="" loading="lazy">
+  <div class="texto">
+    <p class="frase" data-bloque="palabras"><span lang="es">Frase destacada.</span><span lang="en">Highlight quote.</span></p>
+    <div class="resultado"><div lang="es"><p>Resultado.</p></div><div lang="en"><p>Outcome.</p></div></div>
+  </div>
+</section>
+
+<!-- FRASE DESTACADA a pantalla completa, fondo azul, línea por línea -->
+<section class="destacado seccion">
+  <p class="frase" data-bloque="lineas">
+    <span lang="es"><span class="l">Primera línea</span><span class="l">segunda línea.</span></span>
+    <span lang="en"><span class="l">First line</span><span class="l">second line.</span></span>
+  </p>
+  <div class="texto-chico"><div lang="es"><p>Texto pequeño.</p></div><div lang="en"><p>Small text.</p></div></div>
+</section>
+
+<!-- El cierre (tarjeta del siguiente proyecto + botón Volver) lo agrega el layout automáticamente. -->

@@ -1,0 +1,6 @@
+/* REPOSITORIO (páginas de área) */
+.repositorio-cabeza { padding-top: clamp(40px, 6vw, 110px); }
+.repositorio-cabeza .display { max-width: 12ch; }
+.repositorio-intro { display: grid; grid-template-columns: 1fr auto; gap: var(--gut); align-items: end; margin-top: clamp(20px, 3vw, 48px); padding-bottom: clamp(20px, 3vw, 40px); border-bottom: var(--regla) solid var(--tinta); margin-bottom: clamp(20px, 3vw, 40px); }
+.repositorio-grilla { padding-top: clamp(40px, 5vw, 80px); }
+@media (max-width: 720px) { .repositorio-intro { grid-template-columns: 1fr; } }

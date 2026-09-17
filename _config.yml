@@ -1,0 +1,35 @@
+# ─────────────────────────────────────────────────────────────
+# CONFIGURACIÓN GENERAL DEL SITIO
+# Este es el único archivo que hay que tocar cuando cambies de
+# dominio o cuando actives la analítica.
+# ─────────────────────────────────────────────────────────────
+
+title: Martín Caicedo Sánchez
+descripcion_es: Creador de soluciones digitales. Dirección creativa, diseño de productos y servicios, gestión de innovación.
+descripcion_en: Digital solutions maker. Creative direction, product & service design, innovation management.
+
+# Dirección de la web. Cuando compres tu dominio, cambia solo estas cuatro líneas.
+url: "https://macaicedosanchez-designer.github.io"
+media_url: "https://macaicedosanchez-designer.github.io/media"
+docs_url: "https://macaicedosanchez-designer.github.io/docs"
+links_url: "https://macaicedosanchez-designer.github.io/links"
+
+# Contacto (botón Hablemos)
+email: ma.caicedosanchez@gmail.com
+
+# Analítica. Deja las comillas vacías hasta tener los códigos (ver GUIA-MONTAJE.md, paso 7).
+analitica:
+  ga4: ""        # Ejemplo: "G-ABC123XYZ"
+  clarity: ""    # Ejemplo: "k1abcd2efg"
+
+# ── No tocar de aquí hacia abajo ──
+lang: es
+permalink: pretty
+exclude:
+  - GUIA-MONTAJE.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+include:
+  - .nojekyll

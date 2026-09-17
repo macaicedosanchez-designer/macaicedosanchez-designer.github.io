@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+{% include head.html %}
+</head>
+<body class="{{ page.clase | default: '' }}">
+{% if page.url == "/" %}<span class="esquina" aria-hidden="true"></span>{% endif %}
+{% include banda-superior.html %}
+<main id="contenido">
+{{ content }}
+</main>
+{% include pie.html %}
+<script src="/assets/js/bloques.js"></script>
+{%- for js in page.js %}
+<script src="{{ js }}"></script>
+{%- endfor %}
+</body>
+</html>

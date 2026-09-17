@@ -1,0 +1,195 @@
+---
+# ─────────────────────────────────────────────────────────────
+# CASO 2 — CO-MADREO · "Una casa con salas"
+# Una sola página que se recorre como una casa. La barra de salas fija arriba
+# desplaza la página hasta cada sala. La última sala es la web oficial incrustada.
+# Salas: Historia · Proceso · Arquitectura · Marca · Web 360°
+# ─────────────────────────────────────────────────────────────
+layout: caso
+proyecto: comadreo
+area: productos-servicios
+titulo_es: "CO-MADREO: Web 360° — Martín Caicedo Sánchez"
+titulo_en: "CO-MADREO: 360° Web — Martín Caicedo Sánchez"
+descripcion_es: "Diseñé la experiencia de un documental que no se ve, se recorre: un espacio digital en 360° con las historias de cuatro mujeres del sur de Colombia."
+imagen: comadreo_portada_01_hero.jpg
+css: [/productos-servicios/comadreo/caso.css]
+web_oficial: https://technoar.co/RecorridosVirtuales/Comadreo360/
+---
+{%- assign m = site.media_url -%}
+
+<!-- 1 · UMBRAL: portada con velo, título al centro y botón Entrar. -->
+<section class="hero-lleno centrado umbral" id="umbral">
+  <img class="fondo" data-bloque="parallax" data-factor="-0.12" src="{{ m }}/comadreo_portada_01_hero.jpg" alt="" fetchpriority="high">
+  <div class="velo"></div>
+  <div class="texto">
+    <p class="etiqueta"><span lang="es">Productos & Servicios · 2022</span><span lang="en">Products & Services · 2022</span></p>
+    <h1 class="display"><span lang="es">CO-MADREO</span><span lang="en">CO-MADREO</span></h1>
+    <p class="bajada"><span lang="es">Diseñé la experiencia de un documental que no se ve, se recorre: un espacio digital en 360° construido con las historias de cuatro mujeres del sur de Colombia.</span><span lang="en">I designed the experience of a documentary you don't watch, you explore: a 360° digital space built from the stories of four women from southern Colombia.</span></p>
+    <a class="btn-pildora claro" href="#historia" data-evento="comadreo-entrar"><span lang="es">Entrar</span><span lang="en">Enter</span><span class="flecha">↓</span></a>
+  </div>
+</section>
+
+<!-- 2 · BARRA DE SALAS: fija, resalta la sala en pantalla y marca las visitadas. -->
+<nav class="barra-salas" data-bloque="salas" aria-label="Salas">
+  <ul>
+    <li><a href="#historia"><span lang="es">Historia</span><span lang="en">Story</span></a></li>
+    <li><a href="#proceso"><span lang="es">Proceso</span><span lang="en">Process</span></a></li>
+    <li><a href="#arquitectura"><span lang="es">Arquitectura</span><span lang="en">Architecture</span></a></li>
+    <li><a href="#marca"><span lang="es">Marca</span><span lang="en">Brand</span></a></li>
+    <li><a href="#web360">Web 360°</a></li>
+  </ul>
+</nav>
+
+<!-- 3 · SALA HISTORIA: vista 360° arrastrable con la pregunta encima; texto + cuatro palabras; ficha desplegable. -->
+<section class="sala seccion" id="historia">
+  <div class="marco">
+    <div class="visor-360" data-bloque="360" data-src="{{ m }}/comadreo_360_01_sala.jpg">
+      <span class="arrastra"><span lang="es">Arrastra para mirar</span><span lang="en">Drag to look around</span></span>
+      <p class="pregunta"><span lang="es">¿Cómo se presenta un documental de forma espacial?</span><span lang="en">How do you present a documentary as a space?</span></p>
+    </div>
+    <div class="dos-columnas sala-historia">
+      <div class="cuerpo sala-texto">
+        <div lang="es">
+          <p>El video 360° de las cuatro mujeres ya estaba grabado y editado. Faltaba todo lo demás: la marca, el color, la sensación general, cómo se entra a la web y cómo se conectan las salas. Cada sala debía comunicar lo que cada mujer quería contar.</p>
+          <p>CO-MADREO nació de una investigación doctoral sobre las herramientas digitales y la idea del pluriverso. Tras preparar la propuesta académica, el equipo ganó el estímulo Crea Digital 2022 del MinTIC para producir contenido transmedia.</p>
+          <p>Es un espacio sembrado de forma colaborativa por distintas colectividades para tomar la palabra en este nuevo territorio digital: ¿universo, metaverso o pluriverso? Reúne materiales de muchas personas y formatos, desde video 360° hasta piezas completamente análogas.</p>
+          <p><strong>Objetivo.</strong> Unificar al equipo creativo para definir la experiencia completa de la web: color, forma, espacio y sonido. Para lograrlo tenía que entender las necesidades del equipo y, sobre todo, a las mujeres protagonistas, porque su esencia debía traducirse en cada detalle de la experiencia.</p>
+        </div>
+        <div lang="en">
+          <p>The 360° footage of the four women was already shot and edited. Everything else was missing: the brand, the color, the overall feel, how you enter the site and how the rooms connect. Each room had to convey what each woman wanted to say.</p>
+          <p>CO-MADREO grew out of doctoral research on digital tools and the idea of the pluriverse. After preparing the academic proposal, the team won the Ministry of ICT's Crea Digital 2022 grant to produce transmedia content.</p>
+          <p>It's a space planted collaboratively by different collectives to claim a voice in this new digital territory: universe, metaverse or pluriverse? It brings together work from many people and formats, from 360° video to fully analog pieces.</p>
+          <p><strong>Goal.</strong> Bring the creative team together to define the full web experience: color, form, space and sound. That meant understanding the team's needs and, above all, the women themselves, because their essence had to shape every detail.</p>
+        </div>
+      </div>
+      <div class="palabras-grandes" data-bloque="palabras-grandes" aria-hidden="true">
+        <span><span lang="es">Color</span><span lang="en">Color</span></span>
+        <span><span lang="es">Forma</span><span lang="en">Form</span></span>
+        <span><span lang="es">Espacio</span><span lang="en">Space</span></span>
+        <span><span lang="es">Sonido</span><span lang="en">Sound</span></span>
+      </div>
+    </div>
+    <details class="acordeon">
+      <summary><span lang="es">Ficha técnica</span><span lang="en">Fact sheet</span></summary>
+      <div class="contenido">
+        <dl class="ficha">
+          <dt><span lang="es">Proyecto</span><span lang="en">Project</span></dt><dd><span lang="es">Estímulo Crea Digital 2022 — MinTIC</span><span lang="en">Crea Digital 2022 grant — Colombian Ministry of ICT</span></dd>
+          <dt><span lang="es">Año</span><span lang="en">Year</span></dt><dd>2022</dd>
+          <dt><span lang="es">Mi rol</span><span lang="en">My role</span></dt><dd><span lang="es">Director creativo, ilustrador principal y responsable del front end</span><span lang="en">Creative director, lead illustrator and front-end lead</span></dd>
+          <dt><span lang="es">Duración</span><span lang="en">Duration</span></dt><dd><span lang="es">6 meses</span><span lang="en">6 months</span></dd>
+          <dt><span lang="es">Equipo</span><span lang="en">Team</span></dt><dd><span lang="es">3 personas en el equipo creativo (diseño y sonido), en coordinación con desarrolladores back end y directores del proyecto</span><span lang="en">3-person creative team (design and sound), working with back-end developers and project directors</span></dd>
+          <dt><span lang="es">Herramientas</span><span lang="en">Tools</span></dt><dd><span lang="es">Ilustración análoga y digital, Illustrator, Photoshop y el plugin Flexify 2</span><span lang="en">Hand-drawn and digital illustration, Illustrator, Photoshop and the Flexify 2 plugin</span></dd>
+        </dl>
+        <ul class="etiquetas">
+          <li class="principal"><span lang="es">Productos & Servicios</span><span lang="en">Products & Services</span></li>
+          <li><span lang="es">Dirección Creativa</span><span lang="en">Creative Direction</span></li>
+          <li><span lang="es">Diseño de experiencia (UX)</span><span lang="en">Experience design (UX)</span></li>
+          <li><span lang="es">Arquitectura de información</span><span lang="en">Information architecture</span></li>
+          <li><span lang="es">Diseño transmedia</span><span lang="en">Transmedia design</span></li>
+          <li><span lang="es">Ilustración análoga y digital</span><span lang="en">Hand-drawn & digital illustration</span></li>
+          <li><span lang="es">Manual de marca</span><span lang="en">Brand manual</span></li>
+          <li><span lang="es">Coordinación de equipos</span><span lang="en">Team coordination</span></li>
+          <li>Illustrator</li><li>Photoshop</li><li>Flexify 2</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 4 · SALA PROCESO: de papel a esfera. Visor animado, cambio cada 7 s. -->
+<section class="sala seccion" id="proceso">
+  <div class="marco">
+    <div class="seccion-titulo"><span class="num">02</span><h2><span lang="es">De papel a esfera</span><span lang="en">From paper to sphere</span></h2></div>
+    <div class="secuencia" data-bloque="secuencia" data-segundos="7">
+      <img src="{{ m }}/comadreo_secuencia_01_proceso.jpg" alt="" data-rotulo="<span lang='es'>Dibujo</span><span lang='en'>Drawing</span>">
+      <img src="{{ m }}/comadreo_secuencia_02_proceso.jpg" alt="" data-rotulo="<span lang='es'>Proyección</span><span lang='en'>Projection</span>" loading="lazy">
+      <img src="{{ m }}/comadreo_secuencia_03_proceso.jpg" alt="" data-rotulo="<span lang='es'>Proyección</span><span lang='en'>Projection</span>" loading="lazy">
+      <img src="{{ m }}/comadreo_secuencia_04_proceso.jpg" alt="" data-rotulo="<span lang='es'>Esfera</span><span lang='en'>Sphere</span>" loading="lazy">
+    </div>
+    <div class="cuerpo sala-texto proceso-texto">
+      <div lang="es">
+        <p>Lo más desafiante fue pensar en el espacio. Una imagen 360° no es un plano: hay que calcar el video, llevarlo a una proyección bidimensional y luego devolverlo a la esfera.</p>
+        <p>Ilustré a mano cada escena, la digitalicé y la posproduje para que la plataforma pudiera procesarla como una imagen 360°. En la práctica, diseñé la experiencia de un espacio digital que representa realidades distintas.</p>
+      </div>
+      <div lang="en">
+        <p>The hardest part was thinking in space. A 360° image isn't flat: you trace the video, turn it into a two-dimensional projection and then wrap it back into a sphere.</p>
+        <p>I hand-illustrated each scene, digitized it and post-produced it so the platform could render it as a 360° image. In practice, I designed a digital space that represents different realities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · SALA ARQUITECTURA: imagen con zoom y puntos; tres tarjetas de entregables. -->
+<section class="sala seccion" id="arquitectura">
+  <div class="marco">
+    <div class="seccion-titulo"><span class="num">03</span><h2><span lang="es">Arquitectura de la experiencia</span><span lang="en">Experience architecture</span></h2></div>
+    <p class="cuerpo"><span lang="es">Definí la estructura del front end: cómo se llega, cómo se navega entre salas y qué siente el usuario en cada una. Amplía y arrastra el diagrama; cada punto despliega una nota.</span><span lang="en">I defined the front-end structure: how users arrive, how they move between rooms and what they feel in each one. Zoom and drag the diagram; each dot opens a note.</span></p>
+    <div class="zoom" data-bloque="zoom">
+      <div class="lienzo">
+        <img src="{{ m }}/comadreo_ux_01_arquitectura-front.png" alt="" loading="lazy">
+        <!-- Puntos: cambia left/top (en %) para ubicarlos sobre el diagrama -->
+        <button class="punto" style="left:12%; top:30%" aria-controls="nota-1" aria-expanded="false">1</button>
+        <div class="nota" id="nota-1" hidden><span lang="es">Umbral: cómo se entra a la experiencia.</span><span lang="en">Threshold: how you enter the experience.</span></div>
+        <button class="punto" style="left:50%; top:50%" aria-controls="nota-2" aria-expanded="false">2</button>
+        <div class="nota" id="nota-2" hidden><span lang="es">Navegación entre salas.</span><span lang="en">Moving between rooms.</span></div>
+        <button class="punto" style="left:85%; top:65%" aria-controls="nota-3" aria-expanded="false">3</button>
+        <div class="nota" id="nota-3" hidden><span lang="es">Qué siente el usuario en cada sala.</span><span lang="en">What the user feels in each room.</span></div>
+      </div>
+    </div>
+    <div class="tarjetas entregables">
+      <div class="tarjeta"><span class="simbolo" aria-hidden="true">01</span><h3><span lang="es">Manual de montaje de la web 360°</span><span lang="en">360° site assembly manual</span></h3><p><span lang="es">Para que el equipo de programación la construyera en coordinación con el back end.</span><span lang="en">So developers could build it alongside the back end.</span></p></div>
+      <div class="tarjeta"><span class="simbolo" aria-hidden="true">02</span><h3><span lang="es">Manual de imagen</span><span lang="en">Visual identity manual</span></h3><p><span lang="es">Para el equipo gráfico.</span><span lang="en">For the graphic team.</span></p></div>
+      <div class="tarjeta"><span class="simbolo" aria-hidden="true">03</span><h3><span lang="es">Entregables de seguimiento</span><span lang="en">Progress deliverables</span></h3><p><span lang="es">Para los directores y aliados del proyecto.</span><span lang="en">For the project directors and partners.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · SALA MARCA: libro abierto con miniaturas (19 páginas). -->
+<section class="sala seccion" id="marca">
+  <div class="marco">
+    <div class="seccion-titulo"><span class="num">04</span><h2><span lang="es">El sistema visual de CO-MADREO, página por página</span><span lang="en">The CO-MADREO visual system, page by page</span></h2></div>
+    <div class="libro" data-bloque="libro">
+      <div class="paginas">
+        {%- for i in (1..19) %}{% assign n = i | prepend: "0" | slice: -2, 2 %}
+        <div class="pagina"><img src="{{ m }}/comadreo_manual_{{ n }}_pagina.jpg" alt="" loading="lazy"></div>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · SALA WEB 360°: la web oficial incrustada, con pestaña de respaldo "Salas en imágenes". -->
+<section class="sala seccion" id="web360">
+  <div class="marco">
+    <div class="seccion-titulo"><span class="num">05</span><h2>Web 360°</h2></div>
+    <p class="cuerpo"><span lang="es">Esta es la web oficial de CO-MADREO, funcionando. Recórrela aquí mismo: arrastra para mirar alrededor y entra a cada sala.</span><span lang="en">This is the official CO-MADREO site, live. Explore it right here: drag to look around and step into each room.</span></p>
+    <div class="pestanas" role="tablist" data-bloque="pestanas">
+      <button class="pestana" role="tab" aria-controls="panel-vivo" aria-selected="true"><span lang="es">Recorrido en vivo</span><span lang="en">Live tour</span></button>
+      <button class="pestana" role="tab" aria-controls="panel-salas" aria-selected="false"><span lang="es">Salas en imágenes</span><span lang="en">Rooms in pictures</span></button>
+    </div>
+    <div class="panel" id="panel-vivo" role="tabpanel">
+      <div class="iframe-diferido" data-bloque="iframe-diferido" data-src="{{ page.web_oficial }}" data-titulo="CO-MADREO 360°">
+        <img src="{{ m }}/comadreo_portada_01_hero.jpg" alt="" loading="lazy">
+        <button class="btn-pildora claro" type="button"><span lang="es">Cargar recorrido</span><span lang="en">Load the tour</span><span class="flecha">↗</span></button>
+      </div>
+      <p class="meta enlace-externo"><a href="{{ page.web_oficial }}" target="_blank" rel="noopener" data-evento="comadreo-web-oficial"><span lang="es">Abrir en una pestaña nueva ↗</span><span lang="en">Open in a new tab ↗</span></a></p>
+    </div>
+    <div class="panel" id="panel-salas" role="tabpanel" hidden>
+      <div class="carrusel ratio-16-9" data-bloque="carrusel">
+        <div class="pista">
+          <!-- Agrega aquí una figure por cada imagen 360 adicional (comadreo_360_02, 03…) -->
+          <figure><img src="{{ m }}/comadreo_360_02_sala.jpg" alt="" loading="lazy"></figure>
+          <figure><img src="{{ m }}/comadreo_360_03_sala.jpg" alt="" loading="lazy"></figure>
+          <figure><img src="{{ m }}/comadreo_360_04_sala.jpg" alt="" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · SALIDA: fondo oscuro con la frase destacada (palabra por palabra). El siguiente proyecto lo agrega el layout. -->
+<section class="salida seccion">
+  <div class="marco">
+    <p class="frase" data-bloque="palabras"><span lang="es">No diseñé una página: diseñé un lugar.</span><span lang="en">I didn't design a page: I designed a place.</span></p>
+  </div>
+</section>

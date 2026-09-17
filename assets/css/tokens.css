@@ -1,0 +1,59 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS — El Atlas de composición traducido a variables CSS.
+   Si algún día cambias un color o una fuente, cámbialo AQUÍ y
+   toda la web cambia. No hay colores escritos a mano en otros
+   archivos: todos usan var(--nombre).
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ── Familia de composición (atlas 01.1). Sin jerarquía entre azules. ── */
+  --papel:    #EFEFEC;
+  --tinta:    #101010;
+  --cemento:  #C9C9C4;
+  --abisal:   #0A0A5A;
+  --ultramar: #2B1BE8;
+  --cielo:    #1785F5;
+
+  /* Neutro intermedio para bandas de fondo (mezcla de papel y cemento) */
+  --banda:    #E4E4E0;
+
+  /* ── Rampas: solo entre azules, 180° o 90° (atlas 01.2) ── */
+  --rampa-v: linear-gradient(180deg, var(--abisal) 0%, var(--ultramar) 48%, var(--cielo) 100%);
+  --rampa-h: linear-gradient(90deg, var(--ultramar) 0%, var(--cielo) 100%);
+
+  /* ── Color de estado: SOLO interacción (atlas 01.3) ── */
+  --amarillo: #F2E500;
+
+  /* ── Tipografía ── */
+  --grot: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ── Ritmo de espacios ── */
+  --u:    8px;                           /* unidad base */
+  --gut:  calc(var(--u) * 3);            /* 24px */
+  --pad:  clamp(20px, 5vw, 96px);        /* margen lateral de página */
+  --hair: 1px;
+  --regla: 2px;                          /* línea gruesa del mock */
+  --ancho: 1680px;                       /* ancho máximo del contenido */
+
+  /* ── Escala tipográfica (contraste de tamaño ≥ 12:1 entre display y meta) ── */
+  --t-display: clamp(56px, 12vw, 200px);
+  --t-h1:      clamp(30px, 4.2vw, 64px);
+  --t-h2:      clamp(24px, 3vw, 44px);
+  --t-h3:      clamp(18px, 2vw, 28px);
+  --t-cuerpo:  clamp(15px, 1.15vw, 19px);
+  --t-meta:    11px;
+  --t-micro:   10px;
+
+  /* ── Formas del mock ── */
+  --pildora: 999px;                      /* botones tipo píldora, tal cual el mock */
+
+  /* ── Alturas de la banda superior (para los desplazamientos con menú fijo) ── */
+  --alto-header: 88px;
+}
+
+@media (max-width: 720px) {
+  :root { --alto-header: 68px; }
+}

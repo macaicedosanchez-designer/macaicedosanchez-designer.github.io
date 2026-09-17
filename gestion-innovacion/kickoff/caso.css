@@ -1,0 +1,16 @@
+/* CASO KICK OFF — ajustes propios. Lo compartido vive en assets/css/componentes.css */
+.hero-dividido .bajada { font-size: clamp(16px, 1.4vw, 24px); line-height: 1.35; max-width: 56ch; }
+.resumen { margin-top: clamp(32px, 4vw, 64px); margin-bottom: clamp(24px, 3vw, 40px); }
+.centrada { text-align: center; margin-left: auto; margin-right: auto; }
+.pregunta .h2 { max-width: 30ch; }
+.pregunta .meta.centrada { margin: 20px auto clamp(24px, 3vw, 48px); display: block; }
+.metodo .cuerpo { margin-bottom: clamp(24px, 3vw, 40px); }
+.metodo-diagrama { margin-bottom: clamp(20px, 2vw, 32px); }
+.metodo-diagrama .resaltador { position: absolute; border: 3px solid var(--ultramar); opacity: 0; pointer-events: none; }
+.metodo-diagrama .resaltador.activo { opacity: 1; }
+.fase-carrusel { margin-top: 24px; max-width: 900px; }
+.taller-carrusel { margin-top: clamp(32px, 4vw, 56px); max-width: 1100px; }
+.resultados .clusters { width: 100%; max-height: 70vh; object-fit: cover; margin-bottom: clamp(24px, 3vw, 40px); }
+.resultados .barras { margin: clamp(24px, 3vw, 40px) 0; }
+.pausa.seccion { padding-top: 0; margin-top: clamp(56px, 8vw, 140px); }
+.destacado.seccion { padding-top: var(--pad); }

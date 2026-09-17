@@ -1,0 +1,7 @@
+# Destinos del menú y del pie. Todos pasan por tu repositorio "links",
+# así cambias el destino real allá (un solo archivo) sin tocar la web.
+# Si prefieres poner la URL directa, escríbela aquí entre comillas.
+linkedin: /linkedin/
+hv: /hv/
+cv: /cv/
+github: /github/

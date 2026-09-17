@@ -1,0 +1,39 @@
+# ─────────────────────────────────────────────────────────────
+# LAS TRES ÁREAS (repositorios de proyectos).
+# El "id" es el nombre de la carpeta. Si agregas un área nueva,
+# copia un bloque, crea su carpeta con index.html (ver _plantillas/area)
+# y agrégala aquí. El orden de este archivo es el orden en la web.
+# ─────────────────────────────────────────────────────────────
+
+- id: direccion-creativa
+  nombre:
+    es: Dirección Creativa
+    en: Creative Direction
+  linea:
+    es: Construyo sistemas visuales a la medida de cada organización y de sus necesidades reales.
+    en: I build visual systems tailored to each organization and its real needs.
+  descripcion:
+    es: "Construyo sistemas visuales a la medida de cada organización y de sus necesidades reales: identidades, manuales y piezas que los equipos siguen usando por su cuenta."
+    en: "I build visual systems tailored to each organization and its real needs: identities, brand manuals and pieces that teams keep using on their own."
+
+- id: productos-servicios
+  nombre:
+    es: Productos & Servicios
+    en: Products & Services
+  linea:
+    es: Investigo con usuarios y convierto los hallazgos en interfaces pensadas para quien las va a usar.
+    en: I research with users and turn the findings into interfaces designed for the people who will use them.
+  descripcion:
+    es: Investigo con usuarios y convierto los hallazgos en interfaces y experiencias digitales pensadas para quien las va a usar.
+    en: I research with users and turn the findings into digital interfaces and experiences designed for the people who will use them.
+
+- id: gestion-innovacion
+  nombre:
+    es: Gestión de Innovación
+    en: Innovation Management
+  linea:
+    es: Rediseño procesos y los convierto en herramientas alineadas con la estrategia de la organización.
+    en: I redesign processes and turn them into tools aligned with the organization's strategy.
+  descripcion:
+    es: Rediseño procesos y los convierto en herramientas alineadas con la estrategia de la organización, que los equipos adoptan en su trabajo diario.
+    en: I redesign processes and turn them into tools aligned with the organization's strategy, tools that teams adopt in their daily work.

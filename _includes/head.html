@@ -1,0 +1,33 @@
+{%- comment -%} CABEZA de todas las páginas: título, descripción, fuentes, CSS, favicon, analítica. {%- endcomment -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- assign t_es = page.titulo_es | default: site.title -%}
+{%- assign t_en = page.titulo_en | default: site.title -%}
+<title data-es="{{ t_es }}" data-en="{{ t_en }}">{{ t_es }}</title>
+<meta name="description" content="{{ page.descripcion_es | default: site.descripcion_es }}">
+<meta property="og:title" content="{{ t_es }}">
+<meta property="og:description" content="{{ page.descripcion_es | default: site.descripcion_es }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ site.media_url }}/{{ page.imagen | default: 'home_portada_01_ilustracion.png' }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<link rel="alternate" hreflang="es" href="{{ page.url | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}?lang=en">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#2B1BE8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/componentes.css">
+{%- for css in page.css %}
+<link rel="stylesheet" href="{{ css }}">
+{%- endfor %}
+<script src="/assets/js/idioma.js"></script>
+{% include analitica.html %}

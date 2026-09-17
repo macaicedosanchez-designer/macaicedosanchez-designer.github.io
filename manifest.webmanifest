@@ -1,0 +1,9 @@
+{
+  "name": "Martín Caicedo Sánchez",
+  "short_name": "MCS",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#EFEFEC",
+  "theme_color": "#2B1BE8",
+  "icons": [{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }]
+}

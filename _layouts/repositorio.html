@@ -1,0 +1,42 @@
+---
+layout: base
+---
+{%- comment -%}
+LAYOUT DE REPOSITORIO (página de área). Los tres repositorios comparten esta estructura:
+encabezado · presentación del área · selector de áreas · filtros · grilla · pie.
+Todo sale de _data/areas.yml y _data/proyectos.yml. No hay que editar este archivo para agregar proyectos.
+{%- endcomment -%}
+{%- assign area = site.data.areas | where: "id", page.area | first -%}
+{%- assign principales = site.data.proyectos | where: "area", area.id | where: "publicado", true | sort: "anio" | reverse -%}
+{%- assign secundarios = site.data.proyectos | where: "publicado", true | where_exp: "p", "p.secundarias contains area.id" | sort: "anio" | reverse -%}
+{%- assign todos = principales | concat: secundarios -%}
+{%- assign pares = "" | split: "" -%}
+{%- for p in todos -%}{%- for e in p.etiquetas.es -%}{%- assign k = forloop.index0 -%}{%- assign par = e | append: "::" | append: p.etiquetas.en[k] -%}{%- assign pares = pares | push: par -%}{%- endfor -%}{%- endfor -%}
+{%- assign pares = pares | uniq | sort -%}
+
+<section class="marco repositorio-cabeza">
+  <h1 class="display"><span lang="es">{{ area.nombre.es }}</span><span lang="en">{{ area.nombre.en }}</span></h1>
+  <div class="repositorio-intro">
+    <p class="cuerpo"><span lang="es">{{ area.descripcion.es }}</span><span lang="en">{{ area.descripcion.en }}</span></p>
+    <p class="meta">{{ todos.size }} <span lang="es">proyecto{% if todos.size != 1 %}s{% endif %}</span><span lang="en">project{% if todos.size != 1 %}s{% endif %}</span></p>
+  </div>
+  {% include selector-areas.html actual=area.id %}
+</section>
+
+{{ content }}
+
+<section class="marco repositorio-grilla">
+  <div class="filtros" data-bloque="filtros" data-grilla="grilla-{{ area.id }}" data-limite="9" role="group" aria-label="Filtros">
+    {%- for par in pares -%}{%- assign t = par | split: "::" %}
+    <button class="filtro" type="button" data-etiqueta="{{ t[0] }}" aria-pressed="false"><span lang="es">{{ t[0] }}</span><span lang="en">{{ t[1] | default: t[0] }}</span></button>
+    {%- endfor %}
+  </div>
+  <div class="grilla-proyectos" id="grilla-{{ area.id }}">
+    {%- for p in todos %}
+    {% include tarjeta-proyecto.html p=p %}
+    {%- endfor %}
+  </div>
+  <div class="ver-mas" hidden data-ver-mas>
+    <button class="btn-pildora contorno" type="button"><span lang="es">Ver más</span><span lang="en">See more</span><span class="flecha">↓</span></button>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+# ─────────────────────────────────────────────────────────────
+# REGISTRO DE PROYECTOS
+#
+# Cada proyecto de la web es un bloque de este archivo. Con esto
+# la web arma sola: las tarjetas de cada área, la rotación de
+# imágenes del Home, los filtros y la tarjeta "Siguiente proyecto".
+#
+# Para agregar un proyecto: copia el último bloque, cambia sus
+# datos y crea la carpeta del caso (ver _plantillas/caso/).
+#
+# Campos:
+#   id          código corto, igual al de las imágenes (renobo, comadreo…)
+#   url         carpeta donde vive el caso (área principal / id)
+#   area        id del área principal (ver _data/areas.yml)
+#   secundarias otras áreas en las que también aparece (lista, puede ir vacía [])
+#   anio        año, se usa para ordenar (más reciente primero)
+#   banco       nombre de la imagen cuadrada en el repositorio media
+#   titulo / linea  textos de la tarjeta, en los dos idiomas
+#   etiquetas   habilidades y herramientas, sirven para los filtros
+#   publicado   true = se muestra; false = queda oculto mientras lo terminas
+# ─────────────────────────────────────────────────────────────
+
+- id: renobo
+  url: /direccion-creativa/renobo/
+  area: direccion-creativa
+  secundarias: [productos-servicios]
+  anio: 2025
+  banco: renobo_banco_01_cuadrada.webp
+  publicado: true
+  titulo:
+    es: Modernización de la marca RenoBo
+    en: RenoBo Brand Refresh
+  linea:
+    es: Una marca pública más liviana y moderna, sin cambiar logo, color ni tipografía.
+    en: A lighter, more modern public brand, without changing the logo, colors or typography.
+  etiquetas:
+    es: [Identidad visual, Manual de marca, Sistemas gráficos, Diseño de plantillas, Mockups, Coordinación de equipos, Adobe Creative Suite, Figma, Google Slides, PowerPoint]
+    en: [Visual identity, Brand manual, Graphic systems, Template design, Mockups, Team coordination, Adobe Creative Suite, Figma, Google Slides, PowerPoint]
+
+- id: comadreo
+  url: /productos-servicios/comadreo/
+  area: productos-servicios
+  secundarias: [direccion-creativa]
+  anio: 2022
+  banco: comadreo_banco_01_cuadrada.webp
+  publicado: true
+  titulo:
+    es: "CO-MADREO: Web 360°"
+    en: "CO-MADREO: 360° Web"
+  linea:
+    es: Un documental que no se ve, se recorre.
+    en: A documentary you don't watch, you walk through.
+  etiquetas:
+    es: [Diseño de experiencia (UX), Arquitectura de información, Diseño transmedia, Ilustración análoga y digital, Manual de marca, Coordinación de equipos, Illustrator, Photoshop, Flexify 2]
+    en: [Experience design (UX), Information architecture, Transmedia design, Analog & digital illustration, Brand manual, Team coordination, Illustrator, Photoshop, Flexify 2]
+
+- id: kickoff
+  url: /gestion-innovacion/kickoff/
+  area: gestion-innovacion
+  secundarias: [productos-servicios]
+  anio: 2026
+  banco: kickoff_banco_01_cuadrada.webp
+  publicado: true
+  titulo:
+    es: Taller de Kick Off
+    en: Kick Off Workshop
+  linea:
+    es: Un taller de dos horas para que los proyectos no pierdan su memoria al cambiar de equipo.
+    en: A two-hour workshop so projects don't lose their memory when teams change.
+  etiquetas:
+    es: [Design Thinking, Investigación con usuarios, Facilitación de talleres, Investigación-acción participativa, Experimentos A/B, Análisis de resultados, Gestión del conocimiento, Tejido iBo, Canvas de dimensiones, Mapas de actores]
+    en: [Design Thinking, User research, Workshop facilitation, Participatory action research, A/B experiments, Results analysis, Knowledge management, Tejido iBo, Dimensions canvas, Stakeholder maps]

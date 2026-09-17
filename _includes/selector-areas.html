@@ -1,0 +1,8 @@
+{%- comment -%} SELECTOR DE ÁREAS: tres píldoras, la actual encendida. Uso: {% include selector-areas.html actual=page.area %} {%- endcomment -%}
+<nav class="selector-areas" aria-label="Áreas">
+  {%- for a in site.data.areas %}
+  <a class="btn-pildora{% if a.id != include.actual %} inactivo{% endif %}" href="/{{ a.id }}/"{% if a.id == include.actual %} aria-current="page"{% endif %}>
+    <span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span>
+  </a>
+  {%- endfor %}
+</nav>

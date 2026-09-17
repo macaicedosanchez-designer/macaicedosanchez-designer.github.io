@@ -1,0 +1,36 @@
+{%- comment -%}
+CIERRE DE CADA CASO: tarjeta del siguiente proyecto del mismo repositorio + botón "Volver a [área]".
+Se calcula solo a partir de _data/proyectos.yml. Si el área solo tiene un proyecto, aparece solo el botón.
+{%- endcomment -%}
+{%- assign actual = site.data.proyectos | where: "id", page.proyecto | first -%}
+{%- assign a = site.data.areas | where: "id", actual.area | first -%}
+{%- assign lista = site.data.proyectos | where: "area", actual.area | where: "publicado", true | sort: "anio" | reverse -%}
+{%- assign siguiente = false -%}
+{%- assign encontrado = false -%}
+{%- for p in lista -%}
+  {%- if encontrado and siguiente == false -%}{%- assign siguiente = p -%}{%- endif -%}
+  {%- if p.id == actual.id -%}{%- assign encontrado = true -%}{%- endif -%}
+{%- endfor -%}
+{%- if siguiente == false -%}
+  {%- for p in lista -%}{%- if p.id != actual.id and siguiente == false -%}{%- assign siguiente = p -%}{%- endif -%}{%- endfor -%}
+{%- endif -%}
+{%- comment -%} Si el área solo tiene este proyecto, se ofrece uno que la tenga como área secundaria {%- endcomment -%}
+{%- if siguiente == false -%}
+  {%- assign secundarios = site.data.proyectos | where: "publicado", true | where_exp: "p", "p.secundarias contains actual.area" | sort: "anio" | reverse -%}
+  {%- for p in secundarios -%}{%- if p.id != actual.id and siguiente == false -%}{%- assign siguiente = p -%}{%- endif -%}{%- endfor -%}
+{%- endif -%}
+<section class="marco seccion">
+  <div class="cierre-caso{% unless siguiente %} solo{% endunless %}">
+    {%- if siguiente %}
+    <div>
+      <p class="rotulo"><span lang="es">Siguiente proyecto</span><span lang="en">Next project</span></p>
+      {% include tarjeta-proyecto.html p=siguiente %}
+    </div>
+    {%- endif %}
+    <div>
+      <a class="btn-pildora" href="/{{ a.id }}/">
+        <span lang="es">Volver a {{ a.nombre.es }}</span><span lang="en">Back to {{ a.nombre.en }}</span><span class="flecha">↖</span>
+      </a>
+    </div>
+  </div>
+</section>

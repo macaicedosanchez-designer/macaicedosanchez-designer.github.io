@@ -1,0 +1,81 @@
+---
+# ─────────────────────────────────────────────────────────────
+# HOME — sigue el mock aprobado (Mock_Landing_To_SVG). Cuatro secciones:
+# 1 banda superior (viene de _includes/banda-superior.html)
+# 2 presentación: cinta en movimiento + imagen + texto
+# 3 "Portfolio" + tres botones de áreas (se arman solos desde _data)
+# 4 banda de despedida (viene de _includes/pie.html)
+# Para editar textos: busca los <span lang="es"> y <span lang="en">.
+# ─────────────────────────────────────────────────────────────
+layout: base
+permalink: /
+clase: home
+titulo_es: "Martín Caicedo Sánchez — Creador de soluciones digitales"
+titulo_en: "Martín Caicedo Sánchez — Digital solutions maker"
+css: [/home/home.css]
+---
+
+<!-- ══ 2 · PRESENTACIÓN ══════════════════════════════════════════ -->
+<section class="presentacion">
+
+  <!-- Cinta en movimiento con las tres áreas -->
+  <div class="cinta" aria-hidden="true">
+    <div class="cinta-pista">
+      <span lang="es">Dirección Creativa | Diseño de Productos y Servicios | Innovación de Procesos |&nbsp;</span>
+      <span lang="en">Creative Direction | Product & Service Design | Process Innovation |&nbsp;</span>
+      <span lang="es">Dirección Creativa | Diseño de Productos y Servicios | Innovación de Procesos |&nbsp;</span>
+      <span lang="en">Creative Direction | Product & Service Design | Process Innovation |&nbsp;</span>
+      <span lang="es">Dirección Creativa | Diseño de Productos y Servicios | Innovación de Procesos |&nbsp;</span>
+      <span lang="en">Creative Direction | Product & Service Design | Process Innovation |&nbsp;</span>
+      <span lang="es">Dirección Creativa | Diseño de Productos y Servicios | Innovación de Procesos |&nbsp;</span>
+      <span lang="en">Creative Direction | Product & Service Design | Process Innovation |&nbsp;</span>
+    </div>
+  </div>
+
+  <div class="banda-gris">
+    <div class="marco presentacion-grid">
+      <img class="ilustracion" src="{{ site.media_url }}/home_portada_01_ilustracion.png" alt="" width="1600" height="1600" fetchpriority="high">
+      <div class="texto">
+        <h1 class="h1"><span lang="es">Creador de Soluciones Digitales</span><span lang="en">Digital Solutions Maker</span></h1>
+        <div class="cuerpo">
+          <div lang="es">
+            <p>Siempre me ha entusiasmado aprender, sin importar qué tan complejos sean los temas nuevos. Esa curiosidad me lleva a buscar problemas que parecen no tener solución y a resolverlos de formas poco convencionales, con Design Thinking, gestión de la innovación y una profunda empatía por las personas detrás de cada usuario.</p>
+            <p>Este enfoque ha sido clave en retos con entidades públicas, organizaciones culturales y el sector inmobiliario. En ese recorrido he colaborado con empresas privadas, organismos internacionales como USAID y, sobre todo, con altos funcionarios del Distrito de Bogotá y del Gobierno Nacional, traduciendo necesidades técnicas complejas en soluciones fáciles de entender y de usar.</p>
+            <p>Tengo experiencia en dirección creativa, diseño de productos y servicios, e innovación de procesos. Acompaño los proyectos de principio a fin: desde la investigación, pasando por bocetos y prototipos, hasta entregar productos digitales que funcionan de manera autónoma, sin depender de mí.</p>
+          </div>
+          <div lang="en">
+            <p>I've always loved learning, no matter how complex the new subject. That curiosity draws me to problems that seem to have no solution, and I solve them in unconventional ways, using Design Thinking, innovation management and deep empathy for the people behind every user.</p>
+            <p>This approach has been key to challenges with public institutions, cultural organizations and real estate. Along the way, I've worked with private companies, international organizations like USAID and, above all, senior officials from the City of Bogotá and Colombia's National Government, turning complex technical needs into solutions that are easy to understand and use.</p>
+            <p>My experience spans creative direction, product and service design, and process innovation. I stay with projects from start to finish: from research, through sketches and prototypes, to digital products that run on their own, without depending on me.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3 · PORTFOLIO + BOTONES DE ÁREAS ══════════════════════════ -->
+<section class="portfolio marco">
+  <h2 class="lettering">
+    <img src="{{ site.media_url }}/home_lettering_01_portfolio.svg" alt="Portfolio" width="560" height="200">
+  </h2>
+
+  <div class="areas">
+    <div class="areas-banda" aria-hidden="true"></div>
+    {%- for a in site.data.areas %}
+    {%- assign lista = site.data.proyectos | where: "area", a.id | where: "publicado", true | sort: "anio" | reverse %}
+    <div class="area">
+      <a class="area-imagen" href="/{{ a.id }}/" data-bloque="rotacion" data-segundos="5" aria-label="{{ a.nombre.es }}">
+        {%- for p in lista %}
+        <img src="{{ site.media_url }}/{{ p.banco }}" alt="" width="1080" height="1080" class="{% if forloop.first %}activa{% endif %}" {% unless forloop.first %}loading="lazy"{% endunless %}>
+        {%- endfor %}
+        {%- if lista.size == 0 %}<img src="{{ site.media_url }}/home_icono_01_cubo.png" alt="" class="activa">{% endif %}
+      </a>
+      <a class="btn-pildora" href="/{{ a.id }}/" data-evento="area-{{ a.id }}">
+        <span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span><span class="flecha">↗</span>
+      </a>
+      <p class="area-linea"><span lang="es">{{ a.linea.es }}</span><span lang="en">{{ a.linea.en }}</span></p>
+    </div>
+    {%- endfor %}
+  </div>
+</section>

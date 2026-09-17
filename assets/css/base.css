@@ -1,0 +1,167 @@
+/* ═══════════════════════════════════════════════════════════════
+   BASE — Reset, tipografía, idiomas, banda superior, pie y botones.
+   Esto se carga en todas las páginas.
+   ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--grot);
+  font-size: var(--t-cuerpo);
+  line-height: 1.4;
+  font-feature-settings: "kern" 1, "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video, iframe { max-width: 100%; display: block; }
+img { height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+/* ── Estados de interacción: amarillo, instantáneo, sin transición (atlas K.06–K.10) ── */
+::selection { background: var(--amarillo); color: var(--tinta); }
+:focus-visible { outline: 2px solid var(--amarillo); outline-offset: 2px; }
+.btn:active, .btn-pildora:active, .pestana:active, .filtro:active { background: var(--amarillo) !important; color: var(--tinta) !important; border-color: var(--amarillo) !important; }
+
+/* ── Idiomas: una sola página, dos textos. El html lleva data-lang="es" o "en". ── */
+html[data-lang="es"] body [lang="en"] { display: none !important; }
+html[data-lang="en"] body [lang="es"] { display: none !important; }
+
+/* ── Tipografía ── */
+.mono  { font-family: var(--mono); }
+.meta  { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .05em; text-transform: uppercase; }
+.micro { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .09em; text-transform: uppercase; line-height: 1.35; }
+.display { font-size: var(--t-display); font-weight: 800; letter-spacing: -.05em; line-height: .85; }
+.h1 { font-size: var(--t-h1); font-weight: 800; letter-spacing: -.035em; line-height: 1.02; }
+.h2 { font-size: var(--t-h2); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.h3 { font-size: var(--t-h3); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+.cuerpo { font-size: var(--t-cuerpo); line-height: 1.45; max-width: 70ch; }
+.cuerpo p + p { margin-top: 1em; }
+.numeral { font-weight: 800; letter-spacing: -.06em; line-height: .75; font-variant-numeric: tabular-nums; }
+
+/* ── Contenedor ── */
+.marco { width: 100%; max-width: var(--ancho); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+.sangre { width: 100%; }
+.visualmente-oculto { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ── Marca de esquina (mock: escuadra arriba a la izquierda) ── */
+.esquina {
+  position: absolute; top: 24px; left: 32px; width: 40px; height: 32px;
+  border-top: var(--regla) solid var(--tinta); border-left: var(--regla) solid var(--tinta);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BOTONES — píldoras tal cual el mock
+   ══════════════════════════════════════════════════════════════ */
+.btn-pildora {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  padding: .72em 1.7em .78em;
+  border-radius: var(--pildora);
+  background: var(--ultramar); color: var(--papel);
+  font-weight: 700; font-size: clamp(16px, 1.45vw, 26px); letter-spacing: -.01em; line-height: 1;
+  text-decoration: none; white-space: nowrap;
+  border: var(--regla) solid var(--ultramar);
+}
+.btn-pildora .flecha { font-size: .62em; transform: translateY(-.35em); font-weight: 700; }
+.btn-pildora:hover { background: var(--abisal); border-color: var(--abisal); }
+.btn-pildora.claro { background: var(--papel); color: var(--ultramar); border-color: var(--papel); }
+.btn-pildora.claro:hover { background: var(--cemento); border-color: var(--cemento); }
+.btn-pildora.contorno { background: transparent; color: var(--tinta); border-color: var(--tinta); }
+.btn-pildora.contorno:hover { background: var(--tinta); color: var(--papel); }
+.btn-pildora.chico { font-size: 14px; padding: .55em 1.2em .6em; }
+
+/* Botón secundario cuadrado (dentro de los casos: pestañas, flechas de carrusel) */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 0 14px;
+  border: var(--hair) solid var(--tinta); background: var(--papel); color: var(--tinta);
+  font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none;
+}
+.btn:hover { background: var(--tinta); color: var(--papel); }
+.btn[aria-pressed="true"], .btn.activo { background: var(--tinta); color: var(--papel); }
+
+/* ══════════════════════════════════════════════════════════════
+   BANDA SUPERIOR (header) — igual en todas las páginas
+   ══════════════════════════════════════════════════════════════ */
+.banda-superior {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--papel);
+  border-bottom: var(--regla) solid var(--tinta);
+}
+.banda-superior .marco {
+  min-height: var(--alto-header);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--gut);
+  padding-top: 14px; padding-bottom: 14px;
+}
+.nombre {
+  font-weight: 800; font-size: clamp(22px, 2.9vw, 50px); letter-spacing: -.035em; line-height: 1;
+  text-decoration: none;
+}
+.nombre small { display: block; font-family: var(--mono); font-weight: 400; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; margin-top: 6px; opacity: .7; }
+
+.menu { display: flex; align-items: center; gap: 0; }
+.menu > * + * { margin-left: 18px; padding-left: 18px; border-left: var(--hair) solid var(--tinta); }
+
+/* Selector ES/EN: dos píldoras, la del idioma actual encendida (rellena) */
+.selector-idioma { display: flex; gap: 6px; }
+.selector-idioma button {
+  padding: .45em 1em .5em; border-radius: var(--pildora);
+  border: var(--regla) solid var(--tinta); background: transparent; color: var(--tinta);
+  font-weight: 700; font-size: 15px; line-height: 1;
+}
+.selector-idioma button[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
+.selector-idioma button:hover { background: var(--cemento); }
+.selector-idioma button[aria-pressed="true"]:hover { background: var(--tinta); }
+
+.icono-in {
+  display: inline-grid; place-items: center; width: 36px; height: 36px;
+  background: var(--tinta); color: var(--papel); border-radius: 6px;
+  font-weight: 800; font-size: 18px; letter-spacing: -.05em; text-decoration: none; line-height: 1;
+}
+.icono-in:hover { background: var(--ultramar); }
+.link-hv { font-weight: 700; font-size: clamp(18px, 1.6vw, 30px); text-decoration: underline; text-underline-offset: .12em; }
+.link-hv:hover { color: var(--ultramar); }
+
+@media (max-width: 720px) {
+  .menu > * + * { margin-left: 10px; padding-left: 10px; }
+  .selector-idioma button { font-size: 13px; padding: .4em .8em; }
+  .icono-in { width: 30px; height: 30px; font-size: 15px; }
+  .nombre small { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PIE (banda negra) — igual en todas las páginas
+   ══════════════════════════════════════════════════════════════ */
+.pie { background: var(--tinta); color: var(--papel); margin-top: clamp(64px, 8vw, 140px); }
+.pie .marco {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: clamp(20px, 3vw, 56px);
+  padding-top: clamp(56px, 6vw, 110px); padding-bottom: clamp(56px, 6vw, 110px);
+}
+.pie .cubo { width: clamp(96px, 9vw, 150px); aspect-ratio: 1; object-fit: cover; }
+.pie .firma { font-weight: 700; font-size: clamp(20px, 2.2vw, 38px); letter-spacing: -.03em; line-height: 1.05; }
+.pie .firma span { display: block; }
+.pie .cargo { margin-top: 14px; font-size: clamp(13px, 1vw, 18px); opacity: .9; }
+.pie .legal { grid-column: 1 / -1; margin-top: 24px; font-family: var(--mono); font-size: 10px; letter-spacing: .06em; opacity: .5; }
+.pie .legal a { text-decoration: underline; }
+@media (max-width: 720px) {
+  .pie .marco { grid-template-columns: auto 1fr; }
+  .pie .btn-pildora { grid-column: 1 / -1; justify-self: start; }
+}
+
+/* ── Nota de privacidad (se despliega en su lugar) ── */
+.privacidad { grid-column: 1 / -1; font-family: var(--mono); font-size: 11px; line-height: 1.5; opacity: .6; max-width: 80ch; }
+.privacidad summary { cursor: pointer; list-style: none; text-decoration: underline; }
+.privacidad summary::-webkit-details-marker { display: none; }
+.privacidad p { margin-top: 8px; }
