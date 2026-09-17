@@ -144,13 +144,13 @@ web_oficial: https://technoar.co/RecorridosVirtuales/Comadreo360/
   </div>
 </section>
 
-<!-- 6 · SALA MARCA: libro abierto con miniaturas (19 páginas). -->
+<!-- 6 · SALA MARCA: libro abierto con miniaturas (17 páginas). -->
 <section class="sala seccion" id="marca">
   <div class="marco">
     <div class="seccion-titulo"><span class="num">04</span><h2><span lang="es">El sistema visual de CO-MADREO, página por página</span><span lang="en">The CO-MADREO visual system, page by page</span></h2></div>
     <div class="libro" data-bloque="libro">
       <div class="paginas">
-        {%- for i in (1..19) %}{% assign n = i | prepend: "0" | slice: -2, 2 %}
+        {%- for i in (1..17) %}{% assign n = i | prepend: "0" | slice: -2, 2 %}
         <div class="pagina"><img src="{{ m }}/comadreo_manual_{{ n }}_pagina.jpg" alt="" loading="lazy"></div>
         {%- endfor %}
       </div>
