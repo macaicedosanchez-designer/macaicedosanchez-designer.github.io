@@ -19,8 +19,8 @@ email: ma.caicedosanchez@gmail.com
 
 # Analítica. Deja las comillas vacías hasta tener los códigos (ver GUIA-MONTAJE.md, paso 7).
 analitica:
-  ga4: ""        # Ejemplo: "G-ABC123XYZ"
-  clarity: ""    # Ejemplo: "k1abcd2efg"
+  ga4: "G-0SEP4EM77N"        # Ejemplo: "G-ABC123XYZ"
+  clarity: "yjsanb8vos"    # Ejemplo: "k1abcd2efg"
 
 # ── No tocar de aquí hacia abajo ──
 lang: es
