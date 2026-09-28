@@ -125,13 +125,13 @@ macaicedosanchez-designer.github.io/
 │   └── caso.html              (los casos de estudio)
 │
 ├── _plantillas/           ← para copiar cuando agregues algo
-│   ├── caso/                  (un caso nuevo con todos los bloques de ejemplo)
+│   ├── caso/                  (un caso nuevo con la estructura simple)
 │   └── area/                  (un área nueva)
 │
 ├── assets/
 │   ├── css/tokens.css         ← EL ATLAS: colores, fuentes, espacios
 │   ├── css/base.css           ← header, pie, botones, idiomas
-│   ├── css/componentes.css    ← carruseles, pestañas, libro, mosaico…
+│   ├── css/componentes.css    ← botones, tarjetas, estructura de los casos…
 │   ├── css/repositorio.css
 │   ├── js/idioma.js           ← cambio ES/EN
 │   └── js/bloques.js          ← todas las interacciones
@@ -143,8 +143,7 @@ macaicedosanchez-designer.github.io/
 ├── direccion-creativa/
 │   ├── index.html         ← repositorio del área (se arma solo)
 │   └── renobo/            ← CASO RENOBO
-│       ├── index.html
-│       └── caso.css
+│       └── index.html
 ├── productos-servicios/
 │   ├── index.html
 │   └── comadreo/          ← CASO CO-MADREO
@@ -212,40 +211,38 @@ Supongamos que quieres agregar "Obras por impuestos" (`obrasxi`) al área Gesti�
 
 Cuidado con la sangría: cada nivel lleva dos espacios, exactamente como el bloque que copiaste. Si un texto tiene dos puntos `:` o empieza con un símbolo, ponlo entre comillas dobles.
 
-**B. Crear su página.** Ve a `_plantillas/caso/index.html`, ábrelo, selecciona todo el contenido (`Ctrl + A`, `Ctrl + C`). Luego, en la raíz del repositorio: **Add file → Create new file**. En el nombre escribe `gestion-innovacion/obrasxi/index.html` (al escribir `/`, GitHub crea las carpetas). Pega. Cambia las primeras líneas (`proyecto: obrasxi`, `area`, títulos, `imagen`, `css`) y borra los bloques de ejemplo que no uses. **Commit**.
-
-Repite con `_plantillas/caso/caso.css` → `gestion-innovacion/obrasxi/caso.css` (puede quedar casi vacío).
+**B. Crear su página.** Ve a `_plantillas/caso/index.html`, ábrelo, selecciona todo el contenido (`Ctrl + A`, `Ctrl + C`). Luego, en la raíz del repositorio: **Add file → Create new file**. En el nombre escribe `gestion-innovacion/obrasxi/index.html` (al escribir `/`, GitHub crea las carpetas). Pega. Cambia las primeras líneas (`proyecto: obrasxi`, `area`, títulos, `imagen`) y borra los bloques de ejemplo que no uses. **Commit**. No hace falta ningún archivo CSS aparte.
 
 **C. Subir sus imágenes** al repositorio `media` con la nomenclatura `obrasxi_tipo_número_descripción`.
 
 **D. Publicar:** cuando esté listo, cambia `publicado: false` por `publicado: true` en `proyectos.yml`.
 
-Con eso, sin tocar nada más, el proyecto aparece en la grilla de su área, su imagen `banco` entra en la rotación del botón del Home y queda como "Siguiente proyecto" al final del caso anterior. También aparece en las áreas que pusiste en `secundarias`.
+Con eso, sin tocar nada más, el proyecto aparece en la grilla de su área, su imagen `banco` entra en la rotación del botón del Home y el caso termina con un solo botón, "Volver al área". También aparece en las áreas que pusiste en `secundarias`.
 
-### Los bloques disponibles para armar un caso
+### Cómo se ve una página de área
 
-Todos están de ejemplo en `_plantillas/caso/index.html`. Cada bloque es un pedazo de HTML que se copia y se pega; se activa con `data-bloque="…"`:
+Solo dos cosas: las tres píldoras para saltar entre áreas (la del área actual va encendida en azul) y la grilla de tarjetas. Nada más: no hay título grande, ni párrafo de presentación, ni filtros, ni etiquetas.
 
-| Bloque | Qué hace |
-| --- | --- |
-| `hero-lleno` / `hero-dividido` | Portada a pantalla completa o partida, con parallax |
-| `ficha-banda` / `acordeon` | Ficha técnica en banda o desplegable |
-| `carrusel` | Una imagen a la vez, flechas, contador, avance automático opcional |
-| `pestanas` | Pestañas que cambian de contenido sin recargar |
-| `libro` | Se hojea como un libro, con miniaturas |
-| `mosaico` | Grilla irregular; clic amplía en su lugar |
-| `carrete` | La página se detiene y las imágenes pasan de lado |
-| `fijo-scroll` | Imagen anclada mientras el texto avanza |
-| `pausa` | Una palabra a pantalla completa |
-| `giro` | Tarjetas que giran |
-| `zoom` | Ampliar y arrastrar, con puntos que despliegan notas |
-| `secuencia` | Visor animado con barra de progreso |
-| `iframe-diferido` | Otra web incrustada, que carga al tocar |
-| `barras` | Gráfico de barras que crece al aparecer |
-| `linea-tiempo` | Bloques proporcionales a su duración, con detalle al clic |
-| `salas` | Barra fija que salta a cada sección y resalta la visible |
-| `360` | Visor 360° arrastrable |
-| `contador` / `palabras` / `lineas` | Números que cuentan, frases que aparecen palabra por palabra o línea por línea |
+Cada tarjeta es una sola pieza: la imagen `banco` llena el cuadro, un degradado oscurece la parte de abajo y encima van el año, el título y la línea, en blanco. En celular la tarjeta se vuelve apaisada.
+
+> **Al elegir la imagen `banco`:** lo que quede en la mitad inferior se va a ver oscurecido y con texto encima. Evita imágenes que ya traigan letras ahí, porque chocan con el título de la tarjeta.
+
+El campo `etiquetas` de `_data/proyectos.yml` ya no se muestra en ninguna parte. Lo dejé en el archivo por si algún día vuelven los filtros; puedes ignorarlo.
+
+### La estructura de un caso
+
+Todas las páginas de proyecto son iguales de simples, y así conviene mantenerlas: **primero la versión final, después el contenido**. Sin pestañas, carruseles ni tarjetas que giran. El contenido no pasa de 1400 px de ancho para que se vea con aire.
+
+| Parte | Clase | Qué es |
+| --- | --- | --- |
+| Cabecera | `caso-hero` | Imagen a todo el ancho con velo negro (multiplicar) y el texto abajo: etiqueta, título y bajada. `style="--pos: 50% 30%"` mueve el encuadre |
+| Versión final | `caso-final` | Lo terminado: una imagen grande y otras debajo, o la web incrustada (`caso-web`) |
+| Contenido | `caso-contenido` | Bloques `caso-bloque` uno debajo del otro: ficha (`caso-datos`), textos (`cuerpo`), imágenes (`caso-imagenes`, con `uno`, `tres` o `cuatro` columnas), etapas (`etapas`), frase de cierre (`caso-frase`) |
+| Secuencia | `secuencia` | Imágenes 2:1 que cambian solas cada 7 s, con barra de progreso (`data-bloque="secuencia"`) |
+| Manual | `diapositivas` | Manual como presentación: una página 16:9 a la vez, con flechas, teclado, deslizar y pantalla completa (`data-bloque="diapositivas"`) |
+| Cierre | — | Un solo botón "Volver al área", lo agrega el layout |
+
+El ejemplo completo está en `_plantillas/caso/index.html`. Los bloques interactivos antiguos (carrusel, pestañas, libro, zoom…) siguen disponibles en `componentes.css` y `bloques.js` por si algún día se necesitan, pero los casos actuales ya no los usan.
 
 ---
 

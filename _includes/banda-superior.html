@@ -1,5 +1,6 @@
 {%- comment -%} BANDA SUPERIOR: nombre, selector ES/EN, LinkedIn, HV/CV. Igual en todas las páginas. {%- endcomment -%}
 <header class="banda-superior">
+  <span class="esquina" aria-hidden="true"></span>
   <div class="marco">
     <a class="nombre" href="/" data-evento="home">
       Martín Caicedo Sánchez
@@ -7,10 +8,23 @@
     </a>
     <nav class="menu" aria-label="Menú">
       <div class="selector-idioma" role="group" aria-label="Idioma / Language">
-        <button type="button" data-idioma="es" aria-pressed="true">Español</button>
-        <button type="button" data-idioma="en" aria-pressed="false">English</button>
+        <button type="button" data-idioma="es" aria-pressed="true" aria-label="Español" title="Español">ES</button>
+        <button type="button" data-idioma="en" aria-pressed="false" aria-label="English" title="English">EN</button>
       </div>
-      <a class="icono-in" href="{{ site.links_url }}{{ site.data.links.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" data-evento="linkedin">in</a>
+      {%- comment -%}
+      Iconos sociales. El SVG hace de máscara y el color lo pone el CSS: tinta en reposo,
+      ultramar al pasar por encima. En pantallas angostas solo queda LinkedIn (clase "solo-ancho").
+      {%- endcomment %}
+      <div class="iconos-sociales">
+        <a class="icono-social" style="--icono: url('{{ site.media_url }}/home_icono_04_linkedin.svg')"
+           href="{{ site.data.links.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" data-evento="linkedin"></a>
+        <a class="icono-social solo-ancho" style="--icono: url('{{ site.media_url }}/home_icono_02_behance.svg')"
+           href="{{ site.data.links.behance }}" target="_blank" rel="noopener" aria-label="Behance" data-evento="behance"></a>
+        <a class="icono-social solo-ancho" style="--icono: url('{{ site.media_url }}/home_icono_05_pinterest.svg')"
+           href="{{ site.data.links.pinterest }}" target="_blank" rel="noopener" aria-label="Pinterest" data-evento="pinterest"></a>
+        <a class="icono-social solo-ancho" style="--icono: url('{{ site.media_url }}/home_icono_03_github.svg')"
+           href="{{ site.data.links.github }}" target="_blank" rel="noopener" aria-label="GitHub" data-evento="github"></a>
+      </div>
       <a class="link-hv" href="{{ site.links_url }}{{ site.data.links.hv }}" target="_blank" rel="noopener" data-evento="hv" lang="es">HV</a>
       <a class="link-hv" href="{{ site.links_url }}{{ site.data.links.cv }}" target="_blank" rel="noopener" data-evento="cv" lang="en">CV</a>
     </nav>

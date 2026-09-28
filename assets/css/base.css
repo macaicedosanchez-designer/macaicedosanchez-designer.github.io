@@ -31,7 +31,7 @@ ul, ol { padding: 0; list-style: none; }
 /* ── Estados de interacción: amarillo, instantáneo, sin transición (atlas K.06–K.10) ── */
 ::selection { background: var(--amarillo); color: var(--tinta); }
 :focus-visible { outline: 2px solid var(--amarillo); outline-offset: 2px; }
-.btn:active, .btn-pildora:active, .pestana:active, .filtro:active { background: var(--amarillo) !important; color: var(--tinta) !important; border-color: var(--amarillo) !important; }
+.btn:active, .btn-pildora:active, .pestana:active { background: var(--amarillo) !important; color: var(--tinta) !important; border-color: var(--amarillo) !important; }
 
 /* ── Idiomas: una sola página, dos textos. El html lleva data-lang="es" o "en". ── */
 html[data-lang="es"] body [lang="en"] { display: none !important; }
@@ -54,12 +54,16 @@ html[data-lang="en"] body [lang="es"] { display: none !important; }
 .sangre { width: 100%; }
 .visualmente-oculto { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* ── Marca de esquina (mock: escuadra arriba a la izquierda) ── */
+/* ── Marca de esquina (Figma: escuadra de 51 px arriba a la izquierda, dentro de la banda superior) ── */
 .esquina {
-  position: absolute; top: 24px; left: 32px; width: 40px; height: 32px;
+  position: absolute; top: clamp(16px, 1.77vw, 34px); left: clamp(14px, 2.3vw, 44px);
+  width: clamp(28px, 2.66vw, 51px); aspect-ratio: 1;
   border-top: var(--regla) solid var(--tinta); border-left: var(--regla) solid var(--tinta);
   pointer-events: none;
 }
+/* En las páginas internas la banda es más baja, así que la escuadra es más chica */
+body:not(.home) .esquina { top: 14px; left: clamp(12px, 1.2vw, 22px); width: clamp(20px, 1.6vw, 30px); }
+@media (max-width: 720px) { .esquina { display: none; } }
 
 /* ══════════════════════════════════════════════════════════════
    BOTONES — píldoras tal cual el mock
@@ -100,10 +104,12 @@ html[data-lang="en"] body [lang="es"] { display: none !important; }
   background: var(--papel);
   border-bottom: var(--regla) solid var(--tinta);
 }
+/* A todo el ancho, como el Figma: el nombre arranca a 92 px y el menú termina a 85 px del borde (a 1920) */
 .banda-superior .marco {
-  min-height: var(--alto-header);
+  min-height: var(--alto-header); max-width: none;
   display: flex; align-items: center; justify-content: space-between; gap: var(--gut);
   padding-top: 14px; padding-bottom: 14px;
+  padding-left: clamp(20px, 4.8vw, 92px); padding-right: clamp(20px, 4.43vw, 85px);
 }
 .nombre {
   font-weight: 800; font-size: clamp(22px, 2.9vw, 50px); letter-spacing: -.035em; line-height: 1;
@@ -125,19 +131,26 @@ html[data-lang="en"] body [lang="es"] { display: none !important; }
 .selector-idioma button:hover { background: var(--cemento); }
 .selector-idioma button[aria-pressed="true"]:hover { background: var(--tinta); }
 
-.icono-in {
-  display: inline-grid; place-items: center; width: 36px; height: 36px;
-  background: var(--tinta); color: var(--papel); border-radius: 6px;
-  font-weight: 800; font-size: 18px; letter-spacing: -.05em; text-decoration: none; line-height: 1;
+/* Iconos sociales: el SVG hace de máscara, así el color lo decide el CSS.
+   Los cuatro archivos son de un solo color y viven en el repositorio media. */
+.iconos-sociales { display: flex; align-items: center; gap: 10px; }
+.icono-social {
+  display: block; width: clamp(28px, 2vw, 36px); aspect-ratio: 1;
+  background-color: var(--tinta);
+  -webkit-mask: var(--icono) center / contain no-repeat;
+          mask: var(--icono) center / contain no-repeat;
+  transition: background-color .15s ease;
 }
-.icono-in:hover { background: var(--ultramar); }
+.icono-social:hover, .icono-social:focus-visible { background-color: var(--ultramar); }
 .link-hv { font-weight: 700; font-size: clamp(18px, 1.6vw, 30px); text-decoration: underline; text-underline-offset: .12em; }
 .link-hv:hover { color: var(--ultramar); }
+
+/* En pantallas angostas el menú no da para cuatro iconos: se queda solo LinkedIn */
+@media (max-width: 900px) { .icono-social.solo-ancho { display: none; } }
 
 @media (max-width: 720px) {
   .menu > * + * { margin-left: 10px; padding-left: 10px; }
   .selector-idioma button { font-size: 13px; padding: .4em .8em; }
-  .icono-in { width: 30px; height: 30px; font-size: 15px; }
   .nombre small { display: none; }
 }
 

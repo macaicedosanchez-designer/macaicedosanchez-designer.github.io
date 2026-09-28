@@ -17,6 +17,7 @@
     en: "I build visual systems tailored to each organization and its real needs: identities, brand manuals and pieces that teams keep using on their own."
 
 - id: productos-servicios
+  velo: true          # degradado oscuro suave abajo de la imagen del Home (como en el Figma)
   nombre:
     es: Productos & Servicios
     en: Products & Services
@@ -28,6 +29,7 @@
     en: I research with users and turn the findings into digital interfaces and experiences designed for the people who will use them.
 
 - id: gestion-innovacion
+  velo: true
   nombre:
     es: Gestión de Innovación
     en: Innovation Management

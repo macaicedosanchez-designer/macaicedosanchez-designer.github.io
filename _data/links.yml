@@ -1,7 +1,12 @@
-# Destinos del menú y del pie. Todos pasan por tu repositorio "links",
-# así cambias el destino real allá (un solo archivo) sin tocar la web.
-# Si prefieres poner la URL directa, escríbela aquí entre comillas.
-linkedin: /linkedin/
+# Destinos del menú y del pie.
+# Los que empiezan por "/" pasan por tu repositorio "links": así cambias el destino
+# real allá (un solo archivo) sin tocar la web.
+# Los que llevan la dirección completa entre comillas van directo al sitio.
+linkedin: "https://www.linkedin.com/in/martin-caicedo-sanchez-productdesigner"
+behance: "https://www.behance.net/macaicedoce7e"
+github: "https://github.com/macaicedosanchez-designer"
+pinterest: "https://pin.it/6jkRaS9Fa"
+
+# Documentos: estos sí pasan por el repositorio "links"
 hv: /hv/
 cv: /cv/
-github: /github/

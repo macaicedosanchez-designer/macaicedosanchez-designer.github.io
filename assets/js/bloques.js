@@ -6,9 +6,9 @@
 
    Bloques disponibles:
    revelar · palabras · lineas · contador · carrusel · pestanas ·
-   libro · mosaico · carrete · fijo-scroll · giro · zoom · secuencia ·
+   libro · diapositivas · video · atlas · banda · galeria (visor) · mosaico · carrete · fijo-scroll · giro · zoom · secuencia ·
    iframe-diferido · barras · linea-tiempo · salas · parallax ·
-   palabras-grandes · rotacion · filtros · 360
+   palabras-grandes · rotacion · 360
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -151,6 +151,279 @@
     el.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
     el.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) ir(dx < 0 ? i + 1 : i - 1); });
     ir(0);
+  });
+
+  /* ── diapositivas: manual tipo presentación. Una página a la vez, flechas, teclado, deslizar, pantalla completa.
+        Solo la primera imagen lleva src; las demás llevan data-src y se cargan al acercarse. ── */
+  $$('[data-bloque="diapositivas"]').forEach(function (el) {
+    var escena = $('.diapo-escena', el), slides = $$('.diapo', escena), n = slides.length, i = 0;
+    function boton(clase, texto, etiqueta) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn ' + clase; b.textContent = texto; b.setAttribute('aria-label', etiqueta); el.appendChild(b); return b;
+    }
+    var prev = boton('diapo-flecha diapo-prev', '←', 'Anterior'), next = boton('diapo-flecha diapo-next', '→', 'Siguiente');
+    var full = el.requestFullscreen ? boton('diapo-pantalla', '⛶', 'Pantalla completa') : null;
+    var cont = document.createElement('div'); cont.className = 'diapo-contador'; el.appendChild(cont);
+    var prog = document.createElement('div'); prog.className = 'diapo-progreso'; el.appendChild(prog);
+    function cargar(k) { var im = $('img', slides[(k + n) % n]); if (im && !im.getAttribute('src') && im.dataset.src) im.src = im.dataset.src; }
+    function ir(k) {
+      i = (k + n) % n;
+      slides.forEach(function (s, j) { s.setAttribute('aria-current', j === i); });
+      cargar(i); cargar(i + 1); cargar(i - 1);
+      cont.textContent = (i + 1) + ' / ' + n; prog.style.width = ((i + 1) / n * 100) + '%';
+    }
+    prev.addEventListener('click', function () { ir(i - 1); });
+    next.addEventListener('click', function () { ir(i + 1); });
+    escena.addEventListener('click', function () { ir(i + 1); });
+    if (full) full.addEventListener('click', function () { if (document.fullscreenElement) document.exitFullscreen(); else el.requestFullscreen(); });
+    el.tabIndex = 0;
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); ir(i + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); ir(i - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); ir(0); }
+      else if (e.key === 'End') { e.preventDefault(); ir(n - 1); }
+    });
+    var x0 = null;
+    el.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) ir(dx < 0 ? i + 1 : i - 1); });
+    ir(0);
+  });
+
+  /* ── visor: un solo visor para toda la página. Cualquier imagen dentro de un
+        contenedor con data-bloque="galeria" (o .composicion) se amplía al hacer clic.
+        Se cierra con Esc, con el botón o haciendo clic en el fondo. ── */
+  var visor = null, visorImgs = [], visorI = 0;
+  function crearVisor() {
+    if (visor) return visor;
+    visor = document.createElement('div');
+    visor.className = 'visor';
+    visor.setAttribute('role', 'dialog');
+    visor.setAttribute('aria-modal', 'true');
+    visor.innerHTML =
+      '<div class="barra-visor">' +
+        '<span class="contador-visor"></span>' +
+        '<span class="mandos-visor">' +
+          '<button type="button" class="btn v-prev" aria-label="Anterior">←</button>' +
+          '<button type="button" class="btn v-next" aria-label="Siguiente">→</button>' +
+          '<button type="button" class="btn v-cerrar" aria-label="Cerrar">✕</button>' +
+        '</span>' +
+      '</div>' +
+      '<img alt="">' +
+      '<p class="pie-visor"></p>';
+    document.body.appendChild(visor);
+    var im = $('img', visor), cont = $('.contador-visor', visor), pie = $('.pie-visor', visor);
+    function pintar() {
+      var el = visorImgs[visorI];
+      im.src = el.currentSrc || el.src;
+      im.alt = el.alt || '';
+      cont.textContent = (visorI + 1) + ' / ' + visorImgs.length;
+      var fig = el.closest('figure'), cap = fig && $('figcaption', fig);
+      pie.innerHTML = cap ? cap.innerHTML : '';
+      $('.v-prev', visor).hidden = $('.v-next', visor).hidden = visorImgs.length < 2;
+    }
+    visor.pintar = pintar;
+    visor.mover = function (d) { visorI = (visorI + d + visorImgs.length) % visorImgs.length; pintar(); };
+    $('.v-prev', visor).addEventListener('click', function () { visor.mover(-1); });
+    $('.v-next', visor).addEventListener('click', function () { visor.mover(1); });
+    $('.v-cerrar', visor).addEventListener('click', cerrarVisor);
+    visor.addEventListener('click', function (e) { if (e.target === visor || e.target === im) cerrarVisor(); });
+    document.addEventListener('keydown', function (e) {
+      if (!visor.classList.contains('abierto')) return;
+      if (e.key === 'Escape') cerrarVisor();
+      else if (e.key === 'ArrowRight') visor.mover(1);
+      else if (e.key === 'ArrowLeft') visor.mover(-1);
+    });
+    return visor;
+  }
+  function cerrarVisor() {
+    if (!visor) return;
+    visor.classList.remove('abierto');
+    document.body.classList.remove('visor-abierto');
+  }
+  function abrirVisor(imgs, k) {
+    crearVisor();
+    visorImgs = imgs; visorI = k;
+    visor.pintar();
+    visor.classList.add('abierto');
+    document.body.classList.add('visor-abierto');
+    $('.v-cerrar', visor).focus();
+  }
+  $$('[data-bloque="galeria"], .banda').forEach(function (cont) {
+    var imgs = $$('img', cont);
+    imgs.forEach(function (im, k) {
+      im.addEventListener('click', function (e) {
+        e.preventDefault(); abrirVisor(imgs, k);
+      });
+    });
+  });
+
+  /* ── banda: tira horizontal movida por el MISMO scroll de la página.
+        Mientras la banda avanza queda fija en pantalla; al terminar, la página
+        sigue bajando. No hay que hacer nada distinto: es un solo scroll.
+        La altura del bloque = alto de la ventana + lo que sobra a lo ancho,
+        así el avance lateral va 1:1 con el vertical. ── */
+  $$('[data-bloque="banda"]').forEach(function (banda) {
+    var ventana = $('.banda-ventana', banda), pista = $('.banda-pista', banda);
+    if (!ventana || !pista) return;
+
+    var avance = document.createElement('div');
+    avance.className = 'banda-avance';
+    avance.innerHTML = '<i></i>';
+    ventana.appendChild(avance);
+    var barra = $('i', avance);
+
+    var sobra = 0, recorrido = 0;
+
+    function medir() {
+      // Cuánto sobresale la pista respecto al ancho visible
+      banda.style.height = '';                       // soltar para medir limpio
+      var altoVentana = ventana.offsetHeight;
+      sobra = Math.max(0, pista.scrollWidth - ventana.clientWidth);
+      // El recorrido vertical es más corto que el horizontal: si fuera 1:1, una banda
+      // de cuatro piezas obligaría a bajar miles de píxeles. Con 0.55 se recorre rápido
+      // y la página no se estira de más.
+      var ritmo = parseFloat(banda.dataset.ritmo || '0.55');
+      recorrido = Math.max(1, sobra * ritmo);
+      banda.style.height = (altoVentana + recorrido) + 'px';
+      avance.style.display = sobra > 8 ? '' : 'none';
+      mover();
+    }
+
+    function mover() {
+      if (sobra <= 8) { pista.style.transform = 'none'; return; }
+      var arriba = parseFloat(getComputedStyle(ventana).top) || 0;
+      var r = banda.getBoundingClientRect();
+      var p = (arriba - r.top) / recorrido;
+      p = Math.min(Math.max(p, 0), 1);
+      pista.style.transform = 'translate3d(' + (-p * sobra) + 'px,0,0)';
+      barra.style.width = (p * 100) + '%';
+    }
+
+    // Si algo falla o el navegador no soporta sticky, se queda como tira normal
+    if (!CSS.supports('position', 'sticky') || reducido) { banda.classList.add('simple'); return; }
+
+    window.addEventListener('scroll', mover, { passive: true });
+    window.addEventListener('resize', medir);
+    // Las imágenes cambian el ancho de la pista al cargar: hay que volver a medir
+    $$('img', pista).forEach(function (im) {
+      if (im.complete) return;
+      im.addEventListener('load', medir);
+      im.addEventListener('error', medir);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir);
+    medir();
+    setTimeout(medir, 400);
+  });
+
+  /* ── video: piezas animadas sin sonido. Se reproducen al entrar en pantalla y se
+        detienen al salir, para no gastar batería. Con "prefiere menos movimiento"
+        no arrancan solas: quedan con sus controles. ── */
+  $$('[data-bloque="video"]').forEach(function (v) {
+    v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute('playsinline', '');
+    if (reducido) { v.controls = true; return; }
+    var o = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { v.controls = true; }); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.25 });
+    o.observe(v);
+    // Un clic pausa o reanuda, sin tener que buscar controles
+    v.addEventListener('click', function () { if (v.paused) v.play(); else v.pause(); });
+  });
+
+  /* ── atlas: láminas que pasan solas y se pueden ampliar.
+        Al ampliar (rueda, +, o doble clic) se detiene el temporizador;
+        al volver a 1x, se reanuda. Cada lámina puede durar distinto
+        con data-segundos en su <figure>. ── */
+  $$('[data-bloque="atlas"]').forEach(function (el) {
+    var escena = $('.atlas-escena', el), lienzo = $('.atlas-lienzo', el);
+    var laminas = $$('.atlas-lamina', el), n = laminas.length, i = 0;
+    var s = 1, tx = 0, ty = 0, arr = false, px = 0, py = 0;
+    var t0 = 0, raf = null, corriendo = !reducido;
+
+    var prog = document.createElement('div'); prog.className = 'atlas-progreso'; escena.appendChild(prog);
+    var aviso = document.createElement('div'); aviso.className = 'atlas-aviso'; escena.appendChild(aviso);
+
+    var barra = document.createElement('div'); barra.className = 'atlas-barra';
+    var rots = document.createElement('div'); rots.className = 'rotulos';
+    laminas.forEach(function (f, k) {
+      var b = document.createElement('button'); b.type = 'button';
+      b.innerHTML = f.dataset.rotulo || (k + 1);
+      b.addEventListener('click', function () { ir(k); });
+      rots.appendChild(b);
+    });
+    var mandos = document.createElement('div'); mandos.className = 'mandos';
+    function mando(txt, etiqueta) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn';
+      b.textContent = txt; b.setAttribute('aria-label', etiqueta); mandos.appendChild(b); return b;
+    }
+    var bMas = mando('+', 'Ampliar'), bMenos = mando('−', 'Reducir'), bReset = mando('⟲', 'Volver al tamaño normal');
+    var bPausa = mando(corriendo ? '❚❚' : '▶', 'Pausar o reanudar');
+    barra.appendChild(rots); barra.appendChild(mandos); el.appendChild(barra);
+
+    var botones = $$('button', rots);
+    function dur(k) { return (parseFloat(laminas[k].dataset.segundos || el.dataset.segundos || '6')) * 1000; }
+
+    function aplicar() {
+      lienzo.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + s + ')';
+      var ampliado = s > 1.01;
+      el.classList.toggle('ampliado', ampliado);
+      pintarAviso();
+    }
+    function pintarAviso() {
+      if (s > 1.01) aviso.innerHTML = '<span lang="es">Ampliado · ' + s.toFixed(1) + '× · temporizador en pausa</span>'
+                                    + '<span lang="en">Zoomed · ' + s.toFixed(1) + '× · timer paused</span>';
+      else if (!corriendo) aviso.innerHTML = '<span lang="es">En pausa</span><span lang="en">Paused</span>';
+      else aviso.innerHTML = '<span lang="es">Amplía para verlo de cerca</span><span lang="en">Zoom in for a closer look</span>';
+    }
+    function zoom(f) {
+      var antes = s;
+      s = Math.min(Math.max(s * f, 1), 6);
+      if (s === 1) { tx = ty = 0; }
+      if (antes <= 1.01 && s > 1.01) { /* entra en zoom: el temporizador se congela solo */ }
+      if (antes > 1.01 && s <= 1.01) { t0 = performance.now(); }   // al salir, reinicia el conteo
+      aplicar();
+    }
+    function ir(k) {
+      i = (k + n) % n;
+      laminas.forEach(function (f, j) { f.setAttribute('aria-current', j === i); });
+      botones.forEach(function (b, j) { b.setAttribute('aria-current', j === i); });
+      s = 1; tx = ty = 0; aplicar();
+      t0 = performance.now(); prog.style.width = '0%';
+    }
+    function tick(t) {
+      var enZoom = s > 1.01;
+      if (corriendo && !enZoom && !reducido) {
+        var p = (t - t0) / dur(i);
+        prog.style.width = Math.min(p, 1) * 100 + '%';
+        if (p >= 1) ir(i + 1);
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    bMas.addEventListener('click', function () { zoom(1.5); });
+    bMenos.addEventListener('click', function () { zoom(1 / 1.5); });
+    bReset.addEventListener('click', function () { s = 1; tx = ty = 0; t0 = performance.now(); aplicar(); });
+    bPausa.addEventListener('click', function () {
+      corriendo = !corriendo; bPausa.textContent = corriendo ? '❚❚' : '▶';
+      if (corriendo) t0 = performance.now();
+      pintarAviso();
+    });
+    escena.addEventListener('dblclick', function () { zoom(s > 1.01 ? 1 / (s * 2) : 2); });
+    escena.addEventListener('wheel', function (e) {
+      if (!e.ctrlKey && s <= 1.01) return;    // sin zoom, la rueda sigue haciendo scroll de la página
+      e.preventDefault(); zoom(e.deltaY < 0 ? 1.15 : 1 / 1.15);
+    }, { passive: false });
+    escena.addEventListener('pointerdown', function (e) {
+      if (s <= 1.01) return;
+      arr = true; px = e.clientX - tx; py = e.clientY - ty;
+      escena.classList.add('arrastrando'); escena.setPointerCapture(e.pointerId);
+    });
+    escena.addEventListener('pointermove', function (e) { if (!arr) return; tx = e.clientX - px; ty = e.clientY - py; aplicar(); });
+    escena.addEventListener('pointerup', function () { arr = false; escena.classList.remove('arrastrando'); });
+
+    ir(0);
+    if (!reducido) raf = requestAnimationFrame(tick); else pintarAviso();
   });
 
   /* ── mosaico: clic amplía dentro del mismo mosaico ── */
@@ -329,30 +602,6 @@
     var imgs = $$('img', el), n = imgs.length, i = 0, seg = parseFloat(el.dataset.segundos || '5');
     if (n < 2 || reducido) return;
     setInterval(function () { i = (i + 1) % n; imgs.forEach(function (im, j) { im.classList.toggle('activa', j === i); }); }, seg * 1000);
-  });
-
-  /* ── filtros: etiquetas sobre la grilla + botón "Ver más" ── */
-  $$('[data-bloque="filtros"]').forEach(function (el) {
-    var grilla = document.getElementById(el.dataset.grilla), tarjetas = $$('.tarjeta-proyecto', grilla), botones = $$('.filtro', el);
-    var verMas = $('[data-ver-mas]'), limite = parseInt(el.dataset.limite || '9', 10), mostrar = limite, activo = '';
-    function pintar() {
-      var visibles = 0;
-      tarjetas.forEach(function (t) {
-        var ok = !activo || (t.dataset.etiquetas || '').split('|').indexOf(activo) >= 0;
-        var ver = ok && visibles < mostrar; if (ok) visibles++;
-        t.classList.toggle('oculto', !ver);
-      });
-      if (verMas) verMas.hidden = visibles <= mostrar;
-    }
-    botones.forEach(function (b) {
-      b.addEventListener('click', function () {
-        activo = (b.getAttribute('aria-pressed') === 'true') ? '' : b.dataset.etiqueta;
-        botones.forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.etiqueta === activo); });
-        mostrar = limite; pintar();
-      });
-    });
-    if (verMas) verMas.addEventListener('click', function () { mostrar += limite; pintar(); });
-    pintar();
   });
 
   /* ── 360: visor equirectangular arrastrable (pannellum) ── */

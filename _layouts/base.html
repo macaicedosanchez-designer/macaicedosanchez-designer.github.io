@@ -4,7 +4,6 @@
 {% include head.html %}
 </head>
 <body class="{{ page.clase | default: '' }}">
-{% if page.url == "/" %}<span class="esquina" aria-hidden="true"></span>{% endif %}
 {% include banda-superior.html %}
 <main id="contenido">
 {{ content }}

@@ -4,47 +4,53 @@
    y su comportamiento en assets/js/bloques.js.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Tarjeta de proyecto (repositorios y "siguiente proyecto") ── */
-.tarjeta-proyecto { display: block; text-decoration: none; color: inherit; }
-.tarjeta-proyecto .cuadro { aspect-ratio: 1; overflow: hidden; background: var(--cemento); }
-.tarjeta-proyecto .cuadro img { width: 100%; height: 100%; object-fit: cover; transform: scale(1); transition: transform .5s ease; }
-.tarjeta-proyecto:hover .cuadro img { transform: scale(1.04); }
-.tarjeta-proyecto .anio { margin-top: 14px; font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .06em; }
-.tarjeta-proyecto .titulo { margin-top: 6px; font-weight: 800; font-size: clamp(20px, 1.7vw, 28px); letter-spacing: -.025em; line-height: 1.1; }
-.tarjeta-proyecto .linea { margin-top: 8px; font-size: clamp(14px, 1vw, 17px); line-height: 1.4; max-width: 40ch; }
-.tarjeta-proyecto .etiquetas { margin-top: 12px; }
-
-.etiquetas { display: flex; flex-wrap: wrap; gap: 6px; }
-.etiquetas li {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
-  border: var(--hair) solid var(--tinta); padding: 4px 8px; line-height: 1;
+/* ── Tarjeta de proyecto: la imagen llena la tarjeta y el texto va encima,
+      sobre un degradado que oscurece la parte de abajo. Sin etiquetas. ── */
+.tarjeta-proyecto {
+  position: relative; display: block; overflow: hidden;
+  aspect-ratio: 1; border-radius: clamp(18px, 1.6vw, 31px);
+  background: var(--cemento); color: var(--papel); text-decoration: none; isolation: isolate;
 }
-.etiquetas li.principal { background: var(--tinta); color: var(--papel); }
+.tarjeta-proyecto > img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1); transition: transform .6s ease;
+}
+.tarjeta-proyecto:hover > img { transform: scale(1.04); }
+/* El velo: transparente arriba, casi negro abajo.
+   Va más oscuro que el mock a propósito: el mock se probó sobre una foto oscura, y aquí
+   hay imágenes claras (un dibujo a lápiz sobre papel blanco, una valla blanca) donde el
+   texto blanco se perdía. Estos cortes dejan el texto legible sobre cualquier imagen. */
+.tarjeta-proyecto::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,0) 22%,
+    rgba(0,0,0,.35) 44%,
+    rgba(0,0,0,.72) 62%,
+    rgba(0,0,0,.92) 100%);
+}
+.tarjeta-proyecto .texto {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  display: flex; flex-direction: column; gap: 6px;
+  padding: clamp(18px, 1.7vw, 28px);
+}
+.tarjeta-proyecto .anio { font-family: var(--mono); font-size: clamp(13px, 1.1vw, 20px); letter-spacing: .033em; color: #fdfdfd; }
+.tarjeta-proyecto .titulo { font-weight: 800; font-size: clamp(19px, 1.7vw, 28px); letter-spacing: -.025em; line-height: 1.1; max-width: 12ch; }
+.tarjeta-proyecto .linea { font-size: clamp(14px, 1.05vw, 17px); line-height: 1.4; max-width: 30ch; }
+/* En celular la tarjeta se vuelve apaisada, como en el mock vertical */
+@media (max-width: 600px) {
+  .tarjeta-proyecto { aspect-ratio: 3 / 2; }
+  .tarjeta-proyecto .titulo, .tarjeta-proyecto .linea { max-width: none; }
+}
 
 /* ── Grilla de proyectos: 3 / 2 / 1 columnas ── */
 .grilla-proyectos { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 48px); }
 @media (max-width: 1000px) { .grilla-proyectos { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px)  { .grilla-proyectos { grid-template-columns: 1fr; } }
-.grilla-proyectos .oculto { display: none; }
-
-/* ── Filtros ── */
-.filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(24px, 3vw, 48px); }
-.filtro {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
-  border: var(--hair) solid var(--tinta); padding: 8px 12px; line-height: 1; background: transparent;
-}
-.filtro[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
-.filtro:hover { background: var(--cemento); }
-.filtro[aria-pressed="true"]:hover { background: var(--tinta); }
 
 /* ── Selector de áreas (en los repositorios) ── */
 .selector-areas { display: flex; flex-wrap: wrap; gap: 10px; }
 .selector-areas .btn-pildora.inactivo { background: transparent; color: var(--tinta); border-color: var(--tinta); }
 .selector-areas .btn-pildora.inactivo:hover { background: var(--cemento); border-color: var(--cemento); }
-
-/* ── Ver más ── */
-.ver-mas { margin-top: clamp(32px, 4vw, 64px); text-align: center; }
-.ver-mas[hidden] { display: none; }
 
 /* ── Revelar al llegar (aparece una sola vez) ── */
 .revelar { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
@@ -299,13 +305,6 @@
 .destacado .frase { font-size: clamp(30px, 5vw, 92px); font-weight: 800; letter-spacing: -.045em; line-height: .98; max-width: 20ch; }
 .destacado .texto-chico { margin-top: 40px; max-width: 70ch; font-size: clamp(14px, 1.1vw, 18px); line-height: 1.5; }
 
-/* ── Cierre de cada caso: siguiente proyecto + volver ── */
-.cierre-caso { border-top: var(--regla) solid var(--tinta); padding-top: clamp(40px, 5vw, 80px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 80px); align-items: end; }
-.cierre-caso .rotulo { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; }
-.cierre-caso .tarjeta-proyecto { max-width: 420px; }
-.cierre-caso.solo { grid-template-columns: 1fr; }
-@media (max-width: 800px) { .cierre-caso { grid-template-columns: 1fr; } }
-
 /* ── Galería documental simple ── */
 .galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 .galeria img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
@@ -324,6 +323,236 @@
 .etapas .n { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .etapas h3 { font-weight: 800; font-size: clamp(18px, 1.6vw, 26px); letter-spacing: -.02em; margin-top: 6px; }
 .etapas p { margin-top: 8px; font-size: clamp(14px, 1vw, 17px); line-height: 1.4; }
+
+/* ══════════════════════════════════════════════════════════════
+   CASO SIMPLE — la estructura de todas las páginas de proyecto:
+   1 cabecera (etiqueta, título, bajada)
+   2 VERSIÓN FINAL (lo terminado, lo primero que se ve)
+   3 contenido (ficha, textos e imágenes en orden, sin botones)
+   4 un solo botón: volver al área
+   ══════════════════════════════════════════════════════════════ */
+/* Cabecera con imagen a todo el ancho: velo negro en multiplicar y el texto abajo.
+   --pos (en el style de la imagen) mueve el encuadre: style="--pos: 50% 30%" */
+.caso-hero { position: relative; display: flex; align-items: flex-end; min-height: clamp(420px, 74vh, 820px); overflow: hidden; background: var(--tinta); color: var(--papel); }
+.caso-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.caso-hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(0,0,0,0) 10%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.92) 100%); }
+.caso-hero .marco { position: relative; z-index: 1; padding-top: 120px; padding-bottom: clamp(28px, 4vw, 72px); }
+.caso-hero .meta { margin-bottom: 14px; }
+.caso-hero .h1 { font-size: clamp(32px, 4.2vw, 80px); max-width: 24ch; }
+.caso-hero .bajada { margin-top: 18px; font-size: clamp(16px, 1.4vw, 24px); line-height: 1.35; max-width: 60ch; }
+
+.caso-hero + .caso-final { margin-top: clamp(24px, 3vw, 48px); }
+
+/* ══════════════════════════════════════════════════════════════
+   BANDA HORIZONTAL — lo terminado, y cualquier tira que se recorra de lado.
+   No es una sección aparte: se mueve con el MISMO scroll de la página.
+   Mientras la banda avanza queda fija en pantalla; cuando termina, la página
+   sigue bajando sola. Funciona igual en horizontal y en vertical.
+   La altura de .banda la calcula el JS: ventana + lo que sobra a lo ancho.
+   ══════════════════════════════════════════════════════════════ */
+.banda { position: relative; width: 100vw; max-width: 100vw; margin-inline: calc(50% - 50vw); }
+.banda-ventana {
+  position: sticky; top: var(--alto-header);
+  height: var(--alto-banda, min(72vh, 620px));
+  display: flex; align-items: center;
+  overflow: hidden;              /* nada se sale del ancho de la página */
+}
+.banda-pista {
+  display: flex; align-items: center; gap: clamp(14px, 1.6vw, 28px);
+  padding-inline: var(--pad);
+  will-change: transform;
+}
+.banda figure { flex: 0 0 auto; margin: 0; }
+.banda img {
+  /* Limitada por alto Y por ancho: así una panorámica no se come toda la banda */
+  height: auto; width: auto;
+  max-height: var(--alto-pieza, min(58vh, 500px));
+  max-width: min(74vw, 1000px);
+  object-fit: contain; display: block;
+  border-radius: clamp(18px, 1.6vw, 31px); background: var(--cemento);
+  cursor: zoom-in; user-select: none; -webkit-user-drag: none;
+}
+.banda figcaption { margin-top: 10px; font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .05em; text-transform: uppercase; }
+
+/* Barra de avance de la banda, para saber cuánto falta */
+.banda-avance { position: absolute; left: var(--pad); right: var(--pad); bottom: 10px; height: 3px; background: var(--cemento); border-radius: 999px; overflow: hidden; }
+.banda-avance i { display: block; height: 100%; width: 0; background: var(--tinta); }
+
+/* "tira-media": va dentro del contenido, no al abrir el caso. Más baja. */
+.banda.tira-media { --alto-banda: min(54vh, 460px); --alto-pieza: min(44vh, 380px); }
+
+/* Si el navegador no aguanta el efecto, o el usuario pidió menos movimiento,
+   queda como una tira normal que se arrastra de lado. */
+.banda.simple .banda-ventana { position: static; height: auto; overflow-x: auto; padding-bottom: 14px; }
+.banda.simple .banda-pista { transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .banda .banda-ventana { position: static; height: auto; overflow-x: auto; padding-bottom: 14px; }
+  .banda .banda-pista { transform: none !important; }
+}
+
+@media (max-width: 760px) {
+  .banda { --alto-banda: min(56vh, 420px); --alto-pieza: min(46vh, 340px); }
+  .banda.tira-media { --alto-banda: min(44vh, 320px); --alto-pieza: min(36vh, 260px); }
+}
+
+/* ── Visor para ampliar: se abre al hacer clic en una imagen ── */
+.visor { position: fixed; inset: 0; z-index: 200; display: none; background: rgba(16,16,16,.94); }
+.visor[open], .visor.abierto { display: grid; grid-template-rows: auto 1fr auto; }
+.visor img { max-width: 94vw; max-height: 82vh; width: auto; height: auto; object-fit: contain; margin: auto; border-radius: clamp(10px, 1vw, 18px); }
+.visor .barra-visor { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px var(--pad); color: var(--papel); }
+.visor .contador-visor { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; }
+.visor .pie-visor { padding: 14px var(--pad) 24px; color: var(--papel); text-align: center; font-size: clamp(13px, 1vw, 16px); min-height: 1em; }
+.visor .btn { background: transparent; color: var(--papel); border-color: var(--papel); }
+.visor .btn:hover { background: var(--papel); color: var(--tinta); }
+.visor .mandos-visor { display: flex; gap: 6px; }
+body.visor-abierto { overflow: hidden; }
+
+/* Cualquier imagen dentro de una galería es ampliable */
+[data-bloque="galeria"] img { cursor: zoom-in; }
+
+/* Más aire en pantallas anchas: el contenido no pasa de 1400 px */
+.caso-hero .marco, .caso-final, .caso-contenido, .caso-cierre { max-width: 1400px; }
+
+/* Imágenes y web incrustada, con las esquinas redondeadas del Home */
+.caso-final { display: grid; gap: clamp(12px, 1.5vw, 24px); }
+.caso-final img, .caso-final iframe, .caso-imagenes img { width: 100%; background: var(--cemento); border-radius: clamp(18px, 1.6vw, 31px); }
+.caso-web { aspect-ratio: 16 / 9; border: 0; display: block; }
+.caso-enlace { margin-top: 12px; }
+@media (max-width: 720px) { .caso-web { aspect-ratio: 3 / 4; } }
+
+.caso-imagenes { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(12px, 1.5vw, 24px); align-items: start; }
+.caso-imagenes.uno { grid-template-columns: 1fr; }
+.caso-imagenes.tres { grid-template-columns: repeat(3, 1fr); }
+.caso-imagenes.cuatro { grid-template-columns: repeat(4, 1fr); }
+/* "siempre-fila": mantiene las columnas también en vertical (posters, videos que se
+   comparan entre sí). Se hacen más chicas, pero siguen una al lado de la otra. */
+.caso-imagenes.siempre-fila, .caso-videos.siempre-fila { gap: clamp(8px, 1.2vw, 24px); }
+.caso-final figcaption, .caso-imagenes figcaption { margin-top: 8px; font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .05em; text-transform: uppercase; }
+@media (max-width: 720px) {
+  .caso-imagenes:not(.siempre-fila), .caso-imagenes.tres:not(.siempre-fila) { grid-template-columns: 1fr; }
+  .caso-imagenes.cuatro:not(.siempre-fila) { grid-template-columns: repeat(2, 1fr); }
+  /* Las que van siempre en fila se quedan como están, solo con menos aire */
+  .caso-imagenes.siempre-fila figcaption { font-size: 9px; letter-spacing: .04em; }
+}
+
+/* Contenido: bloques con título y texto, uno debajo del otro */
+.caso-contenido { padding-top: clamp(56px, 7vw, 120px); display: grid; gap: clamp(56px, 7vw, 120px); }
+.caso-bloque > * + * { margin-top: clamp(20px, 2.4vw, 40px); }
+.caso-bloque > .h3 { margin-top: clamp(40px, 5vw, 80px); }
+.caso-datos { border-top: var(--regla) solid var(--tinta); padding-top: 20px; }
+.caso-datos .ficha { max-width: 900px; }
+.caso-frase { font-size: clamp(28px, 4.4vw, 72px); font-weight: 800; letter-spacing: -.045em; line-height: 1; max-width: 22ch; color: var(--ultramar); }
+.caso-frase .l { display: block; }
+.caso-cierre { padding-top: clamp(56px, 7vw, 120px); }
+.etapas.tres { grid-template-columns: repeat(3, 1fr); }
+/* "apiladas": siempre una debajo de otra, para que se lean en orden 1, 2, 3 */
+.etapas.apiladas { grid-template-columns: 1fr; gap: clamp(20px, 2.4vw, 36px); }
+@media (max-width: 720px) { .etapas, .etapas.tres { grid-template-columns: 1fr; } }
+
+/* Secuencia automática dentro de un caso: imágenes 2:1 con esquinas redondeadas */
+.caso-bloque .secuencia { aspect-ratio: 2 / 1; border-radius: clamp(18px, 1.6vw, 31px); }
+
+/* ── Hero claro: para casos de ilustración, donde el velo negro arruinaría el dibujo ── */
+.caso-hero.claro { background: var(--banda); color: var(--tinta); min-height: 0; display: block; }
+.caso-hero.claro::after { content: none; }
+.caso-hero.claro > img { position: static; width: auto; height: auto; }
+.caso-hero.claro .marco {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 72px); align-items: center;
+  padding-top: clamp(32px, 4vw, 72px); padding-bottom: clamp(32px, 4vw, 72px);
+}
+.caso-hero.claro .dibujo { width: 100%; height: auto; object-fit: contain; max-height: 70vh; justify-self: center; }
+@media (max-width: 900px) { .caso-hero.claro .marco { grid-template-columns: 1fr; } }
+
+/* ── Video: piezas animadas. Se reproducen solas al entrar en pantalla, sin sonido ── */
+.caso-videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(12px, 1.5vw, 24px); }
+.caso-videos figure { margin: 0; }
+.caso-videos video { width: 100%; display: block; border-radius: clamp(18px, 1.6vw, 31px); background: var(--cemento); }
+.caso-videos figcaption { margin-top: 8px; font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .05em; text-transform: uppercase; }
+@media (max-width: 720px) {
+  .caso-videos:not(.siempre-fila) { grid-template-columns: 1fr; }
+  .caso-videos.siempre-fila figcaption { font-size: 9px; letter-spacing: .04em; }
+}
+
+/* ── Atlas: láminas que pasan solas y se pueden ampliar.
+      Al ampliar se detiene el temporizador; al volver a 1x, sigue. ── */
+.atlas { position: relative; background: var(--papel); border: var(--regla) solid var(--tinta); border-radius: clamp(18px, 1.6vw, 31px); overflow: hidden; }
+.atlas-escena { position: relative; aspect-ratio: 3000 / 1651; overflow: hidden; touch-action: none; cursor: grab; }
+.atlas-escena.arrastrando { cursor: grabbing; }
+.atlas-lienzo { position: absolute; inset: 0; transform-origin: 0 0; }
+.atlas-lamina { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .6s ease; }
+.atlas-lamina[aria-current="true"] { opacity: 1; }
+.atlas-lamina img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.atlas-progreso { position: absolute; left: 0; top: 0; height: 5px; background: var(--ultramar); width: 0; z-index: 3; }
+.atlas-barra { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px; border-top: var(--hair) solid var(--tinta); background: var(--papel); position: relative; z-index: 3; }
+.atlas-barra .rotulos { display: flex; flex: 1; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.atlas-barra .rotulos button { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 12px; border: var(--hair) solid var(--tinta); background: transparent; }
+.atlas-barra .rotulos button[aria-current="true"] { background: var(--tinta); color: var(--papel); }
+.atlas-barra .mandos { display: flex; gap: 6px; }
+.atlas-aviso { position: absolute; left: 14px; bottom: 14px; z-index: 3; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; background: var(--tinta); color: var(--papel); padding: 6px 10px; opacity: .85; pointer-events: none; }
+.atlas.ampliado .atlas-aviso { background: var(--ultramar); }
+@media (max-width: 720px) { .atlas-barra .rotulos button { font-size: 10px; padding: 7px 9px; } }
+
+/* ── Galería de ilustraciones (caso de dibujo): fondo papel, sin recortes ── */
+.ilustraciones { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(28px, 4vw, 64px); }
+.ilustraciones figure { margin: 0; }
+.ilustraciones img { width: 100%; height: auto; display: block; background: var(--papel); }
+.ilustraciones figcaption { margin-top: 14px; max-width: 46ch; }
+.ilustraciones .obra { font-weight: 700; font-size: clamp(16px, 1.3vw, 21px); letter-spacing: -.01em; line-height: 1.25; }
+.ilustraciones .nota { margin-top: 8px; font-size: clamp(14px, 1vw, 17px); line-height: 1.45; }
+@media (max-width: 760px) { .ilustraciones { grid-template-columns: 1fr; } }
+
+/* Cifra que no es un número suelto (un rango, por ejemplo): más chica para que no parta */
+.cifras .numero.rango { font-size: clamp(36px, 5vw, 92px); letter-spacing: -.04em; white-space: nowrap; }
+
+/* Las planchas dentro de la banda: verticales y altas, con su pie debajo */
+.banda.planchas-banda { --alto-banda: min(86vh, 820px); --alto-pieza: min(72vh, 680px); }
+.banda.planchas-banda img { max-width: min(46vw, 560px); }
+.planchas-banda figcaption { max-width: 34ch; text-transform: none; font-family: var(--grot); font-size: clamp(13px, 1vw, 16px); letter-spacing: 0; line-height: 1.35; }
+.planchas-banda figcaption b { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+@media (max-width: 760px) { .banda.planchas-banda { --alto-banda: min(70vh, 520px); --alto-pieza: min(58vh, 440px); } }
+
+/* Una sola cifra, grande, cuando el dato que importa es uno */
+.cifra-sola { display: block; border-top: var(--regla) solid var(--tinta); padding-top: 18px; margin-bottom: clamp(20px, 2.4vw, 36px); }
+.cifra-sola .numero { display: block; font-size: clamp(64px, 13vw, 200px); font-weight: 800; letter-spacing: -.06em; line-height: .85; font-variant-numeric: tabular-nums; color: var(--ultramar); }
+.cifra-sola .rotulo { display: block; margin-top: 12px; font-family: var(--mono); font-size: clamp(12px, 1.1vw, 16px); letter-spacing: .06em; text-transform: uppercase; }
+
+/* Llamada al artículo: el botón es lo más visible del bloque */
+.llamada-articulo { margin-top: clamp(24px, 3vw, 44px); padding: clamp(22px, 2.6vw, 40px); border: var(--regla) solid var(--ultramar); border-radius: clamp(18px, 1.6vw, 31px); display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.llamada-articulo .meta { opacity: .75; }
+.btn-pildora.grande { font-size: clamp(18px, 1.9vw, 32px); padding: .8em 1.9em .86em; }
+
+/* Crédito bajo un carrusel o galería de terceros */
+.credito { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; opacity: .7; }
+.credito a { text-decoration: underline; }
+
+/* Carrusel de fotos apaisadas (3:2). Se limita para que no se vean borrosas */
+.diapositivas.ratio-3-2 { max-width: 925px; }
+.diapositivas.ratio-3-2 .diapo-escena { aspect-ratio: 925 / 632; }
+
+/* ── Diapositivas: manual tipo presentación (una página a la vez, 16:9) ── */
+.diapositivas { position: relative; background: var(--cemento); border-radius: clamp(18px, 1.6vw, 31px); overflow: hidden; outline-offset: 4px; }
+.diapo-escena { position: relative; aspect-ratio: 16 / 9; cursor: pointer; }
+.diapo { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .5s ease; pointer-events: none; }
+.diapo[aria-current="true"] { opacity: 1; z-index: 1; }
+.diapositivas .diapo img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; background: transparent; }
+.diapositivas .diapo-flecha { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; min-width: 48px; min-height: 48px; border-radius: 50%; font-size: 20px; padding: 0; }
+.diapo-prev { left: 14px; }
+.diapo-next { right: 14px; }
+.diapositivas .diapo-pantalla { position: absolute; top: 14px; right: 14px; z-index: 2; min-width: 40px; }
+.diapo-contador { position: absolute; left: 14px; bottom: 14px; z-index: 2; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; background: var(--tinta); color: var(--papel); padding: 6px 10px; }
+.diapo-progreso { position: absolute; left: 0; bottom: 0; height: 6px; z-index: 2; background: var(--ultramar); transition: width .4s ease; }
+.diapositivas:fullscreen { background: #000; border-radius: 0; display: flex; align-items: center; }
+.diapositivas:fullscreen .diapo-escena { width: 100%; height: 100%; aspect-ratio: auto; }
+
+/* Bloques del taller y pasos numerados (lista simple, sin clics) */
+.bloques-taller > li { border-top: var(--regla) solid var(--tinta); padding: 20px 0 28px; display: grid; grid-template-columns: minmax(80px, 160px) 1fr; gap: 0 var(--gut); }
+.bloques-taller .min { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding-top: 6px; }
+.bloques-taller h3 { font-weight: 800; font-size: clamp(18px, 1.6vw, 26px); letter-spacing: -.02em; }
+.bloques-taller p { margin-top: 8px; }
+.pasos { counter-reset: paso; display: grid; gap: 10px; margin-top: 16px; }
+.pasos li { counter-increment: paso; display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: baseline; }
+.pasos li::before { content: counter(paso, decimal-leading-zero); font-weight: 800; font-size: 28px; letter-spacing: -.05em; }
+@media (max-width: 600px) { .bloques-taller > li { grid-template-columns: 1fr; } }
 
 /* Párrafos consecutivos dentro de bloques de texto */
 .cierre-imagen .resultado p + p, .destacado .texto-chico p + p, .tramo p + p, .sala-texto p + p { margin-top: 1em; }

@@ -70,3 +70,54 @@
   etiquetas:
     es: [Design Thinking, Investigación con usuarios, Facilitación de talleres, Investigación-acción participativa, Experimentos A/B, Análisis de resultados, Gestión del conocimiento, Tejido iBo, Canvas de dimensiones, Mapas de actores]
     en: [Design Thinking, User research, Workshop facilitation, Participatory action research, A/B experiments, Results analysis, Knowledge management, Tejido iBo, Dimensions canvas, Stakeholder maps]
+
+- id: uniandes
+  url: /direccion-creativa/uniandes/
+  area: direccion-creativa
+  secundarias: []
+  anio: 2021
+  banco: uniandes_banco_01_cuadrada.webp
+  publicado: true
+  titulo:
+    es: "Espacio: Cuerpo y Movimiento"
+    en: "Space: Body and Movement"
+  linea:
+    es: La convocatoria de un concurso de instalación, traducida en piezas que intentan dibujar el espacio.
+    en: An installation competition's open call, turned into pieces that try to draw space itself.
+  etiquetas:
+    es: [Dirección de arte, Diseño gráfico, Diseño editorial, Piezas para redes, Ilustración digital, Diseño de convocatorias, Illustrator, Photoshop, InDesign]
+    en: [Art direction, Graphic design, Editorial design, Social media assets, Digital illustration, Open call design, Illustrator, Photoshop, InDesign]
+
+- id: cartografias
+  url: /gestion-innovacion/cartografias/
+  area: gestion-innovacion
+  secundarias: [productos-servicios]
+  anio: 2022
+  banco: cartografias_banco_01_cuadrada.webp
+  publicado: true
+  titulo:
+    es: Cartografías de transición
+    en: Transition Cartographies
+  linea:
+    es: Un atlas para leer 120 propuestas artísticas que no cabían en ninguna categoría. Terminó siendo un artículo publicado.
+    en: An atlas for reading 120 art proposals that fit no existing category. It ended up a published paper.
+  etiquetas:
+    es: [Investigación-creación, Diseño de metodologías, Design Thinking, Cartografía de conceptos, Análisis cualitativo, Facilitación de conversatorios, Gestión del conocimiento, Diseño de información, Illustrator, Miro]
+    en: [Research-creation, Methodology design, Design Thinking, Concept mapping, Qualitative analysis, Roundtable facilitation, Knowledge management, Information design, Illustrator, Miro]
+
+- id: referentes
+  url: /direccion-creativa/referentes/
+  area: direccion-creativa
+  secundarias: []
+  anio: 2022
+  banco: referentes_banco_01_cuadrada.webp
+  publicado: true
+  titulo:
+    es: Ilustraciones de referentes artísticos
+    en: Drawings of Artistic References
+  linea:
+    es: Dibujé a mano las obras que me explicaban qué le hace un cuerpo a un espacio.
+    en: I hand-drew the works that explained to me what a body does to a space.
+  etiquetas:
+    es: [Ilustración, Dibujo a mano, Dirección de arte, Referentes visuales]
+    en: [Illustration, Hand drawing, Art direction, Visual references]
