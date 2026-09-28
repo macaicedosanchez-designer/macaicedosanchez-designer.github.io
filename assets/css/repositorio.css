@@ -1,0 +1,12 @@
+/* ═══════════════════════════════════════════════════════════════
+   REPOSITORIO (páginas de área) — sigue el diseño de Figma:
+   solo el selector de áreas y la grilla de tarjetas. Sin título
+   grande, sin introducción, sin filtros y sin etiquetas.
+   ═══════════════════════════════════════════════════════════════ */
+
+.repositorio-cabeza { padding-top: clamp(28px, 3.4vw, 64px); }
+
+/* Las píldoras del selector, como en el mock: la del área actual encendida */
+.repositorio-cabeza .selector-areas { gap: 10px; }
+
+.repositorio-grilla { padding-top: clamp(28px, 3.4vw, 60px); }
