@@ -12,6 +12,7 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  overflow-x: clip;             /* red de seguridad: nada puede empujar la página a lo ancho */
   background: var(--papel);
   color: var(--tinta);
   font-family: var(--grot);
@@ -30,7 +31,21 @@ ul, ol { padding: 0; list-style: none; }
 
 /* ── Estados de interacción: amarillo, instantáneo, sin transición (atlas K.06–K.10) ── */
 ::selection { background: var(--amarillo); color: var(--tinta); }
-:focus-visible { outline: 2px solid var(--amarillo); outline-offset: 2px; }
+/* Anillo de foco: línea de tinta + halo amarillo. El amarillo solo no se ve sobre papel
+   y la tinta sola no se ve sobre el pie negro; juntos funcionan en cualquier fondo. */
+:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; box-shadow: 0 0 0 6px var(--amarillo); }
+a, button, summary { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+/* Las anclas no quedan tapadas por la banda superior fija */
+[id] { scroll-margin-top: calc(var(--alto-header) + 16px); }
+
+/* Saltar al contenido: invisible hasta que llega el foco del teclado */
+.saltar {
+  position: absolute; top: 8px; left: 8px; z-index: 100; transform: translateY(-160%);
+  padding: .8em 1.2em; border-radius: var(--pildora);
+  background: var(--tinta); color: var(--papel); font-weight: 700; font-size: 15px; text-decoration: none;
+}
+.saltar:focus-visible { transform: none; }
+#contenido:focus { outline: none; box-shadow: none; }
 .btn:active, .btn-pildora:active, .pestana:active { background: var(--amarillo) !important; color: var(--tinta) !important; border-color: var(--amarillo) !important; }
 
 /* ── Idiomas: una sola página, dos textos. El html lleva data-lang="es" o "en". ── */
@@ -41,6 +56,8 @@ html[data-lang="en"] body [lang="es"] { display: none !important; }
 .mono  { font-family: var(--mono); }
 .meta  { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .05em; text-transform: uppercase; }
 .micro { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .09em; text-transform: uppercase; line-height: 1.35; }
+.display, .h1, .h2, .h3 { text-wrap: balance; }
+.cuerpo p { text-wrap: pretty; }
 .display { font-size: var(--t-display); font-weight: 800; letter-spacing: -.05em; line-height: .85; }
 .h1 { font-size: var(--t-h1); font-weight: 800; letter-spacing: -.035em; line-height: 1.02; }
 .h2 { font-size: var(--t-h2); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
@@ -84,6 +101,8 @@ body:not(.home) .esquina { top: 14px; left: clamp(12px, 1.2vw, 22px); width: cla
 .btn-pildora.contorno { background: transparent; color: var(--tinta); border-color: var(--tinta); }
 .btn-pildora.contorno:hover { background: var(--tinta); color: var(--papel); }
 .btn-pildora.chico { font-size: 14px; padding: .55em 1.2em .6em; }
+/* En el celular una píldora larga puede partirse en dos líneas en vez de salirse de la pantalla */
+@media (max-width: 720px) { .btn-pildora { white-space: normal; max-width: 100%; min-height: 44px; text-align: center; line-height: 1.15; } }
 
 /* Botón secundario cuadrado (dentro de los casos: pestañas, flechas de carrusel) */
 .btn {
@@ -101,6 +120,7 @@ body:not(.home) .esquina { top: 14px; left: clamp(12px, 1.2vw, 22px); width: cla
    ══════════════════════════════════════════════════════════════ */
 .banda-superior {
   position: sticky; top: 0; z-index: 50;
+  transition: transform .25s ease;
   background: var(--papel);
   border-bottom: var(--regla) solid var(--tinta);
 }
@@ -145,13 +165,31 @@ body:not(.home) .esquina { top: 14px; left: clamp(12px, 1.2vw, 22px); width: cla
 .link-hv { font-weight: 700; font-size: clamp(18px, 1.6vw, 30px); text-decoration: underline; text-underline-offset: .12em; }
 .link-hv:hover { color: var(--ultramar); }
 
+/* En el celular la banda se esconde al bajar y vuelve al subir (lo hace bloques.js) */
+.banda-superior.escondida { transform: translateY(-100%); }
+
 /* En pantallas angostas el menú no da para cuatro iconos: se queda solo LinkedIn */
 @media (max-width: 900px) { .icono-social.solo-ancho { display: none; } }
 
 @media (max-width: 720px) {
+  /* Áreas de toque de 44 px sin cambiar cómo se ven: el ::after agranda la zona clicable */
+  .selector-idioma button, .link-hv, .privacidad summary { position: relative; }
+  .selector-idioma button::after { content: ""; position: absolute; inset: -9px -3px; }
+  .link-hv::after { content: ""; position: absolute; inset: -10px -8px; }
+  .privacidad summary::after { content: ""; position: absolute; inset: -7px -4px; }
+  .icono-social { width: 44px; margin: -8px -8px; -webkit-mask-size: 28px; mask-size: 28px; }
   .menu > * + * { margin-left: 10px; padding-left: 10px; }
   .selector-idioma button { font-size: 13px; padding: .4em .8em; }
   .nombre small { display: none; }
+}
+/* Celulares pequeños (320–380 px): todo el menú cabe en una fila */
+@media (max-width: 380px) {
+  .nombre { font-size: 20px; }
+  .banda-superior .marco { gap: 12px; padding-left: 16px; padding-right: 16px; }
+  .menu > * + * { margin-left: 8px; padding-left: 8px; }
+  .selector-idioma { gap: 4px; }
+  .selector-idioma button { font-size: 12px; padding: .45em .65em; }
+  .link-hv { font-size: 17px; }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -174,7 +212,8 @@ body:not(.home) .esquina { top: 14px; left: clamp(12px, 1.2vw, 22px); width: cla
 }
 
 /* ── Nota de privacidad (se despliega en su lugar) ── */
-.privacidad { grid-column: 1 / -1; font-family: var(--mono); font-size: 11px; line-height: 1.5; opacity: .6; max-width: 80ch; }
+.privacidad { grid-column: 1 / -1; font-family: var(--mono); font-size: 12px; line-height: 1.55; opacity: .8; max-width: 80ch; }
+.privacidad summary { display: inline-block; padding: 6px 0; }
 .privacidad summary { cursor: pointer; list-style: none; text-decoration: underline; }
 .privacidad summary::-webkit-details-marker { display: none; }
 .privacidad p { margin-top: 8px; }

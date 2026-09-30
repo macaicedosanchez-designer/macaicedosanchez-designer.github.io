@@ -12,7 +12,7 @@
 #   id          código corto, igual al de las imágenes (renobo, comadreo…)
 #   url         carpeta donde vive el caso (área principal / id)
 #   area        id del área principal (ver _data/areas.yml)
-#   secundarias otras áreas en las que también aparece (lista, puede ir vacía [])
+#   secundarias otras áreas relacionadas (solo informativo: cada área muestra únicamente sus proyectos principales)
 #   anio        año, se usa para ordenar (más reciente primero)
 #   banco       nombre de la imagen cuadrada en el repositorio media
 #   titulo / linea  textos de la tarjeta, en los dos idiomas

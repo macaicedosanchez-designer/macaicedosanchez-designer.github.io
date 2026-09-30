@@ -9,8 +9,8 @@ para agregar proyectos: basta con darlos de alta en _data/proyectos.yml.
 {%- endcomment -%}
 {%- assign area = site.data.areas | where: "id", page.area | first -%}
 {%- assign principales = site.data.proyectos | where: "area", area.id | where: "publicado", true | sort: "anio" | reverse -%}
-{%- assign secundarios = site.data.proyectos | where: "publicado", true | where_exp: "p", "p.secundarias contains area.id" | sort: "anio" | reverse -%}
-{%- assign todos = principales | concat: secundarios -%}
+{%- comment -%} Cada área muestra solo sus propios proyectos (los de "area"); "secundarias" ya no se usa en la grilla. {%- endcomment -%}
+{%- assign todos = principales -%}
 
 {%- comment -%} El título está oculto a la vista: quien manda visualmente es la píldora
 encendida del selector. Sigue ahí para buscadores y lectores de pantalla. {%- endcomment -%}

@@ -4,8 +4,9 @@
 {% include head.html %}
 </head>
 <body class="{{ page.clase | default: '' }}">
+<a class="saltar" href="#contenido"><span lang="es">Saltar al contenido</span><span lang="en">Skip to content</span></a>
 {% include banda-superior.html %}
-<main id="contenido">
+<main id="contenido" tabindex="-1">
 {{ content }}
 </main>
 {% include pie.html %}

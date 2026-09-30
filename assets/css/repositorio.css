@@ -10,3 +10,16 @@
 .repositorio-cabeza .selector-areas { gap: 10px; }
 
 .repositorio-grilla { padding-top: clamp(28px, 3.4vw, 60px); }
+
+/* En el celular las tres píldoras van en una sola fila que se desliza de lado,
+   como pestañas: los proyectos quedan arriba sin tener que bajar */
+@media (max-width: 720px) {
+  .repositorio-cabeza .selector-areas {
+    flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--pad)); padding: 4px var(--pad) 8px; gap: 8px;
+    overscroll-behavior-x: contain;
+  }
+  .repositorio-cabeza .selector-areas::-webkit-scrollbar { display: none; }
+  .repositorio-cabeza .selector-areas .btn-pildora { flex: 0 0 auto; white-space: nowrap; font-size: 15px; padding: .6em 1.1em; scroll-snap-align: start; }
+  .repositorio-grilla { padding-top: 16px; }
+}

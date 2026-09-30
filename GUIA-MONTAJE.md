@@ -217,7 +217,7 @@ Cuidado con la sangría: cada nivel lleva dos espacios, exactamente como el bloq
 
 **D. Publicar:** cuando esté listo, cambia `publicado: false` por `publicado: true` en `proyectos.yml`.
 
-Con eso, sin tocar nada más, el proyecto aparece en la grilla de su área, su imagen `banco` entra en la rotación del botón del Home y el caso termina con un solo botón, "Volver al área". También aparece en las áreas que pusiste en `secundarias`.
+Con eso, sin tocar nada más, el proyecto aparece en la grilla de su área, su imagen `banco` entra en la rotación del botón del Home y el caso termina con un solo botón, "Volver al área". Cada área muestra solo sus propios proyectos: `secundarias` queda como dato informativo y no agrega el proyecto a otras grillas.
 
 ### Cómo se ve una página de área
 

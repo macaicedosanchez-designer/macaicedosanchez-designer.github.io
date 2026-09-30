@@ -22,7 +22,7 @@ css: [/home/home.css]
     <div class="presentacion-grid">
       <img class="ilustracion" src="{{ site.media_url }}/home_portada_01_ilustracion-01.png" alt="" width="1600" height="1600" fetchpriority="high">
       <div class="texto">
-        <h1 class="h1"><span lang="es">Creador de Soluciones Digitales</span><span lang="en">Digital Solutions Maker</span></h1>
+        <h1 class="h1"><span lang="es">Creador de soluciones digitales</span><span lang="en">Digital solutions maker</span></h1>
         <div class="cuerpo">
           <div lang="es">
             <p>Siempre me ha entusiasmado aprender, sin importar qué tan complejos sean los temas nuevos. Esa curiosidad me lleva a buscar problemas que parecen no tener solución y a resolverlos de formas poco convencionales, con Design Thinking, gestión de la innovación y una profunda empatía por las personas detrás de cada usuario.</p>
@@ -49,16 +49,21 @@ css: [/home/home.css]
   <div class="areas">
     {%- for a in site.data.areas %}
     {%- assign lista = site.data.proyectos | where: "area", a.id | where: "publicado", true | sort: "anio" | reverse %}
+    {%- assign total = lista.size %}
     <div class="area">
-      <a class="area-imagen{% if a.velo %} velo{% endif %}" href="/{{ a.id }}/" data-bloque="rotacion" data-segundos="5" aria-label="{{ a.nombre.es }}">
+      {%- comment -%} La imagen repite el destino de la píldora: se deja fuera del tabulador para no pasar dos veces por el mismo link. {%- endcomment %}
+      <a class="area-imagen{% if a.velo %} velo{% endif %}" href="/{{ a.id }}/" data-bloque="rotacion" data-segundos="5" tabindex="-1" aria-hidden="true">
         {%- for p in lista %}
         <img src="{{ site.media_url }}/{{ p.banco }}" alt="" width="1080" height="1080" class="{% if forloop.first %}activa{% endif %}" {% unless forloop.first %}loading="lazy"{% endunless %}>
         {%- endfor %}
         {%- if lista.size == 0 %}<img src="{{ site.media_url }}/home_icono_01_cubo-01.png" alt="" class="activa">{% endif %}
       </a>
-      <a class="btn-pildora" href="/{{ a.id }}/" data-evento="area-{{ a.id }}">
-        <span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span><span class="flecha">↗</span>
-      </a>
+      <div class="area-pie">
+        <a class="btn-pildora" href="/{{ a.id }}/" data-evento="area-{{ a.id }}">
+          <span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span><span class="flecha">↗</span>
+        </a>
+        <p class="area-cuenta"><span lang="es">{{ total }} proyecto{% if total != 1 %}s{% endif %}</span><span lang="en">{{ total }} project{% if total != 1 %}s{% endif %}</span></p>
+      </div>
       <p class="area-linea"><span lang="es">{{ a.linea.es }}</span><span lang="en">{{ a.linea.en }}</span></p>
     </div>
     {%- endfor %}

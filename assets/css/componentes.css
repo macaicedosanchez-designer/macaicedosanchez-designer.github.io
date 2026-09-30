@@ -15,7 +15,10 @@
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   transform: scale(1); transition: transform .6s ease;
 }
-.tarjeta-proyecto:hover > img { transform: scale(1.04); }
+.error-texto { margin-top: 24px; }
+.error-accion { margin-top: 32px; }
+
+.tarjeta-proyecto:hover > img, .tarjeta-proyecto:focus-visible > img { transform: scale(1.04); }
 /* El velo: transparente arriba, casi negro abajo.
    Va más oscuro que el mock a propósito: el mock se probó sobre una foto oscura, y aquí
    hay imágenes claras (un dibujo a lápiz sobre papel blanco, una valla blanca) donde el
@@ -437,6 +440,8 @@ body.visor-abierto { overflow: hidden; }
 
 /* Contenido: bloques con título y texto, uno debajo del otro */
 .caso-contenido { padding-top: clamp(56px, 7vw, 120px); display: grid; gap: clamp(56px, 7vw, 120px); }
+/* Sin esto, un bloque ancho (el atlas, una fila de imágenes) estira la columna y la página se desborda a lo ancho en el celular */
+.caso-contenido > * { min-width: 0; }
 .caso-bloque > * + * { margin-top: clamp(20px, 2.4vw, 40px); }
 .caso-bloque > .h3 { margin-top: clamp(40px, 5vw, 80px); }
 .caso-datos { border-top: var(--regla) solid var(--tinta); padding-top: 20px; }
@@ -556,3 +561,19 @@ body.visor-abierto { overflow: hidden; }
 
 /* Párrafos consecutivos dentro de bloques de texto */
 .cierre-imagen .resultado p + p, .destacado .texto-chico p + p, .tramo p + p, .sala-texto p + p { margin-top: 1em; }
+
+/* ══════════════════════════════════════════════════════════════
+   CELULAR — piso de legibilidad y áreas de toque de 44 px.
+   Va al final para ganarle a las reglas de cada bloque.
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 720px) {
+  :root { --t-meta: 12px; --t-micro: 11px; }
+  .ficha dt, .etapas .n, .credito, .bloques-taller .min, .linea-tiempo button .min,
+  .secuencia .rotulos button, .atlas-barra .rotulos button, .atlas-aviso, .visor-360 .arrastra,
+  .planchas-banda figcaption b, .ficha-banda span b, .banda figcaption { font-size: 12px; }
+  .caso-imagenes.siempre-fila figcaption, .caso-videos.siempre-fila figcaption { font-size: 11px; letter-spacing: 0; }
+}
+@media (max-width: 720px), (pointer: coarse) {
+  .btn, .diapositivas .diapo-pantalla { min-height: 44px; min-width: 44px; }
+  .atlas-barra .rotulos button, .secuencia .rotulos button { min-height: 44px; }
+}

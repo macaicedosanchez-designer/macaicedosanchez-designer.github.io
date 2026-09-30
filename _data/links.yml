@@ -7,6 +7,6 @@ behance: "https://www.behance.net/macaicedoce7e"
 github: "https://github.com/macaicedosanchez-designer"
 pinterest: "https://pin.it/6jkRaS9Fa"
 
-# Documentos: estos sí pasan por el repositorio "links"
-hv: /hv/
-cv: /cv/
+# Documentos: viven en el repositorio "docs" (se abren como PDF en una pestaña nueva)
+hv: /hv-es.pdf
+cv: /cv-en.pdf

@@ -43,7 +43,7 @@
   --t-h1:      clamp(30px, 4.2vw, 64px);
   --t-h2:      clamp(24px, 3vw, 44px);
   --t-h3:      clamp(18px, 2vw, 28px);
-  --t-cuerpo:  clamp(15px, 1.15vw, 19px);
+  --t-cuerpo:  clamp(16px, calc(1vw + 3px), 19px);
   --t-meta:    11px;
   --t-micro:   10px;
 

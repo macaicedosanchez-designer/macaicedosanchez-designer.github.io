@@ -597,11 +597,33 @@
     window.addEventListener('scroll', marcar, { passive: true }); marcar();
   });
 
+  /* ── Selector de áreas en el celular: la píldora del área actual queda a la vista ── */
+  $$('.repositorio-cabeza .selector-areas').forEach(function (fila) {
+    var actual = $('[aria-current="page"]', fila);
+    if (actual && fila.scrollWidth > fila.clientWidth) fila.scrollLeft = actual.offsetLeft - fila.offsetLeft - 20;
+  });
+
+  /* ── Banda superior en el celular: se esconde al bajar y vuelve al subir,
+        para que la pantalla vertical se use en el contenido ── */
+  (function () {
+    var banda = $('.banda-superior'), angosta = window.matchMedia('(max-width: 720px)');
+    if (!banda || getComputedStyle(banda).position !== 'sticky') return;
+    var ultima = window.scrollY;
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY, dy = y - ultima;
+      if (Math.abs(dy) < 6) return;
+      banda.classList.toggle('escondida', angosta.matches && dy > 0 && y > banda.offsetHeight);
+      ultima = y;
+    }, { passive: true });
+    // Si el foco del teclado entra al menú, la banda se muestra
+    banda.addEventListener('focusin', function () { banda.classList.remove('escondida'); });
+  })();
+
   /* ── rotacion: imagen que cambia cada N segundos con fundido (botones del Home) ── */
   $$('[data-bloque="rotacion"]').forEach(function (el) {
     var imgs = $$('img', el), n = imgs.length, i = 0, seg = parseFloat(el.dataset.segundos || '5');
     if (n < 2 || reducido) return;
-    setInterval(function () { i = (i + 1) % n; imgs.forEach(function (im, j) { im.classList.toggle('activa', j === i); }); }, seg * 1000);
+    setInterval(function () { if (document.hidden) return; i = (i + 1) % n; imgs.forEach(function (im, j) { im.classList.toggle('activa', j === i); }); }, seg * 1000);
   });
 
   /* ── 360: visor equirectangular arrastrable (pannellum) ── */
