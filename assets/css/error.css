@@ -1,0 +1,82 @@
+/* ═══════════════════════════════════════════════════════════════
+   404: pantalla ultramar, 4·cubo·4 gigante y una cinta que corre.
+   Dentro del bloque azul los tokens se invierten a texto claro.
+   ═══════════════════════════════════════════════════════════════ */
+
+.error-404 {
+  --tinta: var(--claro); --tenue: color-mix(in srgb, var(--claro) 78%, transparent); --linea: color-mix(in srgb, var(--claro) 40%, transparent);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: calc(100svh - var(--alto-header));
+  background: var(--ultramar); color: var(--tinta);
+}
+.error .pie { margin-top: 0; }
+.error-404 > .marco { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(28px, 4vw, 56px); padding-bottom: clamp(40px, 5vw, 72px); }
+.error-etiqueta { align-self: flex-start; }
+
+.error-etiqueta { display: inline-flex; align-items: center; gap: .45em; font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.error-etiqueta .asterisco { width: 1em; height: 1em; }
+
+/* ── El número: dos 4 y el cubo en el lugar del 0 ── */
+.error-numero {
+  display: flex; align-items: center; justify-content: center; gap: .04em;
+  margin-top: clamp(8px, 2vw, 24px);
+  font-weight: 700; font-size: clamp(132px, 30vw, 400px); letter-spacing: -.06em; line-height: .85;
+}
+.digito { display: inline-block; }
+.d1 { transform: rotate(-6deg); }
+.d2 { transform: rotate(5deg) translateY(.04em); }
+
+.error-cubo {
+  --rx: 0deg; --ry: 0deg;
+  position: relative; width: .86em; aspect-ratio: 1; padding: 0; border: 0; background: none; cursor: pointer;
+  perspective: 600px; border-radius: 50%;
+}
+.error-cubo img {
+  width: 100%; height: 100%; object-fit: cover;
+  /* El fondo azul del dibujo se funde con el azul de la página */
+  -webkit-mask: radial-gradient(circle, #000 52%, transparent 71%);
+          mask: radial-gradient(circle, #000 52%, transparent 71%);
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .4s var(--curva);
+}
+.error-cubo:focus-visible { outline: 3px solid var(--claro); outline-offset: 4px; }
+
+.error-frase { margin-top: clamp(20px, 3vw, 40px); text-align: center; font-weight: 600; font-size: var(--t-h2); letter-spacing: -.035em; line-height: 1.1; text-wrap: balance; }
+.error-pista { margin-top: 12px; min-height: 1.5em; text-align: center; color: var(--tenue); }
+
+.error-acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: clamp(28px, 3vw, 44px); }
+.error-acciones .selector-areas { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.error-acciones .btn-pildora.inactivo:hover { border-color: var(--claro); }
+
+/* ── Cinta inclinada que corre sola ── */
+.error-cinta {
+  margin: 0 -4vw clamp(28px, 4vw, 56px); padding: 14px 0;
+  background: var(--claro); color: var(--ultramar);
+  transform: rotate(-2.5deg); white-space: nowrap; overflow: hidden;
+}
+.error-cinta .pista { display: flex; width: max-content; }
+.error-cinta .pista > span { display: flex; align-items: center; font-weight: 700; font-size: clamp(18px, 2.2vw, 30px); letter-spacing: -.02em; text-transform: uppercase; }
+.error-cinta .pista > span > span { padding: 0 .5em; }
+.error-cinta .asterisco { width: .8em; height: .8em; margin: 0 .5em; }
+
+/* ── Movimiento (solo si la persona no pidió reducirlo) ── */
+@media (prefers-reduced-motion: no-preference) {
+  .d1 { animation: caer .9s var(--curva) backwards, bailar-1 3.2s ease-in-out 1s infinite; }
+  .d2 { animation: caer .9s var(--curva) .12s backwards, bailar-2 3.6s ease-in-out 1.1s infinite; }
+  .error-cubo { animation: caer .9s var(--curva) .06s backwards, flotar 4s ease-in-out 1s infinite; }
+  .error-cubo.gira img { animation: girar 1s var(--curva); }
+  .error-cinta .pista { animation: correr 22s linear infinite; }
+
+  @keyframes caer { from { opacity: 0; transform: translateY(-40%) rotate(-20deg); } }
+  @keyframes bailar-1 { 50% { transform: rotate(-11deg) translateY(-.03em); } }
+  @keyframes bailar-2 { 50% { transform: rotate(9deg) translateY(.07em); } }
+  @keyframes flotar { 50% { transform: translateY(-.05em); } }
+  @keyframes girar { from { transform: rotateY(0) scale(1); } 50% { transform: rotateY(180deg) scale(.8); } to { transform: rotateY(360deg) scale(1); } }
+  @keyframes correr { to { transform: translateX(-50%); } }
+}
+
+@media (max-width: 560px) {
+  .error-acciones { flex-direction: column; align-items: stretch; }
+  .error-acciones .selector-areas { flex-direction: column; }
+}

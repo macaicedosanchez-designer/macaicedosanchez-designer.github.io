@@ -256,63 +256,6 @@
     });
   });
 
-  /* ── banda: tira horizontal movida por el MISMO scroll de la página.
-        Mientras la banda avanza queda fija en pantalla; al terminar, la página
-        sigue bajando. No hay que hacer nada distinto: es un solo scroll.
-        La altura del bloque = alto de la ventana + lo que sobra a lo ancho,
-        así el avance lateral va 1:1 con el vertical. ── */
-  $$('[data-bloque="banda"]').forEach(function (banda) {
-    var ventana = $('.banda-ventana', banda), pista = $('.banda-pista', banda);
-    if (!ventana || !pista) return;
-
-    var avance = document.createElement('div');
-    avance.className = 'banda-avance';
-    avance.innerHTML = '<i></i>';
-    ventana.appendChild(avance);
-    var barra = $('i', avance);
-
-    var sobra = 0, recorrido = 0;
-
-    function medir() {
-      // Cuánto sobresale la pista respecto al ancho visible
-      banda.style.height = '';                       // soltar para medir limpio
-      var altoVentana = ventana.offsetHeight;
-      sobra = Math.max(0, pista.scrollWidth - ventana.clientWidth);
-      // El recorrido vertical es más corto que el horizontal: si fuera 1:1, una banda
-      // de cuatro piezas obligaría a bajar miles de píxeles. Con 0.55 se recorre rápido
-      // y la página no se estira de más.
-      var ritmo = parseFloat(banda.dataset.ritmo || '0.55');
-      recorrido = Math.max(1, sobra * ritmo);
-      banda.style.height = (altoVentana + recorrido) + 'px';
-      avance.style.display = sobra > 8 ? '' : 'none';
-      mover();
-    }
-
-    function mover() {
-      if (sobra <= 8) { pista.style.transform = 'none'; return; }
-      var arriba = parseFloat(getComputedStyle(ventana).top) || 0;
-      var r = banda.getBoundingClientRect();
-      var p = (arriba - r.top) / recorrido;
-      p = Math.min(Math.max(p, 0), 1);
-      pista.style.transform = 'translate3d(' + (-p * sobra) + 'px,0,0)';
-      barra.style.width = (p * 100) + '%';
-    }
-
-    // Si algo falla o el navegador no soporta sticky, se queda como tira normal
-    if (!CSS.supports('position', 'sticky') || reducido) { banda.classList.add('simple'); return; }
-
-    window.addEventListener('scroll', mover, { passive: true });
-    window.addEventListener('resize', medir);
-    // Las imágenes cambian el ancho de la pista al cargar: hay que volver a medir
-    $$('img', pista).forEach(function (im) {
-      if (im.complete) return;
-      im.addEventListener('load', medir);
-      im.addEventListener('error', medir);
-    });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir);
-    medir();
-    setTimeout(medir, 400);
-  });
 
   /* ── video: piezas animadas sin sonido. Se reproducen al entrar en pantalla y se
         detienen al salir, para no gastar batería. Con "prefiere menos movimiento"
@@ -596,28 +539,6 @@
     }
     window.addEventListener('scroll', marcar, { passive: true }); marcar();
   });
-
-  /* ── Selector de áreas en el celular: la píldora del área actual queda a la vista ── */
-  $$('.repositorio-cabeza .selector-areas').forEach(function (fila) {
-    var actual = $('[aria-current="page"]', fila);
-    if (actual && fila.scrollWidth > fila.clientWidth) fila.scrollLeft = actual.offsetLeft - fila.offsetLeft - 20;
-  });
-
-  /* ── Banda superior en el celular: se esconde al bajar y vuelve al subir,
-        para que la pantalla vertical se use en el contenido ── */
-  (function () {
-    var banda = $('.banda-superior'), angosta = window.matchMedia('(max-width: 720px)');
-    if (!banda || getComputedStyle(banda).position !== 'sticky') return;
-    var ultima = window.scrollY;
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY, dy = y - ultima;
-      if (Math.abs(dy) < 6) return;
-      banda.classList.toggle('escondida', angosta.matches && dy > 0 && y > banda.offsetHeight);
-      ultima = y;
-    }, { passive: true });
-    // Si el foco del teclado entra al menú, la banda se muestra
-    banda.addEventListener('focusin', function () { banda.classList.remove('escondida'); });
-  })();
 
   /* ── rotacion: imagen que cambia cada N segundos con fundido (botones del Home) ── */
   $$('[data-bloque="rotacion"]').forEach(function (el) {

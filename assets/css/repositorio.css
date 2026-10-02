@@ -1,25 +1,26 @@
 /* ═══════════════════════════════════════════════════════════════
-   REPOSITORIO (páginas de área) — sigue el diseño de Figma:
-   solo el selector de áreas y la grilla de tarjetas. Sin título
-   grande, sin introducción, sin filtros y sin etiquetas.
+   REPOSITORIO (páginas de área): selector de áreas, título del área
+   con su línea, y la grilla de proyectos.
    ═══════════════════════════════════════════════════════════════ */
 
-.repositorio-cabeza { padding-top: clamp(28px, 3.4vw, 64px); }
+.repositorio-cabeza { padding-top: clamp(28px, 4vw, 64px); }
+/* Número con asterisco encima, nombre a la escala del H1 del Home */
+.area-titulo { display: flex; flex-direction: column; gap: 12px; margin-top: clamp(36px, 4vw, 64px); }
+.area-num {
+  display: inline-flex; align-items: center; gap: .3em;
+  font-weight: 600; font-size: clamp(16px, 1.5vw, 22px); letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+}
+.area-num .asterisco { width: .85em; height: .85em; color: var(--acento-texto); }
+.area-nombre-grande { font-weight: 600; font-size: var(--t-h1); letter-spacing: -.04em; line-height: 1.02; text-wrap: balance; }
+.repositorio-cabeza .bajada { margin-top: clamp(14px, 1.6vw, 24px); max-width: 52ch; font-size: clamp(17px, 1.3vw, 20px); color: var(--tenue); text-wrap: pretty; }
 
-/* Las píldoras del selector, como en el mock: la del área actual encendida */
-.repositorio-cabeza .selector-areas { gap: 10px; }
+.repositorio-grilla { padding-top: clamp(40px, 5vw, 72px); }
 
-.repositorio-grilla { padding-top: clamp(28px, 3.4vw, 60px); }
-
-/* En el celular las tres píldoras van en una sola fila que se desliza de lado,
-   como pestañas: los proyectos quedan arriba sin tener que bajar */
+/* En el celular las tres áreas van lado a lado, siempre visibles: el texto se parte en dos líneas */
 @media (max-width: 720px) {
-  .repositorio-cabeza .selector-areas {
-    flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
-    margin-inline: calc(-1 * var(--pad)); padding: 4px var(--pad) 8px; gap: 8px;
-    overscroll-behavior-x: contain;
+  .repositorio-cabeza .selector-areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .repositorio-cabeza .selector-areas .btn-pildora {
+    min-height: 52px; padding: .5em .4em; border-radius: var(--radio);
+    font-size: 13px; line-height: 1.15; white-space: normal; text-align: center;
   }
-  .repositorio-cabeza .selector-areas::-webkit-scrollbar { display: none; }
-  .repositorio-cabeza .selector-areas .btn-pildora { flex: 0 0 auto; white-space: nowrap; font-size: 15px; padding: .6em 1.1em; scroll-snap-align: start; }
-  .repositorio-grilla { padding-top: 16px; }
 }

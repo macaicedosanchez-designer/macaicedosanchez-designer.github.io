@@ -12,12 +12,16 @@ para agregar proyectos: basta con darlos de alta en _data/proyectos.yml.
 {%- comment -%} Cada área muestra solo sus propios proyectos (los de "area"); "secundarias" ya no se usa en la grilla. {%- endcomment -%}
 {%- assign todos = principales -%}
 
-{%- comment -%} El título está oculto a la vista: quien manda visualmente es la píldora
-encendida del selector. Sigue ahí para buscadores y lectores de pantalla. {%- endcomment -%}
-<h1 class="visualmente-oculto"><span lang="es">{{ area.nombre.es }}</span><span lang="en">{{ area.nombre.en }}</span></h1>
+{%- assign numero = 1 -%}
+{%- for a in site.data.areas -%}{%- if a.id == area.id -%}{%- assign numero = forloop.index -%}{%- endif -%}{%- endfor -%}
 
 <section class="marco repositorio-cabeza">
   {% include selector-areas.html actual=area.id %}
+  <h1 class="area-titulo">
+    <span class="area-num">{% include asterisco.html %}0{{ numero }}.</span>
+    <span class="area-nombre-grande"><span lang="es">{{ area.nombre.es }}</span><span lang="en">{{ area.nombre.en }}</span></span>
+  </h1>
+  <p class="bajada"><span lang="es">{{ area.linea.es }}</span><span lang="en">{{ area.linea.en }}</span></p>
 </section>
 
 {{ content }}

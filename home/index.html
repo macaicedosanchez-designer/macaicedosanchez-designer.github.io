@@ -1,71 +1,63 @@
 ---
 # ─────────────────────────────────────────────────────────────
-# HOME — sigue el diseño de Figma ("mine" > Home). Cuatro secciones:
-# 1 banda superior (viene de _includes/banda-superior.html)
-# 2 presentación: imagen + texto sobre una banda gris
-# 3 "Portfolio" + tres botones de áreas (se arman solos desde _data)
-# 4 banda de despedida (viene de _includes/pie.html)
+# HOME, tres secciones:
+# 1 presentación: la ilustración a la izquierda; título, bajada y dos botones
+# 2 portafolio: índice numerado de las tres áreas con sus proyectos
+#   (se arma solo desde _data/areas.yml y _data/proyectos.yml)
+# 3 trayectoria: con quién he trabajado, en una frase
+# La banda superior y el pie vienen de _includes.
 # Para editar textos: busca los <span lang="es"> y <span lang="en">.
 # ─────────────────────────────────────────────────────────────
 layout: base
 permalink: /
 clase: home
-titulo_es: "Martín Caicedo Sánchez — Creador de soluciones digitales"
-titulo_en: "Martín Caicedo Sánchez — Digital solutions maker"
+titulo_es: "Martín Caicedo Sánchez | Creador de soluciones digitales"
+titulo_en: "Martín Caicedo Sánchez | Digital solutions maker"
 css: [/home/home.css]
+js: [/home/home.js]
 ---
 
-<!-- ══ 2 · PRESENTACIÓN ══════════════════════════════════════════ -->
-<section class="presentacion">
-
-  <div class="banda-gris">
-    <div class="presentacion-grid">
-      <img class="ilustracion" src="{{ site.media_url }}/home_portada_01_ilustracion-01.png" alt="" width="1600" height="1600" fetchpriority="high">
-      <div class="texto">
-        <h1 class="h1"><span lang="es">Creador de soluciones digitales</span><span lang="en">Digital solutions maker</span></h1>
-        <div class="cuerpo">
-          <div lang="es">
-            <p>Siempre me ha entusiasmado aprender, sin importar qué tan complejos sean los temas nuevos. Esa curiosidad me lleva a buscar problemas que parecen no tener solución y a resolverlos de formas poco convencionales, con Design Thinking, gestión de la innovación y una profunda empatía por las personas detrás de cada usuario.</p>
-            <p>Este enfoque ha sido clave en retos con entidades públicas, organizaciones culturales y el sector inmobiliario. En ese recorrido he colaborado con empresas privadas, organismos internacionales como USAID y, sobre todo, con altos funcionarios del Distrito de Bogotá y del Gobierno Nacional, traduciendo necesidades técnicas complejas en soluciones fáciles de entender y de usar.</p>
-            <p>Tengo experiencia en dirección creativa, diseño de productos y servicios, e innovación de procesos. Acompaño los proyectos de principio a fin: desde la investigación, pasando por bocetos y prototipos, hasta entregar productos digitales que funcionan de manera autónoma, sin depender de mí.</p>
-          </div>
-          <div lang="en">
-            <p>I've always loved learning, no matter how complex the new subject. That curiosity draws me to problems that seem to have no solution, and I solve them in unconventional ways, using Design Thinking, innovation management and deep empathy for the people behind every user.</p>
-            <p>This approach has been key to challenges with public institutions, cultural organizations and real estate. Along the way, I've worked with private companies, international organizations like USAID and, above all, senior officials from the City of Bogotá and Colombia's National Government, turning complex technical needs into solutions that are easy to understand and use.</p>
-            <p>My experience spans creative direction, product and service design, and process innovation. I stay with projects from start to finish: from research, through sketches and prototypes, to digital products that run on their own, without depending on me.</p>
-          </div>
-        </div>
-      </div>
+<!-- 1 · PRESENTACIÓN -->
+<section class="marco presentacion">
+  <div class="texto">
+    <h1 class="h1 entra"><span lang="es">Creador de soluciones digitales</span><span lang="en">Digital solutions maker</span></h1>
+    <p class="bajada entra"><span lang="es">Resuelvo las necesidades digitales y de comunicación de tu organización a través del diseño: <b>marca</b>, <b>servicios digitales</b> y <b>automatización de procesos</b>. Lo he hecho para entidades públicas, organizaciones culturales y empresas privadas.</span><span lang="en">I solve your organization's digital and communication needs through design: <b>brand</b>, <b>digital services</b> and <b>process automation</b>. I've done it for public institutions, cultural organizations and private companies.</span></p>
+    <div class="acciones entra">
+      <a class="btn-pildora" href="#portafolio" data-evento="ver-proyectos"><span lang="es">Ver proyectos</span><span lang="en">See projects</span></a>
+      <a class="btn-pildora contorno" href="mailto:{{ site.email }}" data-evento="hablemos"><span lang="es">Hablemos</span><span lang="en">Let's talk</span></a>
     </div>
   </div>
+  <img class="ilustracion entra" src="{{ site.media_url }}/home_portada_01_ilustracion-01.png" alt="" width="1600" height="1600" fetchpriority="high">
 </section>
 
-<!-- ══ 3 · PORTFOLIO + BOTONES DE ÁREAS ══════════════════════════ -->
-<section class="portfolio">
-  <h2 class="lettering">
-    <img src="{{ site.media_url }}/home_lettering_01_portfolio-01.svg" alt="Portfolio" width="560" height="200">
-  </h2>
-
-  <div class="areas">
+<!-- 2 · PORTAFOLIO: índice numerado, una fila por área -->
+<section class="marco indice" id="portafolio" aria-labelledby="titulo-portafolio">
+  <h2 class="h2" id="titulo-portafolio"><span lang="es">Portafolio</span><span lang="en">Portfolio</span></h2>
+  <ol class="filas">
     {%- for a in site.data.areas %}
     {%- assign lista = site.data.proyectos | where: "area", a.id | where: "publicado", true | sort: "anio" | reverse %}
-    {%- assign total = lista.size %}
-    <div class="area">
-      {%- comment -%} La imagen repite el destino de la píldora: se deja fuera del tabulador para no pasar dos veces por el mismo link. {%- endcomment %}
-      <a class="area-imagen{% if a.velo %} velo{% endif %}" href="/{{ a.id }}/" data-bloque="rotacion" data-segundos="5" tabindex="-1" aria-hidden="true">
-        {%- for p in lista %}
-        <img src="{{ site.media_url }}/{{ p.banco }}" alt="" width="1080" height="1080" class="{% if forloop.first %}activa{% endif %}" {% unless forloop.first %}loading="lazy"{% endunless %}>
-        {%- endfor %}
-        {%- if lista.size == 0 %}<img src="{{ site.media_url }}/home_icono_01_cubo-01.png" alt="" class="activa">{% endif %}
+    {%- assign portada = lista | first %}
+    <li>
+      <a class="fila" href="/{{ a.id }}/" data-evento="area-{{ a.id }}" data-vista="{{ site.media_url }}/{{ portada.banco }}">
+        <span class="fila-num">{% include asterisco.html %}0{{ forloop.index }}.</span>
+        <span class="fila-cuerpo">
+          <span class="fila-nombre"><span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span></span>
+          <span class="fila-linea"><span lang="es">{{ a.linea.es }}</span><span lang="en">{{ a.linea.en }}</span></span>
+          <span class="fila-proyectos">
+            {%- for p in lista %}<span><span lang="es">{{ p.titulo.es }}</span><span lang="en">{{ p.titulo.en }}</span></span>{% endfor -%}
+          </span>
+        </span>
+        <span class="fila-imagen"><img src="{{ site.media_url }}/{{ portada.banco }}" alt="" width="1080" height="1080" loading="lazy"></span>
       </a>
-      <div class="area-pie">
-        <a class="btn-pildora" href="/{{ a.id }}/" data-evento="area-{{ a.id }}">
-          <span lang="es">{{ a.nombre.es }}</span><span lang="en">{{ a.nombre.en }}</span><span class="flecha">↗</span>
-        </a>
-        <p class="area-cuenta"><span lang="es">{{ total }} proyecto{% if total != 1 %}s{% endif %}</span><span lang="en">{{ total }} project{% if total != 1 %}s{% endif %}</span></p>
-      </div>
-      <p class="area-linea"><span lang="es">{{ a.linea.es }}</span><span lang="en">{{ a.linea.en }}</span></p>
-    </div>
+    </li>
     {%- endfor %}
-  </div>
+  </ol>
+  <img class="vista-flotante" alt="" aria-hidden="true" width="1080" height="1080">
+</section>
+
+<!-- 3 · TRAYECTORIA -->
+<section class="marco trayectoria" aria-labelledby="titulo-trayectoria">
+  <h2 class="visualmente-oculto" id="titulo-trayectoria"><span lang="es">Trayectoria</span><span lang="en">Background</span></h2>
+  <p class="frase"><span lang="es">He trabajado con el Distrito de Bogotá, el Gobierno Nacional, USAID, organizaciones culturales y empresas privadas.</span><span lang="en">I've worked with the City of Bogotá, Colombia's National Government, USAID, cultural organizations and private companies.</span></p>
+  <p class="cuerpo tenue"><span lang="es">Acompaño cada proyecto de principio a fin: investigación, bocetos, prototipos y productos que siguen funcionando sin depender de mí.</span><span lang="en">I stay with each project from start to finish: research, sketches, prototypes and products that keep working without depending on me.</span></p>
 </section>

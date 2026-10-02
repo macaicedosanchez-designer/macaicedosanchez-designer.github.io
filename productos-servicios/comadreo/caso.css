@@ -5,7 +5,7 @@
 .proceso-texto { margin-top: clamp(24px, 3vw, 48px); }
 .entregables { margin-top: clamp(24px, 3vw, 48px); }
 .enlace-externo { margin-top: 12px; }
-.salida { background: var(--tinta); color: var(--papel); margin-top: clamp(56px, 8vw, 140px); padding: clamp(80px, 12vw, 200px) 0; }
-.salida .frase { font-size: clamp(32px, 6vw, 110px); font-weight: 800; letter-spacing: -.045em; line-height: .95; max-width: 16ch; }
-/* El cierre (siguiente proyecto) va pegado a la salida oscura */
+.salida { background: var(--banda); color: var(--tinta); border-block: var(--hair) solid var(--linea); margin-top: clamp(56px, 8vw, 140px); padding: clamp(80px, 12vw, 200px) 0; }
+.salida .frase { font-size: clamp(32px, 6vw, 110px); font-weight: 600; letter-spacing: -.045em; line-height: .95; max-width: 16ch; }
+/* El cierre (siguiente proyecto) va pegado a la salida */
 .salida + .seccion { padding-top: clamp(32px, 4vw, 64px); }

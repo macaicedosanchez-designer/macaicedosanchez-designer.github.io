@@ -1,14 +1,11 @@
 {%- comment -%}
 TARJETA DE PROYECTO. Uso: {% include tarjeta-proyecto.html p=proyecto %}
-Una sola pieza: la imagen llena la tarjeta, un degradado oscurece la parte de abajo
-y encima van el año, el título y la línea. Sin etiquetas.
+Imagen arriba y texto debajo: título, una línea y el año. Toda la tarjeta es el link.
 {%- endcomment -%}
 {%- assign p = include.p -%}
 <a class="tarjeta-proyecto" href="{{ p.url }}" data-evento="proyecto-{{ p.id }}">
-  <img src="{{ site.media_url }}/{{ p.banco }}" alt="" width="1080" height="1080" loading="lazy">
-  <div class="texto">
-    <p class="anio">{{ p.anio }}</p>
-    <p class="titulo"><span lang="es">{{ p.titulo.es }}</span><span lang="en">{{ p.titulo.en }}</span></p>
-    <p class="linea"><span lang="es">{{ p.linea.es }}</span><span lang="en">{{ p.linea.en }}</span></p>
-  </div>
+  <span class="imagen"><img src="{{ site.media_url }}/{{ p.banco }}" alt="" width="1080" height="1080" loading="lazy"></span>
+  <span class="titulo"><span lang="es">{{ p.titulo.es }}</span><span lang="en">{{ p.titulo.en }}</span></span>
+  <span class="linea"><span lang="es">{{ p.linea.es }}</span><span lang="en">{{ p.linea.en }}</span></span>
+  <span class="anio">{{ p.anio }}</span>
 </a>

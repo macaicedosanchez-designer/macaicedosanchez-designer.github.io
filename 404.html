@@ -1,13 +1,55 @@
 ---
+# ─────────────────────────────────────────────────────────────
+# 404: pantalla azul con un 4·cubo·4 gigante. El cubo flota, se inclina
+# hacia el mouse y al tocarlo gira y "busca" la página con una frase
+# distinta cada vez. Abajo, una cinta inclinada que corre sola.
+# Para editar las frases: busca los <li> dentro de "error-frases".
+# ─────────────────────────────────────────────────────────────
 layout: base
 permalink: /404.html
-titulo_es: "Página no encontrada — Martín Caicedo Sánchez"
-titulo_en: "Page not found — Martín Caicedo Sánchez"
+clase: error
+titulo_es: "Página no encontrada | Martín Caicedo Sánchez"
+titulo_en: "Page not found | Martín Caicedo Sánchez"
+css: [/assets/css/error.css]
+js: [/assets/js/error.js]
 ---
-<section class="marco seccion">
-  <p class="display">404</p>
-  <p class="cuerpo error-texto"><span lang="es">Esta página no existe o cambió de lugar.</span><span lang="en">This page doesn't exist or has moved.</span></p>
-  <p class="error-accion"><a class="btn-pildora" href="/"><span lang="es">Ir al Home</span><span lang="en">Go to Home</span><span class="flecha">↖</span></a></p>
-  <p class="cuerpo error-texto"><span lang="es">O entra directo a un área:</span><span lang="en">Or go straight to an area:</span></p>
-  <div class="error-accion">{% include selector-areas.html %}</div>
+<section class="error-404">
+  <div class="marco">
+    <p class="error-etiqueta">{% include asterisco.html %}<span lang="es">Error 404</span><span lang="en">Error 404</span></p>
+
+    <h1 class="error-numero">
+      <span class="visualmente-oculto"><span lang="es">404, página no encontrada</span><span lang="en">404, page not found</span></span>
+      <span class="digito d1" aria-hidden="true">4</span>
+      <button type="button" class="error-cubo" aria-describedby="error-pista" data-evento="404-cubo">
+        <span class="visualmente-oculto"><span lang="es">Girar el cubo</span><span lang="en">Spin the cube</span></span>
+        <img src="{{ site.media_url }}/home_icono_01_cubo-01.png" alt="" width="1024" height="1024" fetchpriority="high">
+      </button>
+      <span class="digito d2" aria-hidden="true">4</span>
+    </h1>
+
+    <p class="error-frase"><span lang="es">Esta página se perdió dentro del cubo.</span><span lang="en">This page got lost inside the cube.</span></p>
+    <p class="error-pista" id="error-pista" aria-live="polite"><span lang="es">Toca el cubo para buscarla.</span><span lang="en">Tap the cube to look for it.</span></p>
+
+    <ul class="error-frases" hidden>
+      <li><span lang="es">Revisé las seis caras. Nada.</span><span lang="en">Checked all six faces. Nothing.</span></li>
+      <li><span lang="es">Seguro está en una reunión de kick off.</span><span lang="en">Probably stuck in a kick-off meeting.</span></li>
+      <li><span lang="es">Abrí un ticket. Prioridad: baja.</span><span lang="en">Ticket opened. Priority: low.</span></li>
+      <li><span lang="es">Ni con design thinking aparece.</span><span lang="en">Not even design thinking can find it.</span></li>
+      <li><span lang="es">Hice un prototipo de la página. Tampoco existe.</span><span lang="en">I prototyped the page. It doesn't exist either.</span></li>
+      <li><span lang="es">Sigue girando. Quizás a la próxima.</span><span lang="en">Keep spinning. Maybe next time.</span></li>
+    </ul>
+
+    <div class="error-acciones">
+      <a class="btn-pildora claro" href="/" data-evento="404-home"><span lang="es">Volver al Home</span><span lang="en">Back to Home</span></a>
+      {% include selector-areas.html %}
+    </div>
+  </div>
+
+  <div class="error-cinta" aria-hidden="true">
+    <div class="pista">
+      {%- for i in (1..2) %}
+      <span>{% for j in (1..4) %}<span lang="es">Página no encontrada</span><span lang="en">Page not found</span>{% include asterisco.html %}404{% include asterisco.html %}{% endfor %}</span>
+      {%- endfor %}
+    </div>
+  </div>
 </section>
