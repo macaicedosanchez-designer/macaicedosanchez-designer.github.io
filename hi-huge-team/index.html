@@ -4,21 +4,21 @@
 # No aparece en menús, en el sitemap ni en Google (noindex). Solo
 # la ve quien tiene el link: /hi-huge-team/
 #
-# 1 saludo en azul con la ilustración
-# 2 tres presentaciones destacadas: diapositivas a la izquierda, texto a la derecha
-# 3 galería: los datos salen de _data/huge.yml; clic = visor oscuro
+# 1 saludo en azul con la ilustración enmarcada
+# 2 presentaciones destacadas: diapositivas a la izquierda, texto a la derecha
+# 3 galería con TODAS las presentaciones; clic = visor oscuro en la misma página
 # 4 el pie de la web, con el botón "Ver portafolio"
-# Textos: busca los <span lang="es"> / <span lang="en">.
+# Los textos y la lista de presentaciones viven en _data/huge.yml.
 # ─────────────────────────────────────────────────────────────
 layout: base
 permalink: /hi-huge-team/
 clase: huge
-idioma: en
+idioma: es
 noindex: true
 sitemap: false
 ver_portafolio: true
-titulo_es: "Hola, equipo de Huge | Martín Caicedo Sánchez"
-titulo_en: "Hi Huge team | Martín Caicedo Sánchez"
+titulo_es: "Hola, equipo Huge | Martín Caicedo Sánchez"
+titulo_en: "Hi, Huge team | Martín Caicedo Sánchez"
 descripcion_es: "Una selección de mis presentaciones para el equipo de Huge."
 css: [/hi-huge-team/huge.css]
 js: [/hi-huge-team/huge.js]
@@ -29,110 +29,67 @@ js: [/hi-huge-team/huge.js]
 <section class="huge-saludo">
   <div class="marco">
     <div class="texto">
-      <h1 class="saludo entra"><span lang="es">Hola, equipo de Huge&nbsp;:)</span><span lang="en">Hi Huge team&nbsp;:)</span></h1>
-      <!-- BORRADOR: Martín, revisa estas dos frases. -->
-      <p class="bajada entra"><span lang="es">Soy Martín Caicedo Sánchez, creador de soluciones digitales en Bogotá. Convierto temas complejos (renovación urbana, política pública, innovación) en marcas, sistemas y presentaciones que la gente entiende y sigue usando.</span><span lang="en">I'm Martín Caicedo Sánchez, a digital solutions maker based in Bogotá. I turn complex subjects (urban renewal, public policy, innovation) into brands, systems and presentations people understand and keep using.</span></p>
-      <p class="bajada entra"><span lang="es">Me gustaría llevar eso a Huge: equipos donde el oficio y los resultados importan por igual.</span><span lang="en">I'd love to bring that to Huge, where craft and results matter just as much.</span></p>
-      <a class="btn-pildora claro entra" href="#destacadas"><span lang="es">Ver presentaciones ↓</span><span lang="en">See presentations ↓</span></a>
+      <h1 class="saludo entra"><span lang="es">Hola, :)<br>equipo Huge</span><span lang="en">Hi, :)<br>Huge team</span></h1>
+      <p class="bajada entra"><span lang="es">Me gusta la Historia, leer y las interfaces de los videojuegos.</span><span lang="en">I like history, reading and video game interfaces.</span></p>
+      <p class="bajada entra"><span lang="es">Convierto temas complejos en marcas, sistemas y presentaciones que la gente entiende y usa a diario.</span><span lang="en">I turn complex subjects into brands, systems and presentations people understand and use every day.</span></p>
     </div>
-    <img class="ilustracion entra" src="{{ m }}/home_portada_01_ilustracion-01.png" alt="" width="1600" height="1600" fetchpriority="high">
+    <figure class="marco-ilustracion entra">
+      <img src="{{ m }}/home_portada_01_ilustracion-01.png" alt="" width="1600" height="1600" fetchpriority="high">
+    </figure>
   </div>
 </section>
 
-<!-- 2 · TRES PRESENTACIONES DESTACADAS -->
+<!-- 2 · DESTACADAS -->
 <div class="marco huge-destacadas" id="destacadas">
-
+  {%- assign n = 0 %}
+  {%- for d in site.data.huge.decks %}
+  {%- if d.destacada %}
+  {%- assign n = n | plus: 1 %}
   <section class="destacada">
-    <div class="diapositivas" data-bloque="diapositivas" aria-label="RenoBo en PR">
-      <div class="diapo-escena">
-        <figure class="diapo"><img src="{{ m }}/renobopr_deck_01_pagina.jpg" alt=""></figure>
-        {%- for k in (2..59) %}
-        <figure class="diapo"><img data-src="{{ m }}/renobopr_deck_{% if k < 10 %}0{% endif %}{{ k }}_pagina.jpg" alt=""></figure>
-        {%- endfor %}
-      </div>
-    </div>
+    <div class="deck" {% include huge-deck.html d=d %} aria-roledescription="presentación" aria-label="{{ d.titulo.es | escape }}"></div>
     <div class="nota">
-      <p class="meta">01 · RenoBo · 2024</p>
-      <h2 class="h2">RenoBo en PR</h2>
-      <p class="rotulo"><span lang="es">Mi presentación más bonita</span><span lang="en">My best-looking presentation</span></p>
+      <p class="meta">0{{ n }} · {{ d.cliente }} · {{ d.anio }}</p>
+      <h2 class="h2"><span lang="es">{{ d.titulo.es }}</span><span lang="en">{{ d.titulo.en }}</span></h2>
+      <p class="rotulo"><span lang="es">{{ d.destacada.rotulo.es }}</span><span lang="en">{{ d.destacada.rotulo.en }}</span></p>
       <div class="cuerpo">
-        <p lang="es">Tomé conceptos muy complejos de urbanismo, mercado inmobiliario y política pública y los convertí en diagramas y animaciones divertidos: cómo Bogotá renueva la ciudad, de la planeación a la ejecución.</p>
-        <p lang="en">I took very complex concepts about urban planning, real estate and public policy and turned them into fun diagrams and animations: how Bogotá renews the city, from planning to execution.</p>
-        <p class="tenue" lang="es">Varias diapositivas eran animadas; aquí se ven quietas.</p>
-        <p class="tenue" lang="en">Several slides were animated; here you see them as stills.</p>
+        {%- for p in d.destacada.texto.es %}<p lang="es">{{ p }}</p>{% endfor %}
+        {%- for p in d.destacada.texto.en %}<p lang="en">{{ p }}</p>{% endfor %}
       </div>
-    </div>
-  </section>
-
-  <section class="destacada">
-    <div class="diapositivas" data-bloque="diapositivas" aria-label="Kit PPT RenoBo">
-      <div class="diapo-escena">
-        <figure class="diapo"><img src="{{ m }}/renobo_kitppt_01_portada.jpg" alt="" loading="lazy"></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_02_ruta.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_03_cronologia.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_04_proceso.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_05_gestiones.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_06_convenio.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_07_conceptos.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_08_ejes-narrativos.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_09_antes-despues.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/renobo_kitppt_10_iconos.jpg" alt=""></figure>
-      </div>
-    </div>
-    <div class="nota">
-      <p class="meta">02 · RenoBo · 2025</p>
-      <h2 class="h2"><span lang="es">Kit PPT RenoBo</span><span lang="en">RenoBo PPT Kit</span></h2>
-      <p class="rotulo"><span lang="es">La más usada</span><span lang="en">The most used one</span></p>
-      <div class="cuerpo">
-        <p lang="es">Es la que más quiero porque es la más usada: sigue en uso hoy y la usa toda la organización, no solo comunicaciones. Trae plantillas para diagramar rutas, cronologías, procesos, convenios y comparaciones.</p>
-        <p lang="en">It's my favorite because it's the most used: it's still in use today, by the whole organization, not just communications. It includes templates to diagram routes, timelines, processes, agreements and comparisons.</p>
-        <p lang="es">También diseñé un prompt para que cualquiera convierta su contenido en diagramas del kit.</p>
-        <p lang="en">I also engineered a prompt so anyone can turn their content into kit diagrams.</p>
-      </div>
+      {%- if d.destacada.en_uso %}
       <div class="en-uso">
-        <img src="{{ m }}/renobo_aplicacion_01_en-uso.jpg" alt="" loading="lazy">
-        <img src="{{ m }}/renobo_aplicacion_02_en-uso.jpg" alt="" loading="lazy">
-        <img src="{{ m }}/renobo_aplicacion_03_en-uso.jpg" alt="" loading="lazy">
+        {%- for f in d.destacada.en_uso %}<img src="{{ m }}/{{ f }}" alt="" loading="lazy">{% endfor %}
       </div>
-      <a class="enlace" href="/direccion-creativa/renobo/"><span lang="es">Ver el caso completo de RenoBo →</span><span lang="en">See the full RenoBo case →</span></a>
+      {%- endif %}
+      {%- if d.destacada.enlace %}
+      <a class="enlace" href="{{ d.destacada.enlace.url }}"><span lang="es">{{ d.destacada.enlace.es }}</span><span lang="en">{{ d.destacada.enlace.en }}</span></a>
+      {%- endif %}
     </div>
   </section>
-
-  <section class="destacada">
-    <!-- PENDIENTE: el deck de Progreso Urbano. Cuando estén las imágenes, reemplaza este div por un bloque "diapositivas" como los de arriba. -->
-    <div class="pendiente"><p><span lang="es">Presentación en preparación</span><span lang="en">Deck coming soon</span></p></div>
-    <div class="nota">
-      <p class="meta">03 · Progreso Urbano Consultores</p>
-      <h2 class="h2">Progreso Urbano Consultores</h2>
-      <p class="rotulo"><span lang="es">Mi sistema de diseño más ordenado</span><span lang="en">My most organized design system</span></p>
-      <div class="cuerpo">
-        <p lang="es">Hecha con un sistema de diseño pensado para web responsive: componentes, estilos y reglas que funcionan igual en una presentación y en una pantalla de celular.</p>
-        <p lang="en">Built with a design system made for responsive web: components, styles and rules that work the same on a slide and on a phone screen.</p>
-      </div>
-    </div>
-  </section>
+  {%- endif %}
+  {%- endfor %}
 </div>
 
-<!-- 3 · GALERÍA -->
+<!-- 3 · GALERÍA: todas las presentaciones -->
 <section class="marco huge-galeria" aria-labelledby="titulo-galeria">
-  <h2 class="h2" id="titulo-galeria"><span lang="es">Más presentaciones</span><span lang="en">More presentations</span></h2>
+  <h2 class="h2" id="titulo-galeria"><span lang="es">Todas las presentaciones</span><span lang="en">All presentations</span></h2>
   <ul class="grilla">
-    {%- for p in site.data.huge.galeria %}
-    {%- assign c = p.portada | default: 1 %}
+    {%- for d in site.data.huge.decks %}
+    {%- assign c = d.portada | default: 1 %}
+    {%- if d.archivos %}{% assign idx = c | minus: 1 %}{% assign img = d.archivos[idx] %}{% else %}{% capture img %}{{ d.id }}_deck_{% if c < 10 %}0{% endif %}{{ c }}_pagina.jpg{% endcapture %}{% endif %}
     <li>
-      <button type="button" class="tarjeta" data-id="{{ p.id }}" data-paginas="{{ p.paginas }}" data-titulo-es="{{ p.titulo.es | escape }}" data-titulo-en="{{ p.titulo.en | escape }}">
-        <span class="imagen"><img src="{{ m }}/{{ p.id }}_deck_{% if c < 10 %}0{% endif %}{{ c }}_pagina.jpg" alt="" loading="lazy"></span>
-        <span class="titulo"><span lang="es">{{ p.titulo.es }}</span><span lang="en">{{ p.titulo.en }}</span></span>
-        <span class="datos">{{ p.anio }} · {{ p.cliente }} · {{ p.paginas }} <span lang="es">páginas</span><span lang="en">pages</span></span>
-        {%- if p.porque.es != "" %}<span class="porque"><span lang="es">{{ p.porque.es }}</span><span lang="en">{{ p.porque.en }}</span></span>{% endif %}
+      <button type="button" class="tarjeta" {% include huge-deck.html d=d %}>
+        <span class="imagen"><img src="{{ m }}/{{ img }}" alt="" loading="lazy">{% if d.videos %}<span class="sello">▶ <span lang="es">con video</span><span lang="en">with video</span></span>{% endif %}</span>
+        <span class="titulo"><span lang="es">{{ d.titulo.es }}</span><span lang="en">{{ d.titulo.en }}</span></span>
+        <span class="datos">{{ d.anio }} · {{ d.cliente }}</span>
+        {%- if d.porque %}<span class="porque"><span lang="es">{{ d.porque.es }}</span><span lang="en">{{ d.porque.en }}</span></span>{% endif %}
       </button>
     </li>
     {%- endfor %}
   </ul>
 </section>
 
-<!-- Visor de la galería: lo controla huge.js -->
-<div class="visor-deck" role="dialog" aria-modal="true" aria-label="Presentación" hidden data-media="{{ m }}">
+<!-- Visor a pantalla completa (lo controla huge.js) -->
+<div class="visor-deck" role="dialog" aria-modal="true" aria-label="Presentación" hidden>
   <div class="barra">
     <p class="nombre"></p>
     <div class="mandos">
@@ -143,5 +100,5 @@ js: [/hi-huge-team/huge.js]
       <button type="button" class="btn v-cerrar" aria-label="Cerrar / Close">✕</button>
     </div>
   </div>
-  <div class="lamina"><img alt=""></div>
+  <div class="escenario"></div>
 </div>

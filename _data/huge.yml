@@ -1,59 +1,118 @@
 # ─────────────────────────────────────────────────────────────
 # PÁGINA ESPECIAL HUGE (/hi-huge-team/)
 #
-# Galería: cada bloque es una presentación. La página arma sola
-# la tarjeta y el visor.
-#   id        prefijo de las imágenes en el repositorio media: <id>_deck_NN_pagina.jpg
-#   paginas   cuántas páginas tiene (NN va de 01 a este número)
-#   portada   número de la página que se usa como imagen de la tarjeta
-#   titulo / cliente / anio / porque   textos de la tarjeta (porque es opcional)
+# Cada bloque es una presentación. Las que tienen "destacada" salen
+# arriba con su texto; TODAS salen en la galería, en este orden.
+#
+#   id        prefijo de las imágenes en el repositorio media:
+#             <id>_deck_NN_pagina.jpg  (NN = número de diapositiva, 01, 02…)
+#   paginas   cuántas diapositivas tiene
+#   archivos  (en vez de id + paginas) lista exacta de imágenes, si tienen otro nombre
+#   videos    diapositivas que se ven como video: <id>_deck_NN_animacion.mp4
+#   portada   número de la diapositiva que va en la tarjeta de la galería
+#   titulo / anio / cliente / porque   textos de la tarjeta
+#   destacada rótulo, texto (párrafos) y enlace opcional para la sección de arriba
 # ─────────────────────────────────────────────────────────────
 
-galeria:
-  - id: bimco
-    paginas: 18
+decks:
+  - id: renobopr
+    paginas: 62
+    videos: [4, 5, 8, 27, 28]
     portada: 1
     anio: 2024
     cliente: RenoBo
-    titulo: { es: "H-BIM en proyectos de conservación de patrimonio", en: "H-BIM in heritage conservation projects" }
-    porque: { es: "", en: "" }
+    titulo: { es: "RenoBo en PR", en: "RenoBo in PR" }
+    porque: { es: "Mi presentación más bonita.", en: "My best-looking presentation." }
+    destacada:
+      rotulo: { es: "Mi presentación más bonita", en: "My best-looking presentation" }
+      texto:
+        es:
+          - "Tomé conceptos muy complejos de urbanismo, mercado inmobiliario y política pública y los convertí en diagramas y animaciones divertidos, para contarle a la Puerto Rico Builders Association cómo Bogotá renueva la ciudad, de la planeación a la ejecución."
+        en:
+          - "I took very complex concepts about urban planning, real estate and public policy and turned them into fun diagrams and animations, to show the Puerto Rico Builders Association how Bogotá renews the city, from planning to execution."
 
-  - id: riosdevida
-    paginas: 7
-    portada: 1
-    anio: 2024
-    cliente: ART
-    titulo: { es: "Ríos de Vida", en: "Rivers of Life" }
-    porque: { es: "", en: "" }
-
-  - id: calles170
-    paginas: 6
-    portada: 1
-    anio: 2024
-    cliente: ART
-    titulo: { es: "170 calles de vida y paz", en: "170 streets of life and peace" }
-    porque: { es: "", en: "" }
-
-  - id: celulainnovacion
-    paginas: 9
+  - id: renobokit
+    archivos: [renobo_kitppt_01_portada.jpg, renobo_kitppt_02_ruta.jpg, renobo_kitppt_03_cronologia.jpg, renobo_kitppt_04_proceso.jpg, renobo_kitppt_05_gestiones.jpg, renobo_kitppt_06_convenio.jpg, renobo_kitppt_07_conceptos.jpg, renobo_kitppt_08_ejes-narrativos.jpg, renobo_kitppt_09_antes-despues.jpg, renobo_kitppt_10_iconos.jpg]
     portada: 1
     anio: 2025
-    cliente: Universidad de los Andes · RenoBo
-    titulo: { es: "Célula de Innovación", en: "Innovation Cell" }
-    porque: { es: "", en: "" }
+    cliente: RenoBo
+    titulo: { es: "Kit PPT RenoBo", en: "RenoBo PPT Kit" }
+    porque: { es: "La más usada: toda la organización la sigue usando.", en: "The most used one: the whole organization still uses it." }
+    destacada:
+      rotulo: { es: "La más usada", en: "The most used one" }
+      texto:
+        es:
+          - "Es la que más quiero porque es la más usada: sigue en uso hoy y la usa toda la organización, no solo comunicaciones. Trae plantillas para diagramar rutas, cronologías, procesos, convenios y comparaciones."
+          - "También diseñé un prompt para que cualquiera convierta su contenido en diagramas del kit."
+        en:
+          - "It's my favorite because it's the most used: it's still in use today, by the whole organization, not just communications. It includes templates to diagram routes, timelines, processes, agreements and comparisons."
+          - "I also engineered a prompt so anyone can turn their content into kit diagrams."
+      en_uso: [renobo_aplicacion_01_en-uso.jpg, renobo_aplicacion_02_en-uso.jpg, renobo_aplicacion_03_en-uso.jpg]
+      enlace: { url: /direccion-creativa/renobo/, es: "Ver el caso completo de RenoBo →", en: "See the full RenoBo case →" }
+
+  - id: progresourbano
+    archivos: [progresourbano_kitppt_01_portada.jpg, progresourbano_kitppt_02_agenda.jpg, progresourbano_kitppt_03_separador.jpg, progresourbano_kitppt_04_tarjetas.jpg, progresourbano_kitppt_05_proceso.jpg, progresourbano_kitppt_06_ciclo.jpg, progresourbano_kitppt_07_matriz.jpg, progresourbano_kitppt_08_antes-despues.jpg, progresourbano_kitppt_09_cronograma.jpg, progresourbano_kitppt_10_cifras.jpg]
+    portada: 1
+    anio: 2026
+    cliente: Progreso Urbano Consultores
+    titulo: { es: "Progreso Urbano Consultores", en: "Progreso Urbano Consultores" }
+    porque: { es: "Mi sistema de diseño más ordenado.", en: "My most organized design system." }
+    destacada:
+      rotulo: { es: "Mi sistema de diseño más ordenado", en: "My most organized design system" }
+      texto:
+        es:
+          - "Hecha con un sistema de diseño pensado para web responsive: componentes, estilos y reglas que funcionan igual en una presentación y en una pantalla de celular."
+        en:
+          - "Built with a design system made for responsive web: components, styles and rules that work the same on a slide and on a phone screen."
+      enlace: { url: /direccion-creativa/progresourbano/, es: "Ver el caso completo →", en: "See the full case →" }
 
   - id: herramientainnovacion
     paginas: 35
     portada: 1
+    anio: 2026
+    cliente: Personal
+    titulo:
+      es: "Diseño de una herramienta de innovación pública para la transferencia de conocimiento dentro de RenoBo"
+      en: "Designing a public innovation tool for knowledge transfer inside RenoBo"
+    porque: { es: "Es mi tesis: datos complejos y tablas de investigación.", en: "It's my thesis: complex data and research tables." }
+
+  - id: bimco
+    paginas: 18
+    videos: [6, 7, 9, 10, 11]
+    portada: 15
     anio: 2025
-    cliente: Universidad de los Andes · RenoBo
-    titulo: { es: "Objetos frontera: una herramienta de innovación pública", en: "Boundary objects: a public innovation tool" }
-    porque: { es: "", en: "" }
+    cliente: RenoBo · Carlos Felipe Reyes, gerente general
+    titulo: { es: "H-BIM en proyectos de conservación de patrimonio cultural", en: "H-BIM in cultural heritage conservation projects" }
+    porque: { es: "El concurso BIMCO 2025 tenía plantillas muy estrictas; dentro de esas reglas logré algo muy lindo.", en: "BIMCO 2025 had very strict, unattractive templates; within those rules I made something beautiful." }
+
+  - id: celulainnovacion
+    paginas: 9
+    portada: 2
+    anio: 2025
+    cliente: Personal
+    titulo: { es: "Célula de Innovación: rompiendo silos organizacionales en RenoBo mediante gestión del conocimiento", en: "Innovation Cell: breaking organizational silos at RenoBo through knowledge management" }
+    porque: { es: "Diagramas e ilustración potentes para visualizar datos.", en: "Strong diagrams and illustration for data visualization." }
+
+  - id: calles170
+    paginas: 6
+    portada: 2
+    anio: 2024
+    cliente: Agencia de Renovación del Territorio (ART)
+    titulo: { es: "Informe: 170 calles de vida y paz", en: "Report: 170 streets of life and peace" }
+    porque: { es: "Texto en alto contraste sobre fotografías complejas.", en: "High-contrast type over complex photographs." }
+
+  - id: riosdevida
+    paginas: 7
+    portada: 1
+    anio: 2023
+    cliente: Agencia de Renovación del Territorio (ART)
+    titulo: { es: "Propuesta Ríos de Vida", en: "Ríos de Vida proposal" }
+    porque: { es: "Institucional.", en: "Institutional." }
 
   - id: modulando
     paginas: 31
     portada: 1
     anio: 2021
     cliente: Colectivo Modulando
-    titulo: { es: "Modulando", en: "Modulando" }
-    porque: { es: "", en: "" }
+    titulo: { es: "Oslo Urban Week: cities around the world", en: "Oslo Urban Week: cities around the world" }
+    porque: { es: "Una ponencia compleja en un espacio académico, convertida en imágenes impactantes.", en: "A complex academic talk turned into striking images." }

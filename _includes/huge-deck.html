@@ -1,0 +1,2 @@
+{%- comment -%} Atributos de una presentación de _data/huge.yml, para que huge.js arme sus diapositivas. Uso: {% include huge-deck.html d=d %} {%- endcomment -%}
+data-base="{{ site.media_url }}" data-id="{{ include.d.id }}"{% if include.d.archivos %} data-archivos="{{ include.d.archivos | join: ',' }}"{% else %} data-paginas="{{ include.d.paginas }}"{% endif %}{% if include.d.videos %} data-videos="{{ include.d.videos | join: ',' }}"{% endif %} data-titulo-es="{{ include.d.titulo.es | escape }}" data-titulo-en="{{ include.d.titulo.en | escape }}"
