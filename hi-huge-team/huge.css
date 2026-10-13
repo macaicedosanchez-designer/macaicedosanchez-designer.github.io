@@ -128,3 +128,12 @@ body.visor-abierto { overflow: hidden; }
   .visor-deck .contador { margin-right: auto; }
   .visor-deck .escenario { margin: 0 0 16px; }
 }
+
+/* ── Presentación suelta para compartir (/bogota-urban-renewal/) ── */
+.sola { padding-top: clamp(32px, 5vw, 72px); }
+.sola .meta { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .06em; text-transform: uppercase; color: var(--tenue); }
+.sola .h1 { margin: 10px 0 clamp(20px, 3vw, 36px); }
+.sola .deck { max-width: min(100%, calc((100svh - var(--alto-header) - 290px) * 16 / 9)); }
+.sola .ayuda { margin-top: 14px; color: var(--tenue); font-size: 14px; }
+.sola .credito { margin-top: 6px; font-size: 14px; }
+@media (hover: none) { .sola .deck .btn { opacity: 1; } }

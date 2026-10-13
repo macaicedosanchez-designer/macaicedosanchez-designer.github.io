@@ -1,0 +1,44 @@
+---
+# ─────────────────────────────────────────────────────────────
+# PRESENTACIÓN SUELTA PARA COMPARTIR: Bogotá's approach to urban renewal
+# Link público: /bogota-urban-renewal/ (no aparece en menús, sitemap ni Google).
+# Usa el mismo visor de la página Huge; los datos salen de _data/huge.yml (id: renobopr).
+# ─────────────────────────────────────────────────────────────
+layout: base
+permalink: /bogota-urban-renewal/
+clase: huge presentacion-sola
+idioma: en
+noindex: true
+sitemap: false
+ver_portafolio: true
+titulo_es: "Bogotá's approach to urban renewal | Martín Caicedo Sánchez"
+titulo_en: "Bogotá's approach to urban renewal | Martín Caicedo Sánchez"
+descripcion_es: "Presentación para la Puerto Rico Builders Association: cómo Bogotá renueva la ciudad, de la planeación a la ejecución. Diseño de Martín Caicedo Sánchez."
+imagen: renobopr_deck_01_pagina.jpg
+css: [/hi-huge-team/huge.css]
+js: [/hi-huge-team/huge.js]
+---
+{%- assign d = site.data.huge.decks | where: "id", "renobopr" | first -%}
+
+<section class="marco sola">
+  <p class="meta">RenoBo · Puerto Rico Builders Association · {{ d.anio }}</p>
+  <h1 class="h1">{{ d.titulo.en }}</h1>
+  <div class="deck" {% include huge-deck.html d=d %} aria-roledescription="presentation" aria-label="{{ d.titulo.en | escape }}"></div>
+  <p class="ayuda"><span lang="es">Usa las flechas o desliza para pasar las diapositivas. ⛶ para verla en grande.</span><span lang="en">Use the arrows or swipe to move through the slides. ⛶ to view it large.</span></p>
+  <p class="credito"><span lang="es">Diseño de la presentación: Martín Caicedo Sánchez.</span><span lang="en">Presentation design: Martín Caicedo Sánchez.</span></p>
+</section>
+
+<!-- Visor a pantalla completa (lo controla huge.js) -->
+<div class="visor-deck" role="dialog" aria-modal="true" aria-label="Presentation" hidden>
+  <div class="barra">
+    <p class="nombre"></p>
+    <div class="mandos">
+      <span class="contador"></span>
+      <button type="button" class="btn v-prev" aria-label="Anterior / Previous">←</button>
+      <button type="button" class="btn v-next" aria-label="Siguiente / Next">→</button>
+      <button type="button" class="btn v-grande" aria-label="Pantalla completa / Fullscreen">⛶</button>
+      <button type="button" class="btn v-cerrar" aria-label="Cerrar / Close">✕</button>
+    </div>
+  </div>
+  <div class="escenario"></div>
+</div>
