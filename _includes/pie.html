@@ -8,9 +8,16 @@
       <p class="cargo"><span lang="es">Creador de soluciones digitales</span><span lang="en">Digital solutions maker</span></p>
       </div>
     </div>
+    {%- if page.ver_portafolio %}
+    <div class="pie-acciones">
+      <a class="btn-pildora claro" href="/" data-evento="ver-portafolio"><span lang="es">Ver portafolio</span><span lang="en">See portfolio</span></a>
+      <a class="btn-pildora" href="mailto:{{ site.email }}" data-evento="hablemos"><span lang="es">Hablemos</span><span lang="en">Let's talk</span></a>
+    </div>
+    {%- else %}
     <a class="btn-pildora" href="mailto:{{ site.email }}" data-evento="hablemos">
       <span lang="es">Hablemos</span><span lang="en">Let's talk</span>
     </a>
+    {%- endif %}
     <ul class="redes">
       <li><a href="{{ site.data.links.linkedin }}" target="_blank" rel="noopener" data-evento="linkedin">LinkedIn</a></li>
       <li><a href="{{ site.data.links.behance }}" target="_blank" rel="noopener" data-evento="behance">Behance</a></li>

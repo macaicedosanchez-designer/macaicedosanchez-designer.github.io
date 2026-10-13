@@ -13,7 +13,8 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="{{ site.media_url }}/{{ page.imagen | default: 'home_portada_01_ilustracion-01.png' }}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="{{ page.url | absolute_url }}">
+{% if page.noindex %}<meta name="robots" content="noindex, nofollow">
+{% endif %}<link rel="canonical" href="{{ page.url | absolute_url }}">
 <link rel="alternate" hreflang="es" href="{{ page.url | absolute_url }}">
 <link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}?lang=en">
 

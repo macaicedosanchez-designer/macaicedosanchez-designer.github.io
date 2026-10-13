@@ -1,0 +1,59 @@
+# ─────────────────────────────────────────────────────────────
+# PÁGINA ESPECIAL HUGE (/hi-huge-team/)
+#
+# Galería: cada bloque es una presentación. La página arma sola
+# la tarjeta y el visor.
+#   id        prefijo de las imágenes en el repositorio media: <id>_deck_NN_pagina.jpg
+#   paginas   cuántas páginas tiene (NN va de 01 a este número)
+#   portada   número de la página que se usa como imagen de la tarjeta
+#   titulo / cliente / anio / porque   textos de la tarjeta (porque es opcional)
+# ─────────────────────────────────────────────────────────────
+
+galeria:
+  - id: bimco
+    paginas: 18
+    portada: 1
+    anio: 2024
+    cliente: RenoBo
+    titulo: { es: "H-BIM en proyectos de conservación de patrimonio", en: "H-BIM in heritage conservation projects" }
+    porque: { es: "", en: "" }
+
+  - id: riosdevida
+    paginas: 7
+    portada: 1
+    anio: 2024
+    cliente: ART
+    titulo: { es: "Ríos de Vida", en: "Rivers of Life" }
+    porque: { es: "", en: "" }
+
+  - id: calles170
+    paginas: 6
+    portada: 1
+    anio: 2024
+    cliente: ART
+    titulo: { es: "170 calles de vida y paz", en: "170 streets of life and peace" }
+    porque: { es: "", en: "" }
+
+  - id: celulainnovacion
+    paginas: 9
+    portada: 1
+    anio: 2025
+    cliente: Universidad de los Andes · RenoBo
+    titulo: { es: "Célula de Innovación", en: "Innovation Cell" }
+    porque: { es: "", en: "" }
+
+  - id: herramientainnovacion
+    paginas: 35
+    portada: 1
+    anio: 2025
+    cliente: Universidad de los Andes · RenoBo
+    titulo: { es: "Objetos frontera: una herramienta de innovación pública", en: "Boundary objects: a public innovation tool" }
+    porque: { es: "", en: "" }
+
+  - id: modulando
+    paginas: 31
+    portada: 1
+    anio: 2021
+    cliente: Colectivo Modulando
+    titulo: { es: "Modulando", en: "Modulando" }
+    porque: { es: "", en: "" }

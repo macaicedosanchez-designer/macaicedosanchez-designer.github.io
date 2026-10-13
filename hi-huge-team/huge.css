@@ -1,0 +1,106 @@
+/* ═══════════════════════════════════════════════════════════════
+   PÁGINA HUGE: saludo azul, tres destacadas (diapositivas + nota),
+   galería de tarjetas y visor oscuro. Usa los tokens de siempre.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1 · Saludo: bloque azul que sube detrás de la banda superior ── */
+.huge-saludo {
+  --tinta: var(--claro); --tenue: color-mix(in srgb, var(--claro) 78%, transparent);
+  background: var(--ultramar); color: var(--tinta);
+  margin-top: calc(var(--alto-header) * -1); padding-top: var(--alto-header);
+  overflow: hidden;
+}
+.huge-saludo .marco {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center;
+  gap: clamp(24px, 4vw, 72px); min-height: min(92svh, 980px);
+  padding-top: clamp(32px, 5vw, 72px); padding-bottom: clamp(48px, 6vw, 96px);
+}
+.huge-saludo .saludo { font-weight: 600; font-size: clamp(56px, 9vw, 148px); letter-spacing: -.055em; line-height: .92; text-wrap: balance; }
+.huge-saludo .bajada { margin-top: clamp(18px, 2vw, 28px); max-width: 44ch; font-size: clamp(18px, 1.45vw, 22px); line-height: 1.5; color: var(--tenue); text-wrap: pretty; }
+.huge-saludo .bajada + .bajada { margin-top: 12px; }
+.huge-saludo .btn-pildora { margin-top: clamp(24px, 2.6vw, 40px); }
+/* Mientras la banda superior está sobre el azul, se vuelve azul también (huge.js pone la clase) */
+body.sobre-azul .banda-superior { background: var(--ultramar); border-bottom-color: transparent; --tinta: var(--claro); --papel: var(--ultramar); --linea: color-mix(in srgb, var(--claro) 45%, transparent); color: var(--claro); }
+body.sobre-azul .banda-superior .nombre { color: var(--claro); }
+.banda-superior { transition: background-color .3s ease, border-color .3s ease; }
+
+/* La ilustración se funde con el azul: sin bordes ni esquinas */
+.huge-saludo .ilustracion {
+  width: 100%; aspect-ratio: 1; object-fit: cover;
+  -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+          mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .huge-saludo .entra { animation: entrar .9s var(--curva) backwards; }
+  .huge-saludo .bajada.entra { animation-delay: .08s; }
+  .huge-saludo .bajada + .bajada.entra { animation-delay: .14s; }
+  .huge-saludo .btn-pildora.entra { animation-delay: .2s; }
+  .huge-saludo .ilustracion.entra { animation-delay: .1s; }
+  @keyframes entrar { from { opacity: 0; transform: translateY(14px); } }
+}
+
+/* ── 2 · Destacadas: diapositivas grandes a la izquierda, nota a la derecha ── */
+.huge-destacadas { display: flex; flex-direction: column; gap: clamp(88px, 10vw, 160px); padding-top: clamp(72px, 9vw, 144px); }
+.destacada { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(24px, 3.4vw, 56px); align-items: start; }
+.destacada .nota { position: sticky; top: calc(var(--alto-header) + 24px); }
+.destacada .meta { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .06em; text-transform: uppercase; color: var(--tenue); }
+.destacada .h2 { margin-top: 10px; }
+.destacada .rotulo { display: inline-block; margin-top: 14px; padding: 6px 12px; border-radius: var(--pildora); background: var(--ultramar); color: var(--claro); font-weight: 600; font-size: 14px; }
+.destacada .cuerpo { margin-top: 18px; }
+.destacada .cuerpo p + p { margin-top: 12px; }
+.destacada .tenue { color: var(--tenue); font-size: 14px; }
+.destacada .en-uso { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px; }
+.destacada .en-uso img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; background: var(--cemento); }
+.destacada .enlace { display: inline-block; margin-top: 18px; font-weight: 600; color: var(--acento-texto); text-decoration: none; }
+.destacada .enlace:hover { text-decoration: underline; text-underline-offset: .2em; }
+.destacada .pendiente { aspect-ratio: 16 / 9; display: grid; place-items: center; border-radius: var(--radio); border: var(--regla) dashed var(--linea); background: var(--banda); color: var(--tenue); font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .06em; text-transform: uppercase; }
+
+/* ── 3 · Galería ── */
+.huge-galeria { padding-top: clamp(96px, 11vw, 176px); }
+.huge-galeria .h2 { margin-bottom: clamp(24px, 3vw, 44px); }
+.huge-galeria .grilla { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 3.4vw, 56px) clamp(16px, 2vw, 32px); }
+.tarjeta { all: unset; box-sizing: border-box; display: flex; flex-direction: column; gap: 6px; width: 100%; cursor: pointer; color: var(--tinta); }
+.tarjeta .imagen { display: block; overflow: hidden; aspect-ratio: 16 / 9; margin-bottom: 10px; border-radius: var(--radio); background: var(--cemento); }
+.tarjeta .imagen img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--curva); }
+.tarjeta:hover .imagen img, .tarjeta:focus-visible .imagen img { transform: scale(1.04); }
+.tarjeta:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 6px; border-radius: var(--radio); }
+.tarjeta .titulo { font-weight: 600; font-size: var(--t-h3); letter-spacing: -.02em; line-height: 1.2; text-wrap: balance; }
+.tarjeta .datos { color: var(--tenue); font-size: 14px; font-variant-numeric: tabular-nums; }
+.tarjeta .porque { color: var(--tenue); line-height: 1.5; text-wrap: pretty; }
+
+/* ── Visor oscuro de la galería ── */
+.visor-deck { position: fixed; inset: 0; z-index: 200; display: grid; grid-template-rows: auto minmax(0, 1fr); grid-template-columns: minmax(0, 1fr); background: #0A0A0C; color: var(--claro); }
+.visor-deck[hidden] { display: none; }
+.visor-deck .barra { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px var(--pad); }
+.visor-deck .nombre { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.visor-deck .mandos { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.visor-deck .contador { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; margin-right: 8px; font-variant-numeric: tabular-nums; }
+.visor-deck .btn { background: transparent; color: var(--claro); border-color: color-mix(in srgb, var(--claro) 50%, transparent); min-width: 44px; min-height: 44px; }
+.visor-deck .btn:hover { background: var(--claro); color: var(--oscuro); }
+.visor-deck .lamina { display: grid; place-items: center; min-height: 0; padding: 0 var(--pad) clamp(16px, 3vw, 40px); cursor: pointer; }
+.visor-deck .lamina img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; user-select: none; -webkit-user-drag: none; }
+.visor-deck:fullscreen .lamina { padding: 0; }
+.visor-deck:fullscreen .lamina img { border-radius: 0; }
+body.visor-abierto { overflow: hidden; }
+
+/* ── Pie: dos botones ── */
+.pie-acciones { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ── Tableta y celular: una columna; en las destacadas el texto va después ── */
+@media (max-width: 960px) {
+  .huge-galeria .grilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .huge-saludo .marco { grid-template-columns: 1fr; min-height: 0; }
+  .huge-saludo .ilustracion { max-width: 420px; justify-self: center; }
+  .destacada { grid-template-columns: 1fr; }
+  .destacada .nota { position: static; }
+}
+@media (max-width: 560px) {
+  .huge-galeria .grilla { grid-template-columns: 1fr; }
+  .visor-deck .barra { flex-wrap: wrap; row-gap: 8px; }
+  .visor-deck .nombre { flex: 1 1 100%; white-space: normal; }
+  .visor-deck .mandos { width: 100%; gap: 4px; }
+  .visor-deck .contador { margin-right: auto; }
+}

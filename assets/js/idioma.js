@@ -11,7 +11,7 @@
     var url = new URLSearchParams(location.search).get('lang');
     if (url === 'es' || url === 'en') return url;
     try { var g = localStorage.getItem('idioma'); if (g === 'es' || g === 'en') return g; } catch (e) {}
-    return 'es';
+    return html.getAttribute('data-defecto') || 'es';
   }
 
   function aplicar(idioma, guardar) {
