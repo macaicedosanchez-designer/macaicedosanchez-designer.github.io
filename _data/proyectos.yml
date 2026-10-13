@@ -20,6 +20,23 @@
 #   publicado   true = se muestra; false = queda oculto mientras lo terminas
 # ─────────────────────────────────────────────────────────────
 
+- id: progresourbano
+  url: /direccion-creativa/progresourbano/
+  area: direccion-creativa
+  secundarias: [productos-servicios]
+  anio: 2026
+  banco: progresourbano_banco_01_cuadrada.webp
+  publicado: true
+  titulo:
+    es: Identidad de Progreso Urbano Consultores
+    en: Progreso Urbano Consultores Identity
+  linea:
+    es: Identidad, sistema gráfico y plantillas para una consultora de derecho urbano.
+    en: Identity, graphic system and templates for an urban-law consultancy.
+  etiquetas:
+    es: [Identidad visual, Sistemas gráficos, Manual de marca, Design system, Diseño de plantillas, Prompts para IA, Figma, PowerPoint, Claude Code]
+    en: [Visual identity, Graphic systems, Brand manual, Design system, Template design, AI prompts, Figma, PowerPoint, Claude Code]
+
 - id: renobo
   url: /direccion-creativa/renobo/
   area: direccion-creativa
