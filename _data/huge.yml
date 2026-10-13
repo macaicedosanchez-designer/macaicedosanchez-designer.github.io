@@ -51,7 +51,7 @@ decks:
       enlace: { url: /direccion-creativa/renobo/, es: "Ver el caso completo de RenoBo →", en: "See the full RenoBo case →" }
 
   - id: progresourbano
-    archivos: [progresourbano_kitppt_01_portada.jpg, progresourbano_kitppt_02_agenda.jpg, progresourbano_kitppt_03_separador.jpg, progresourbano_kitppt_04_tarjetas.jpg, progresourbano_kitppt_05_proceso.jpg, progresourbano_kitppt_06_ciclo.jpg, progresourbano_kitppt_07_matriz.jpg, progresourbano_kitppt_08_antes-despues.jpg, progresourbano_kitppt_09_cronograma.jpg, progresourbano_kitppt_10_cifras.jpg]
+    archivos: [progresourbano_sistema_01_web-y-apps.jpg, progresourbano_sistema_02_app-movil.jpg, progresourbano_kitppt_01_portada.jpg, progresourbano_kitppt_02_agenda.jpg, progresourbano_kitppt_03_separador.jpg, progresourbano_kitppt_04_tarjetas.jpg, progresourbano_kitppt_05_proceso.jpg, progresourbano_kitppt_06_ciclo.jpg, progresourbano_kitppt_07_matriz.jpg, progresourbano_kitppt_08_antes-despues.jpg, progresourbano_kitppt_09_cronograma.jpg, progresourbano_kitppt_10_cifras.jpg]
     portada: 1
     anio: 2026
     cliente: Progreso Urbano Consultores
