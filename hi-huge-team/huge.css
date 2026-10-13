@@ -73,7 +73,10 @@ body.sobre-azul .banda-superior .nombre { color: var(--claro); }
 .destacada .cuerpo { margin-top: 18px; }
 .destacada .cuerpo p + p { margin-top: 12px; }
 .destacada .en-uso { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 20px; }
-.destacada .en-uso img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; background: var(--cemento); }
+.en-uso-foto { all: unset; display: block; overflow: hidden; border-radius: 10px; cursor: zoom-in; }
+.en-uso-foto:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 3px; }
+.destacada .en-uso img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--cemento); transition: transform .5s var(--curva); }
+.en-uso-foto:hover img, .en-uso-foto:focus-visible img { transform: scale(1.06); }
 .destacada .enlace { display: inline-block; margin-top: 18px; font-weight: 600; color: var(--acento-texto); text-decoration: none; }
 .destacada .enlace:hover { text-decoration: underline; text-underline-offset: .2em; }
 

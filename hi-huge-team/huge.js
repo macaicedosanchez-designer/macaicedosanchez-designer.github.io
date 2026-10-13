@@ -151,7 +151,14 @@
     } else e.cargar(lista, 0);
   });
 
-  // ── 5 · Galería ──
+  // ── 5 · Fotos "en uso" de las destacadas: cada una abre el visor en esa foto ──
+  document.querySelectorAll('.en-uso').forEach(function (g) {
+    g.querySelectorAll('.en-uso-foto').forEach(function (b, k) {
+      b.addEventListener('click', function () { abrirVisor(g, k, b); });
+    });
+  });
+
+  // ── 6 · Galería ──
   document.querySelectorAll('.huge-galeria .tarjeta').forEach(function (t) {
     t.addEventListener('click', function () { abrirVisor(t, 0, t); });
   });

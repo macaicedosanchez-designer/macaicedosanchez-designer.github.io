@@ -54,8 +54,9 @@ js: [/hi-huge-team/huge.js]
         {%- for p in d.destacada.texto.en %}<p lang="en">{{ p }}</p>{% endfor %}
       </div>
       {%- if d.destacada.en_uso %}
-      <div class="en-uso">
-        {%- for f in d.destacada.en_uso %}<img src="{{ m }}/{{ f }}" alt="" loading="lazy">{% endfor %}
+      <!-- Fotos en uso: clic = se abren en el visor oscuro -->
+      <div class="en-uso" data-base="{{ m }}" data-archivos="{{ d.destacada.en_uso | join: ',' }}" data-titulo-es="{{ d.titulo.es | escape }} · En uso" data-titulo-en="{{ d.titulo.en | escape }} · In use">
+        {%- for f in d.destacada.en_uso %}<button type="button" class="en-uso-foto" aria-label="Ampliar foto {{ forloop.index }} / Enlarge photo {{ forloop.index }}"><img src="{{ m }}/{{ f }}" alt="" loading="lazy"></button>{% endfor %}
       </div>
       {%- endif %}
       {%- if d.destacada.enlace %}
