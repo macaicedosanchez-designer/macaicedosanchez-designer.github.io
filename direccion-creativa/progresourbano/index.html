@@ -1,9 +1,9 @@
 ---
 # ─────────────────────────────────────────────────────────────
 # CASO 6, PROGRESO URBANO
-# Estructura simple: 1 versión final (la marca funcionando) · 2 contenido (ficha, reto, sistema, cierre).
-# Sin pestañas, carruseles ni botones: todo se ve de corrido.
-# Textos: busca los <span lang="es"> / <span lang="en">. Imágenes: nombres del repositorio media.
+# Página de marca, casi sin texto: el brandbook de corrido.
+# Cada lámina va a todo el ancho con un rótulo corto; al final aplicaciones y kit PPT.
+# Rótulos: busca los <span lang="es"> / <span lang="en">. Imágenes: nombres del repositorio media.
 # ─────────────────────────────────────────────────────────────
 layout: caso
 proyecto: progresourbano
@@ -15,119 +15,42 @@ imagen: progresourbano_portada_01_portada-manual.jpg
 ---
 {%- assign m = site.media_url -%}
 
-<!-- CABECERA: imagen a todo el ancho con velo negro (multiplicar) y el texto abajo. -->
+<!-- CABECERA: solo el nombre de la marca sobre la portada del manual. -->
 <header class="caso-hero">
   <img src="{{ m }}/progresourbano_portada_01_portada-manual.jpg" alt="" style="--pos: 30% 50%" fetchpriority="high">
   <div class="marco">
-    <p class="meta"><span lang="es">Dirección Creativa · 2026</span><span lang="en">Creative Direction · 2026</span></p>
-    <h1 class="h1"><span lang="es">Identidad de Progreso Urbano Consultores</span><span lang="en">Progreso Urbano Consultores Identity</span></h1>
-    <p class="bajada"><span lang="es">Diseñé el sistema gráfico de una consultora de derecho urbano en Bogotá. El logo no podía cambiar y la paleta inicial se parecía demasiado a la de una constructora.</span><span lang="en">I designed the graphic system for an urban-law consultancy in Bogotá. The logo had to stay, and the first palette looked too much like a well-known builder's.</span></p>
+    <p class="meta"><span lang="es">Identidad de marca · 2026</span><span lang="en">Brand identity · 2026</span></p>
+    <h1 class="h1">Progreso Urbano Consultores</h1>
   </div>
 </header>
 
-<!-- 1 · VERSIÓN FINAL: el sistema terminado. -->
-<section class="marco caso-final" aria-label="Versión final">
-  <div class="banda" data-bloque="banda">
-    <div class="banda-ventana">
-      <div class="banda-pista">
-        <figure><img src="{{ m }}/progresourbano_destacada_01_versiones-logo.jpg" alt=""><figcaption><span lang="es">Versiones del logo</span><span lang="en">Logo versions</span></figcaption></figure>
-        <figure><img src="{{ m }}/progresourbano_destacada_02_degradados.jpg" alt="" loading="lazy"><figcaption><span lang="es">Degradados</span><span lang="en">Gradients</span></figcaption></figure>
-        <figure><img src="{{ m }}/progresourbano_destacada_03_usos-digitales.jpg" alt="" loading="lazy"><figcaption><span lang="es">Usos digitales</span><span lang="en">Digital uses</span></figcaption></figure>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- 2 · CONTENIDO -->
+<!-- BRANDBOOK: una lámina por fila, de corrido. -->
 <div class="marco caso-contenido">
-
-  <section class="caso-bloque caso-datos">
-    <dl class="ficha">
-      <dt><span lang="es">Cliente</span><span lang="en">Client</span></dt><dd><span lang="es">Progreso Urbano Consultores, consultoría jurídica y técnica en derecho urbano</span><span lang="en">Progreso Urbano Consultores, legal and technical urban-law consultancy</span></dd>
-      <dt><span lang="es">Año</span><span lang="en">Year</span></dt><dd>2026</dd>
-      <dt><span lang="es">Herramientas</span><span lang="en">Tools</span></dt><dd>Figma, PowerPoint, Claude Code</dd>
-    </dl>
+  <section class="caso-bloque caso-imagenes uno" aria-label="Brandbook">
+    <figure><img src="{{ m }}/progresourbano_manual_01_concepto-logo.jpg" alt=""><figcaption>01 · <span lang="es">Concepto del logo</span><span lang="en">Logo concept</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_manual_02_construccion.jpg" alt="" loading="lazy"><figcaption>02 · <span lang="es">Construcción</span><span lang="en">Construction</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_destacada_01_versiones-logo.jpg" alt="" loading="lazy"><figcaption>03 · <span lang="es">Versiones</span><span lang="en">Versions</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_manual_03_colores.jpg" alt="" loading="lazy"><figcaption>04 · <span lang="es">Color</span><span lang="en">Color</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_destacada_02_degradados.jpg" alt="" loading="lazy"><figcaption>05 · <span lang="es">Degradados</span><span lang="en">Gradients</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_manual_04_tipografia.jpg" alt="" loading="lazy"><figcaption>06 · <span lang="es">Tipografía</span><span lang="en">Typography</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_manual_05_geometria.jpg" alt="" loading="lazy"><figcaption>07 · <span lang="es">Geometría</span><span lang="en">Geometry</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_manual_06_elementos-graficos.jpg" alt="" loading="lazy"><figcaption>08 · <span lang="es">Elementos gráficos</span><span lang="en">Graphic elements</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_manual_07_fotografia.jpg" alt="" loading="lazy"><figcaption>09 · <span lang="es">Fotografía</span><span lang="en">Photography</span></figcaption></figure>
+    <figure><img src="{{ m }}/progresourbano_destacada_03_usos-digitales.jpg" alt="" loading="lazy"><figcaption>10 · <span lang="es">Usos digitales</span><span lang="en">Digital uses</span></figcaption></figure>
   </section>
 
   <section class="caso-bloque">
-    <h2 class="h2"><span lang="es">El reto</span><span lang="en">The challenge</span></h2>
-    <div class="cuerpo">
-      <div lang="es">
-        <p>Progreso Urbano Consultores da soporte jurídico y técnico en derecho urbano en Bogotá: propiedad horizontal, licencias urbanísticas, adquisición de suelo, asuntos inmobiliarios y capacitación. Su directora, Claudia Niño, acumula más de 40 años en el sector, con clientes públicos y privados.</p>
-        <p>El reto era crear una plataforma digital para una consultora ya establecida: fortalecer su trabajo y el flujo con su comunidad y sus clientes, y dejar la plataforma y su lenguaje listos para desarrollar productos sobre ella más adelante.</p>
-        <p>La firma ya tenía un logo, la ligadura PU, y le gustaba. El problema era el resto: la primera paleta, amarillo con casi negro y la tipografía Montserrat, era casi idéntica a la de una constructora muy conocida en Colombia. Para una consultora jurídica, parecerse a una constructora resta autoridad.</p>
-        <p>Había reglas fijas. El logo y su construcción no se tocaban, las fotos tenían que ser de Bogotá y nunca de iglesias o catedrales, y cada imagen debía tener una licencia libre.</p>
-        <p><strong>Objetivo.</strong> Un sistema de marca que hablara de progreso, movimiento, futuro y energía, con la seriedad de una firma jurídica, distinto de la constructora y preparado para crecer en digital.</p>
-      </div>
-      <div lang="en">
-        <p>Progreso Urbano Consultores provides legal and technical support in urban law in Bogotá: condominium law, building permits, land acquisition, real estate and training. Its director, Claudia Niño, has more than 40 years in the field, working with public and private clients.</p>
-        <p>The challenge was to build a digital platform for an established consultancy: strengthen its work and its flow with its community and clients, and leave the platform and its language ready to build products on later.</p>
-        <p>The firm already had a logo, a PU ligature, and liked it. The problem was everything else: the first palette, yellow with near-black and the Montserrat typeface, was almost identical to that of a well-known Colombian builder. For a law consultancy, looking like a construction company costs authority.</p>
-        <p>Some rules were fixed. The logo and its construction stayed, photos had to show Bogotá and never churches or cathedrals, and every image needed a free license.</p>
-        <p><strong>Goal.</strong> A brand system that speaks of progress, movement, the future and energy, keeps the seriousness of a law firm, stands apart from the builder and is ready to grow online.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="caso-bloque">
-    <h2 class="h2"><span lang="es">El sistema</span><span lang="en">The system</span></h2>
-    <div class="etapas tres">
-      <div><p class="n"><span lang="es">Paso 1</span><span lang="en">Step 1</span></p><h3><span lang="es">Referentes</span><span lang="en">References</span></h3><p><span lang="es">Leí los referentes del cliente y la marca de la constructora.</span><span lang="en">I studied the client's references and the builder's brand.</span></p></div>
-      <div><p class="n"><span lang="es">Paso 2</span><span lang="en">Step 2</span></p><h3><span lang="es">Color</span><span lang="en">Color</span></h3><p><span lang="es">Definí petróleo, agua y amarillo limón, con sus degradados.</span><span lang="en">I defined petrol, water and lemon yellow, with their gradients.</span></p></div>
-      <div><p class="n"><span lang="es">Paso 3</span><span lang="en">Step 3</span></p><h3><span lang="es">Tipografía</span><span lang="en">Type</span></h3><p><span lang="es">Cambié Montserrat por Urbanist, Google Sans Flex y DM Mono.</span><span lang="en">I replaced Montserrat with Urbanist, Google Sans Flex and DM Mono.</span></p></div>
-      <div><p class="n"><span lang="es">Paso 4</span><span lang="en">Step 4</span></p><h3><span lang="es">Aplicaciones</span><span lang="en">Applications</span></h3><p><span lang="es">Rediseñé los banners de LinkedIn y la página de inicio.</span><span lang="en">I redesigned the LinkedIn banners and the home page.</span></p></div>
-      <div><p class="n"><span lang="es">Paso 5</span><span lang="en">Step 5</span></p><h3><span lang="es">Geometría y fotografía</span><span lang="en">Geometry and photography</span></h3><p><span lang="es">Creé formas, patrones y el duotono para las fotos.</span><span lang="en">I created shapes, patterns and the photo duotone.</span></p></div>
-      <div><p class="n"><span lang="es">Paso 6</span><span lang="en">Step 6</span></p><h3><span lang="es">Design system</span><span lang="en">Design system</span></h3><p><span lang="es">Ordené tokens, estilos y componentes en Figma.</span><span lang="en">I organized tokens, styles and components in Figma.</span></p></div>
-      <div><p class="n"><span lang="es">Paso 7</span><span lang="en">Step 7</span></p><h3><span lang="es">Plantillas</span><span lang="en">Templates</span></h3><p><span lang="es">Entregué el kit de PowerPoint y un prompt para IA.</span><span lang="en">I delivered the PowerPoint kit and an AI prompt.</span></p></div>
-    </div>
-    <div class="cuerpo">
-      <div lang="es">
-        <p>Cambié la pareja amarillo y negro por petróleo, agua y un amarillo limón más frío. El amarillo nunca pasa directo al petróleo en un degradado, siempre a través del agua, para que no aparezca un tono oliva.</p>
-        <p>Reemplacé Montserrat por Urbanist, que comparte la geometría circular de la U y la P, y elegí tres fuentes gratuitas que funcionan en Office. Toda la geometría nueva sale del módulo de 28 px del logo, y las fotos de Bogotá van en duotono tinta y agua para que se vean sobrias y siempre de la marca.</p>
-      </div>
-      <div lang="en">
-        <p>I replaced the yellow-and-black pair with petrol, water and a cooler lemon yellow. Yellow never runs straight into petrol in a gradient, always through water, so no olive tone appears.</p>
-        <p>I swapped Montserrat for Urbanist, which shares the circular geometry of the U and P, and chose three free typefaces that work in Office. All new geometry comes from the logo's 28 px module, and Bogotá photos use a two-tone ink and water treatment so they look restrained and always on-brand.</p>
-      </div>
-    </div>
-
-    <h3 class="h3"><span lang="es">Del primer intento al sistema</span><span lang="en">From first attempt to system</span></h3>
+    <h2 class="h2"><span lang="es">Aplicaciones</span><span lang="en">Applications</span></h2>
     <div class="caso-imagenes">
-      <figure><img src="{{ m }}/progresourbano_proceso_01_paleta-inicial.jpg" alt="" loading="lazy"><figcaption><span lang="es">Paleta inicial</span><span lang="en">First palette</span></figcaption></figure>
-      <figure><img src="{{ m }}/progresourbano_proceso_02_tipografia-propuestas.jpg" alt="" loading="lazy"><figcaption><span lang="es">Tres direcciones tipográficas</span><span lang="en">Three type directions</span></figcaption></figure>
+      <figure><img src="{{ m }}/progresourbano_aplicacion_01_banners-linkedin.jpg" alt="" loading="lazy"><figcaption><span lang="es">Banners de LinkedIn</span><span lang="en">LinkedIn banners</span></figcaption></figure>
+      <figure><img src="{{ m }}/progresourbano_aplicacion_02_impresos.jpg" alt="" loading="lazy"><figcaption><span lang="es">Impresos</span><span lang="en">Print</span></figcaption></figure>
+      <figure><img src="{{ m }}/progresourbano_aplicacion_03_membrete-word.jpg" alt="" loading="lazy"><figcaption><span lang="es">Membrete</span><span lang="en">Letterhead</span></figcaption></figure>
+      <figure><img src="{{ m }}/progresourbano_aplicacion_04_sitio-web.jpg" alt="" loading="lazy"><figcaption><span lang="es">Sitio web</span><span lang="en">Website</span></figcaption></figure>
     </div>
+  </section>
 
-    <h3 class="h3"><span lang="es">Manual</span><span lang="en">Manual</span></h3>
-    <div class="cuerpo">
-      <div lang="es"><p>El manual explica cada regla con un ejemplo: construcción del logo, colores con su proporción de uso, tipografía, geometría, elementos gráficos y fotografía.</p></div>
-      <div lang="en"><p>The manual explains each rule with an example: logo construction, colors with their share of use, type, geometry, graphic elements and photography.</p></div>
-    </div>
-    <!-- Manual como presentación: una página a la vez (clic, flechas, teclado o deslizar). -->
-    <div class="diapositivas" data-bloque="diapositivas" aria-label="Manual de marca">
-      <div class="diapo-escena">
-        <figure class="diapo"><img src="{{ m }}/progresourbano_manual_01_concepto-logo.jpg" alt="" loading="lazy"></figure>
-        <figure class="diapo"><img data-src="{{ m }}/progresourbano_manual_02_construccion.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/progresourbano_manual_03_colores.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/progresourbano_manual_04_tipografia.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/progresourbano_manual_05_geometria.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/progresourbano_manual_06_elementos-graficos.jpg" alt=""></figure>
-        <figure class="diapo"><img data-src="{{ m }}/progresourbano_manual_07_fotografia.jpg" alt=""></figure>
-      </div>
-    </div>
-
-    <h3 class="h3"><span lang="es">Kit PPT</span><span lang="en">PPT Kit</span></h3>
-    <div class="cuerpo">
-      <div lang="es">
-        <p>Diseñé una plantilla de PowerPoint de 36 diapositivas para que cualquier persona de la firma presente sin ayuda: portadas, separadores, diagramas, líneas de tiempo, cronogramas por semanas, cifras y tablas. Va con las fuentes incrustadas y un instructivo de instalación.</p>
-        <p>También escribí un prompt que el cliente puede pegar en la IA que use para crear presentaciones con las reglas de la marca, sin inventar datos.</p>
-      </div>
-      <div lang="en">
-        <p>I designed a 36-slide PowerPoint template so anyone at the firm can present on their own: covers, dividers, diagrams, timelines, weekly schedules, figures and tables. It ships with embedded fonts and installation instructions.</p>
-        <p>I also wrote a prompt the client can paste into any AI tool to build presentations that follow the brand rules, without making up data.</p>
-      </div>
-    </div>
-    <!-- Kit PPT como presentación, igual que el manual. -->
+  <section class="caso-bloque">
+    <h2 class="h2"><span lang="es">Kit PPT</span><span lang="en">PPT Kit</span></h2>
     <div class="diapositivas" data-bloque="diapositivas" aria-label="Kit PPT">
       <div class="diapo-escena">
         <figure class="diapo"><img src="{{ m }}/progresourbano_kitppt_01_portada.jpg" alt="" loading="lazy"></figure>
@@ -140,36 +63,6 @@ imagen: progresourbano_portada_01_portada-manual.jpg
         <figure class="diapo"><img data-src="{{ m }}/progresourbano_kitppt_08_antes-despues.jpg" alt=""></figure>
         <figure class="diapo"><img data-src="{{ m }}/progresourbano_kitppt_09_cronograma.jpg" alt=""></figure>
         <figure class="diapo"><img data-src="{{ m }}/progresourbano_kitppt_10_cifras.jpg" alt=""></figure>
-      </div>
-    </div>
-
-    <h3 class="h3"><span lang="es">Aplicaciones</span><span lang="en">Applications</span></h3>
-    <div class="cuerpo">
-      <div lang="es"><p>Apliqué el sistema a los banners de LinkedIn, a piezas impresas, al membrete de Word y a la página de inicio del sitio web.</p></div>
-      <div lang="en"><p>I applied the system to LinkedIn banners, print pieces, the Word letterhead and the website home page.</p></div>
-    </div>
-    <div class="banda tira-media" data-bloque="banda">
-    <div class="banda-ventana">
-      <div class="banda-pista">
-        <figure><img src="{{ m }}/progresourbano_aplicacion_01_banners-linkedin.jpg" alt="" loading="lazy"><figcaption>01</figcaption></figure>
-        <figure><img src="{{ m }}/progresourbano_aplicacion_02_impresos.jpg" alt="" loading="lazy"><figcaption>02</figcaption></figure>
-        <figure><img src="{{ m }}/progresourbano_aplicacion_03_membrete-word.jpg" alt="" loading="lazy"><figcaption>03</figcaption></figure>
-        <figure><img src="{{ m }}/progresourbano_aplicacion_04_sitio-web.jpg" alt="" loading="lazy"><figcaption>04</figcaption></figure>
-      </div>
-    </div>
-  </div>
-
-  </section>
-
-  <section class="caso-bloque">
-    <div class="cuerpo">
-      <div lang="es">
-        <p>El sistema vive en Figma como design system, con variables para modo claro y oscuro, estilos de degradado y componentes. Las plantillas y el prompt lo llevan al trabajo diario de la firma, fuera del equipo de diseño.</p>
-        <p>Así trabajo: llego a un contexto, encuentro el punto de dolor, lo soluciono y lo dejo funcionando.</p>
-      </div>
-      <div lang="en">
-        <p>The system lives in Figma as a design system, with light and dark variables, gradient styles and components. The templates and the prompt carry it into the firm's daily work, beyond the design team.</p>
-        <p>That's how I work: I step into a context, find the pain point, solve it and leave it running.</p>
       </div>
     </div>
   </section>
