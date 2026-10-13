@@ -113,7 +113,7 @@ body.visor-abierto { overflow: hidden; }
 }
 @media (max-width: 860px) {
   .huge-saludo .marco { grid-template-columns: 1fr; min-height: 0; }
-  .huge-saludo .ilustracion { order: 0; }
+  .huge-saludo .ilustracion { max-width: 420px; }
   .destacada { grid-template-columns: 1fr; }
   .destacada .nota { position: static; }
 }

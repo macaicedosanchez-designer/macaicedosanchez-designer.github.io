@@ -18,11 +18,11 @@ decks:
   - id: renobopr
     paginas: 62
     videos: [4, 5, 8, 27, 28]
-    portada: 1
+    portada: 2
     anio: 2024
-    cliente: RenoBo
-    titulo: { es: "RenoBo en PR", en: "RenoBo in PR" }
-    porque: { es: "Mi presentación más bonita.", en: "My best-looking presentation." }
+    cliente: Daniela Guzman, subgerente de ejecución de proyectos
+    titulo: { es: "Bogotá's approach to urban renewal", en: "Bogotá's approach to urban renewal" }
+    porque: { es: "Impactante: wow.", en: "Striking: wow." }
     destacada:
       rotulo: { es: "Mi presentación más bonita", en: "My best-looking presentation" }
       texto:
@@ -36,8 +36,8 @@ decks:
     portada: 1
     anio: 2025
     cliente: RenoBo
-    titulo: { es: "Kit PPT RenoBo", en: "RenoBo PPT Kit" }
-    porque: { es: "La más usada: toda la organización la sigue usando.", en: "The most used one: the whole organization still uses it." }
+    titulo: { es: "Plantilla rebranding RenoBo", en: "RenoBo rebrand template" }
+    porque: { es: "La más usada.", en: "The most used one." }
     destacada:
       rotulo: { es: "La más usada", en: "The most used one" }
       texto:
@@ -51,12 +51,11 @@ decks:
       enlace: { url: /direccion-creativa/renobo/, es: "Ver el caso completo de RenoBo →", en: "See the full RenoBo case →" }
 
   - id: progresourbano
-    archivos: [progresourbano_sistema_01_web-y-apps.jpg, progresourbano_sistema_02_app-movil.jpg, progresourbano_kitppt_01_portada.jpg, progresourbano_kitppt_02_agenda.jpg, progresourbano_kitppt_03_separador.jpg, progresourbano_kitppt_04_tarjetas.jpg, progresourbano_kitppt_05_proceso.jpg, progresourbano_kitppt_06_ciclo.jpg, progresourbano_kitppt_07_matriz.jpg, progresourbano_kitppt_08_antes-despues.jpg, progresourbano_kitppt_09_cronograma.jpg, progresourbano_kitppt_10_cifras.jpg]
+    archivos: [progresourbano_kitppt_01_portada.jpg, progresourbano_sistema_01_web-y-apps.jpg, progresourbano_sistema_02_app-movil.jpg, progresourbano_kitppt_02_agenda.jpg, progresourbano_kitppt_03_separador.jpg, progresourbano_kitppt_04_tarjetas.jpg, progresourbano_kitppt_05_proceso.jpg, progresourbano_kitppt_06_ciclo.jpg, progresourbano_kitppt_07_matriz.jpg, progresourbano_kitppt_08_antes-despues.jpg, progresourbano_kitppt_09_cronograma.jpg, progresourbano_kitppt_10_cifras.jpg]
     portada: 1
     anio: 2026
-    cliente: Progreso Urbano Consultores
+    cliente: Claudia Niño, consultora privada
     titulo: { es: "Progreso Urbano Consultores", en: "Progreso Urbano Consultores" }
-    porque: { es: "Mi sistema de diseño más ordenado.", en: "My most organized design system." }
     destacada:
       rotulo: { es: "Mi sistema de diseño más ordenado", en: "My most organized design system" }
       texto:
