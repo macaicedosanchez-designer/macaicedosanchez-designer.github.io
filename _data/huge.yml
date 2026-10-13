@@ -22,14 +22,14 @@ decks:
     anio: 2024
     cliente: Daniela Guzman, subgerente de ejecución de proyectos
     titulo: { es: "Bogotá's approach to urban renewal", en: "Bogotá's approach to urban renewal" }
-    porque: { es: "Impactante: wow.", en: "Striking: wow." }
+    porque: { es: "Mi presentación más impactante: urbanismo, mercado inmobiliario y política pública contados con diagramas y animaciones.", en: "My most striking presentation: urban planning, real estate and public policy told through diagrams and animations." }
     destacada:
       rotulo: { es: "Mi presentación más bonita", en: "My best-looking presentation" }
       texto:
         es:
-          - "Tomé conceptos muy complejos de urbanismo, mercado inmobiliario y política pública y los convertí en diagramas y animaciones divertidos, para contarle a la Puerto Rico Builders Association cómo Bogotá renueva la ciudad, de la planeación a la ejecución."
+          - "Convertí conceptos complejos de urbanismo, mercado inmobiliario y política pública en diagramas y animaciones claros y divertidos, para mostrarle a la Puerto Rico Builders Association cómo Bogotá renueva la ciudad, de la planeación a la ejecución."
         en:
-          - "I took very complex concepts about urban planning, real estate and public policy and turned them into fun diagrams and animations, to show the Puerto Rico Builders Association how Bogotá renews the city, from planning to execution."
+          - "I turned complex concepts in urban planning, real estate and public policy into clear, playful diagrams and animations, to show the Puerto Rico Builders Association how Bogotá renews the city, from planning to execution."
 
   - id: renobokit
     archivos: [renobo_kitppt_01_portada.jpg, renobo_kitppt_02_ruta.jpg, renobo_kitppt_03_cronologia.jpg, renobo_kitppt_04_proceso.jpg, renobo_kitppt_05_gestiones.jpg, renobo_kitppt_06_convenio.jpg, renobo_kitppt_07_conceptos.jpg, renobo_kitppt_08_ejes-narrativos.jpg, renobo_kitppt_09_antes-despues.jpg, renobo_kitppt_10_iconos.jpg]
@@ -37,16 +37,16 @@ decks:
     anio: 2025
     cliente: RenoBo
     titulo: { es: "Plantilla rebranding RenoBo", en: "RenoBo rebrand template" }
-    porque: { es: "La más usada.", en: "The most used one." }
+    porque: { es: "La plantilla más usada de RenoBo: toda la entidad la sigue usando para diagramar su trabajo.", en: "RenoBo's most used template: the whole organization still uses it to diagram its work." }
     destacada:
       rotulo: { es: "La más usada", en: "The most used one" }
       texto:
         es:
-          - "Es la que más quiero porque es la más usada: sigue en uso hoy y la usa toda la organización, no solo comunicaciones. Trae plantillas para diagramar rutas, cronologías, procesos, convenios y comparaciones."
-          - "También diseñé un prompt para que cualquiera convierta su contenido en diagramas del kit."
+          - "Es mi favorita porque es la más usada: toda la organización la sigue usando hoy, no solo el equipo de comunicaciones. Incluye plantillas para diagramar rutas, cronologías, procesos, convenios y comparaciones."
+          - "También diseñé un prompt para que cualquier persona convierta su contenido en diagramas del kit."
         en:
-          - "It's my favorite because it's the most used: it's still in use today, by the whole organization, not just communications. It includes templates to diagram routes, timelines, processes, agreements and comparisons."
-          - "I also engineered a prompt so anyone can turn their content into kit diagrams."
+          - "It's my favorite because it's the most used: the whole organization still uses it today, not just the communications team. It includes templates to diagram routes, timelines, processes, agreements and comparisons."
+          - "I also wrote a prompt so anyone can turn their content into kit diagrams."
       en_uso: [renobo_aplicacion_01_en-uso.jpg, renobo_aplicacion_02_en-uso.jpg, renobo_aplicacion_03_en-uso.jpg]
       enlace: { url: /direccion-creativa/renobo/, es: "Ver el caso completo de RenoBo →", en: "See the full RenoBo case →" }
 
@@ -56,13 +56,14 @@ decks:
     anio: 2026
     cliente: Claudia Niño, consultora privada
     titulo: { es: "Progreso Urbano Consultores", en: "Progreso Urbano Consultores" }
+    porque: { es: "Mi sistema de diseño más ordenado: una misma base para presentaciones, web y apps.", en: "My most organized design system: one foundation for slides, web and apps." }
     destacada:
       rotulo: { es: "Mi sistema de diseño más ordenado", en: "My most organized design system" }
       texto:
         es:
-          - "Hecha con un sistema de diseño pensado para web responsive: componentes, estilos y reglas que funcionan igual en una presentación y en una pantalla de celular."
+          - "Está hecha con un sistema de diseño pensado para web responsive: los mismos componentes, estilos y reglas funcionan en una presentación, en un sitio web y en la pantalla de un celular."
         en:
-          - "Built with a design system made for responsive web: components, styles and rules that work the same on a slide and on a phone screen."
+          - "It's built on a design system made for responsive web: the same components, styles and rules work on a slide, a website and a phone screen."
       enlace: { url: /direccion-creativa/progresourbano/, es: "Ver el caso completo →", en: "See the full case →" }
 
   - id: herramientainnovacion
@@ -73,7 +74,7 @@ decks:
     titulo:
       es: "Diseño de una herramienta de innovación pública para la transferencia de conocimiento dentro de RenoBo"
       en: "Designing a public innovation tool for knowledge transfer inside RenoBo"
-    porque: { es: "Es mi tesis: datos complejos y tablas de investigación.", en: "It's my thesis: complex data and research tables." }
+    porque: { es: "Mi tesis: datos complejos y tablas de investigación, presentados con claridad.", en: "My thesis: complex data and research tables, presented clearly." }
 
   - id: bimco
     paginas: 18
@@ -82,7 +83,7 @@ decks:
     anio: 2025
     cliente: RenoBo · Carlos Felipe Reyes, gerente general
     titulo: { es: "H-BIM en proyectos de conservación de patrimonio cultural", en: "H-BIM in cultural heritage conservation projects" }
-    porque: { es: "El concurso BIMCO 2025 tenía plantillas muy estrictas; dentro de esas reglas logré algo muy lindo.", en: "BIMCO 2025 had very strict, unattractive templates; within those rules I made something beautiful." }
+    porque: { es: "BIMCO exigía plantillas muy rígidas y poco atractivas; dentro de esas reglas logré una presentación cuidada y con videos.", en: "BIMCO required rigid, unattractive templates; within those rules I built a polished presentation with video." }
 
   - id: celulainnovacion
     paginas: 9
@@ -90,7 +91,7 @@ decks:
     anio: 2025
     cliente: Personal
     titulo: { es: "Célula de Innovación: rompiendo silos organizacionales en RenoBo mediante gestión del conocimiento", en: "Innovation Cell: breaking organizational silos at RenoBo through knowledge management" }
-    porque: { es: "Diagramas e ilustración potentes para visualizar datos.", en: "Strong diagrams and illustration for data visualization." }
+    porque: { es: "Diagramas e ilustraciones potentes para visualizar datos.", en: "Strong diagrams and illustrations to visualize data." }
 
   - id: calles170
     paginas: 6
@@ -98,7 +99,7 @@ decks:
     anio: 2024
     cliente: Agencia de Renovación del Territorio (ART)
     titulo: { es: "Informe: 170 calles de vida y paz", en: "Report: 170 streets of life and peace" }
-    porque: { es: "Texto en alto contraste sobre fotografías complejas.", en: "High-contrast type over complex photographs." }
+    porque: { es: "Texto en alto contraste sobre fotografías complejas, para que todo se lea bien.", en: "High-contrast type over complex photographs, so everything stays readable." }
 
   - id: riosdevida
     paginas: 7
@@ -106,7 +107,7 @@ decks:
     anio: 2023
     cliente: Agencia de Renovación del Territorio (ART)
     titulo: { es: "Propuesta Ríos de Vida", en: "Ríos de Vida proposal" }
-    porque: { es: "Institucional.", en: "Institutional." }
+    porque: { es: "Una propuesta institucional, sobria y clara, para una entidad del Gobierno nacional.", en: "A sober, clear institutional proposal for a national government agency." }
 
   - id: modulando
     paginas: 31
@@ -114,4 +115,4 @@ decks:
     anio: 2021
     cliente: Colectivo Modulando
     titulo: { es: "Oslo Urban Week: cities around the world", en: "Oslo Urban Week: cities around the world" }
-    porque: { es: "Una ponencia compleja en un espacio académico, convertida en imágenes impactantes.", en: "A complex academic talk turned into striking images." }
+    porque: { es: "Una ponencia académica compleja convertida en una presentación de imágenes impactantes.", en: "A complex academic talk turned into a presentation of striking images." }
