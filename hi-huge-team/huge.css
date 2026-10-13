@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 .huge-saludo .marco {
-  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center;
   gap: clamp(32px, 5vw, 88px); min-height: min(88svh, 900px);
   padding-top: clamp(40px, 5vw, 72px); padding-bottom: clamp(48px, 6vw, 96px);
 }
@@ -19,15 +19,8 @@
 .huge-saludo .bajada { margin-top: clamp(20px, 2.2vw, 32px); max-width: 40ch; font-size: clamp(18px, 1.5vw, 23px); line-height: 1.5; color: var(--tenue); text-wrap: pretty; }
 .huge-saludo .bajada + .bajada { margin-top: 12px; color: var(--tinta); }
 
-/* Ilustración cuadrada, centrada en su columna y enmarcada */
-.marco-ilustracion {
-  justify-self: center; width: min(100%, 460px); aspect-ratio: 1; margin: 0;
-  padding: clamp(10px, 1.2vw, 16px);
-  border: var(--regla) solid color-mix(in srgb, var(--claro) 55%, transparent);
-  border-radius: calc(var(--radio) + 12px);
-  background: color-mix(in srgb, var(--claro) 8%, transparent);
-}
-.marco-ilustracion img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: var(--radio); }
+/* Ilustración cuadrada a la izquierda, sin marco (como en el Home) */
+.huge-saludo .ilustracion { order: -1; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radio); }
 
 /* Mientras la banda superior está sobre el azul, se vuelve azul también (huge.js pone la clase) */
 .banda-superior { transition: background-color .3s ease, border-color .3s ease; }
@@ -42,7 +35,7 @@ body.sobre-azul .banda-superior .nombre { color: var(--claro); }
   .huge-saludo .entra { animation: entrar .9s var(--curva) backwards; }
   .huge-saludo .bajada.entra { animation-delay: .08s; }
   .huge-saludo .bajada + .bajada.entra { animation-delay: .14s; }
-  .huge-saludo .marco-ilustracion.entra { animation-delay: .1s; }
+  .huge-saludo .ilustracion.entra { animation-delay: .1s; }
   @keyframes entrar { from { opacity: 0; transform: translateY(14px); } }
 }
 
@@ -120,7 +113,7 @@ body.visor-abierto { overflow: hidden; }
 }
 @media (max-width: 860px) {
   .huge-saludo .marco { grid-template-columns: 1fr; min-height: 0; }
-  .marco-ilustracion { width: min(100%, 360px); }
+  .huge-saludo .ilustracion { order: 0; }
   .destacada { grid-template-columns: 1fr; }
   .destacada .nota { position: static; }
 }
