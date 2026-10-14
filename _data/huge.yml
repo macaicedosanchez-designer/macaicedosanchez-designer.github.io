@@ -129,22 +129,6 @@ decks:
 
   # ── Académicos: siempre al final ──
 
-  - id: tejidos
-    paginas: 3
-    portada: 1
-    anio: 2020
-    cliente: { es: "Académico", en: "Academic" }
-    titulo: { es: "Póster: comparación de distintos tejidos urbanos alrededor del mundo", en: "Poster: comparing urban fabrics around the world" }
-    porque: { es: "Un póster que compara ciudades con una composición gráfica rigurosa y contrastes de color fuertes.", en: "A poster comparing cities through rigorous graphic composition and bold color contrast." }
-
-  - id: spacesex
-    paginas: 18
-    portada: 13
-    anio: 2021
-    cliente: { es: "Académico", en: "Academic" }
-    titulo: { es: "Un buen chiste: Perreo Espacial", en: "A good joke: Space Perreo" }
-    porque: { es: "Un proyecto en clave de humor, construido desde la ilustración y el moodboard.", en: "A tongue-in-cheek project built through illustration and moodboarding." }
-
   - id: niarquitecto
     paginas: 6
     portada: 1
