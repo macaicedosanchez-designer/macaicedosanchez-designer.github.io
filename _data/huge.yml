@@ -22,9 +22,9 @@ decks:
     anio: 2024
     cliente: { es: "Daniela Guzmán, subgerente de ejecución de proyectos", en: "Daniela Guzmán, Deputy Manager of Project Execution" }
     titulo: { es: "Bogotá's approach to urban renewal", en: "Bogotá's approach to urban renewal" }
-    porque: { es: "Mi presentación más impactante: urbanismo, mercado inmobiliario y política pública explicados con diagramas y animaciones.", en: "My most striking presentation: urban planning, real estate and public policy explained through diagrams and animations." }
+    porque: { es: "Mi presentación más bonita: urbanismo, mercado inmobiliario y política pública explicados con diagramas y animaciones.", en: "My best-looking presentation: urban planning, real estate and public policy explained through diagrams and animations." }
     destacada:
-      rotulo: { es: "Mi presentación más impactante", en: "My most striking presentation" }
+      rotulo: { es: "Mi presentación más bonita", en: "My best-looking presentation" }
       texto:
         es:
           - "Convertí conceptos complejos de urbanismo, mercado inmobiliario y política pública en diagramas y animaciones claros y divertidos, para mostrarle a la Puerto Rico Builders Association cómo Bogotá renueva la ciudad, de la planeación a la ejecución."
