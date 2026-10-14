@@ -1,0 +1,2 @@
+{%- comment -%} Cliente de una presentación de _data/huge.yml: texto simple o { es, en } cuando lleva cargo. Uso: {% include huge-cliente.html d=d %} {%- endcomment -%}
+{%- if include.d.cliente.es -%}<span lang="es">{{ include.d.cliente.es }}</span><span lang="en">{{ include.d.cliente.en }}</span>{%- else -%}{{ include.d.cliente }}{%- endif -%}

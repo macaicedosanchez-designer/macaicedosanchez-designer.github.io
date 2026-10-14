@@ -20,7 +20,7 @@
     if (guardar) {
       try { localStorage.setItem('idioma', idioma); } catch (e) {}
       var u = new URL(location.href);
-      if (idioma === 'es') u.searchParams.delete('lang'); else u.searchParams.set('lang', idioma);
+      if (idioma === (html.getAttribute('data-defecto') || 'es')) u.searchParams.delete('lang'); else u.searchParams.set('lang', idioma);
       history.replaceState(null, '', u);
     }
     // Título de la pestaña

@@ -3,20 +3,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {%- assign t_es = page.titulo_es | default: site.title -%}
 {%- assign t_en = page.titulo_en | default: site.title -%}
-<title data-es="{{ t_es }}" data-en="{{ t_en }}">{{ t_es }}</title>
-<meta name="description" content="{{ page.descripcion_es | default: site.descripcion_es }}">
-<meta property="og:title" content="{{ t_es }}">
-<meta property="og:description" content="{{ page.descripcion_es | default: site.descripcion_es }}">
+<title data-es="{{ t_es }}" data-en="{{ t_en }}">{% if page.idioma == 'en' %}{{ t_en }}{% else %}{{ t_es }}{% endif %}</title>
+{%- assign d_es = page.descripcion_es | default: site.descripcion_es -%}
+{%- assign d_en = page.descripcion_en | default: site.descripcion_en | default: d_es -%}
+{%- if page.idioma == 'en' -%}{%- assign t_def = t_en -%}{%- assign d_def = d_en -%}{%- else -%}{%- assign t_def = t_es -%}{%- assign d_def = d_es -%}{%- endif %}
+<meta name="description" content="{{ d_def }}">
+<meta property="og:title" content="{{ t_def }}">
+<meta property="og:description" content="{{ d_def }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="es_CO">
+{% if page.idioma == 'en' %}<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_CO">
+{% else %}<meta property="og:locale" content="es_CO">
 <meta property="og:locale:alternate" content="en_US">
+{% endif %}
 <meta property="og:image" content="{{ site.media_url }}/{{ page.imagen | default: 'home_portada_01_ilustracion-01.png' }}">
 <meta name="twitter:card" content="summary_large_image">
 {% if page.noindex %}<meta name="robots" content="noindex, nofollow">
 {% endif %}<link rel="canonical" href="{{ page.url | absolute_url }}">
-<link rel="alternate" hreflang="es" href="{{ page.url | absolute_url }}">
+{% if page.idioma == 'en' %}<link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}">
+<link rel="alternate" hreflang="es" href="{{ page.url | absolute_url }}?lang=es">
+{% else %}<link rel="alternate" hreflang="es" href="{{ page.url | absolute_url }}">
 <link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}?lang=en">
+{% endif %}
 
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">

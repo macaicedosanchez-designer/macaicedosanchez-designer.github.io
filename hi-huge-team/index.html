@@ -13,13 +13,14 @@
 layout: base
 permalink: /hi-huge-team/
 clase: huge
-idioma: es
+idioma: en
 noindex: true
 sitemap: false
 ver_portafolio: true
 titulo_es: "Hola, equipo Huge | Martín Caicedo Sánchez"
 titulo_en: "Hi, Huge team | Martín Caicedo Sánchez"
 descripcion_es: "Una selección de mis presentaciones para el equipo de Huge."
+descripcion_en: "A selection of my presentations for the Huge team."
 css: [/hi-huge-team/huge.css]
 js: [/hi-huge-team/huge.js]
 ---
@@ -44,9 +45,9 @@ js: [/hi-huge-team/huge.js]
   {%- if d.destacada %}
   {%- assign n = n | plus: 1 %}
   <section class="destacada">
-    <div class="deck" {% include huge-deck.html d=d %} aria-roledescription="presentación" aria-label="{{ d.titulo.es | escape }}"></div>
+    <div class="deck" {% include huge-deck.html d=d %} aria-roledescription="presentation" aria-label="{{ d.titulo.en | escape }}"></div>
     <div class="nota">
-      <p class="meta">0{{ n }} · {{ d.cliente }} · {{ d.anio }}</p>
+      <p class="meta">0{{ n }} · {% include huge-cliente.html d=d %} · {{ d.anio }}</p>
       <h2 class="h2"><span lang="es">{{ d.titulo.es }}</span><span lang="en">{{ d.titulo.en }}</span></h2>
       <p class="rotulo"><span lang="es">{{ d.destacada.rotulo.es }}</span><span lang="en">{{ d.destacada.rotulo.en }}</span></p>
       <div class="cuerpo">
@@ -79,7 +80,7 @@ js: [/hi-huge-team/huge.js]
       <button type="button" class="tarjeta" {% include huge-deck.html d=d %}>
         <span class="imagen"><img src="{{ m }}/{{ img }}" alt="" loading="lazy">{% if d.videos %}<span class="sello">▶ <span lang="es">con video</span><span lang="en">with video</span></span>{% endif %}</span>
         <span class="titulo"><span lang="es">{{ d.titulo.es }}</span><span lang="en">{{ d.titulo.en }}</span></span>
-        <span class="datos">{{ d.anio }} · {{ d.cliente }}</span>
+        <span class="datos">{{ d.anio }} · {% include huge-cliente.html d=d %}</span>
         {%- if d.porque %}<span class="porque"><span lang="es">{{ d.porque.es }}</span><span lang="en">{{ d.porque.en }}</span></span>{% endif %}
       </button>
     </li>
@@ -88,7 +89,7 @@ js: [/hi-huge-team/huge.js]
 </section>
 
 <!-- Visor a pantalla completa (lo controla huge.js) -->
-<div class="visor-deck" role="dialog" aria-modal="true" aria-label="Presentación" hidden>
+<div class="visor-deck" role="dialog" aria-modal="true" aria-label="Presentation" hidden>
   <div class="barra">
     <p class="nombre"></p>
     <div class="mandos">

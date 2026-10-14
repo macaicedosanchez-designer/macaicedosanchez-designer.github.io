@@ -10,7 +10,7 @@
 #   archivos  (en vez de id + paginas) lista exacta de imágenes, si tienen otro nombre
 #   videos    diapositivas que se ven como video: <id>_deck_NN_animacion.mp4
 #   portada   número de la diapositiva que va en la tarjeta de la galería
-#   titulo / anio / cliente / porque   textos de la tarjeta
+#   titulo / anio / cliente / porque   textos de la tarjeta (cliente: texto o { es, en } si lleva cargo)
 #   destacada rótulo, texto (párrafos) y enlace opcional para la sección de arriba
 # ─────────────────────────────────────────────────────────────
 
@@ -20,11 +20,11 @@ decks:
     videos: [4, 5, 8, 27, 28]
     portada: 2
     anio: 2024
-    cliente: Daniela Guzman, subgerente de ejecución de proyectos
+    cliente: { es: "Daniela Guzmán, subgerente de ejecución de proyectos", en: "Daniela Guzmán, Deputy Manager of Project Execution" }
     titulo: { es: "Bogotá's approach to urban renewal", en: "Bogotá's approach to urban renewal" }
-    porque: { es: "Mi presentación más impactante: urbanismo, mercado inmobiliario y política pública contados con diagramas y animaciones.", en: "My most striking presentation: urban planning, real estate and public policy told through diagrams and animations." }
+    porque: { es: "Mi presentación más impactante: urbanismo, mercado inmobiliario y política pública explicados con diagramas y animaciones.", en: "My most striking presentation: urban planning, real estate and public policy explained through diagrams and animations." }
     destacada:
-      rotulo: { es: "Mi presentación más bonita", en: "My best-looking presentation" }
+      rotulo: { es: "Mi presentación más impactante", en: "My most striking presentation" }
       texto:
         es:
           - "Convertí conceptos complejos de urbanismo, mercado inmobiliario y política pública en diagramas y animaciones claros y divertidos, para mostrarle a la Puerto Rico Builders Association cómo Bogotá renueva la ciudad, de la planeación a la ejecución."
@@ -36,15 +36,17 @@ decks:
     portada: 1
     anio: 2025
     cliente: RenoBo
-    titulo: { es: "Plantilla rebranding RenoBo", en: "RenoBo rebrand template" }
+    titulo: { es: "Sistema de presentaciones RenoBo", en: "RenoBo presentation system" }
     porque: { es: "La plantilla más usada de RenoBo: toda la entidad la sigue usando para diagramar su trabajo.", en: "RenoBo's most used template: the whole organization still uses it to diagram its work." }
     destacada:
       rotulo: { es: "La más usada", en: "The most used one" }
       texto:
         es:
+          - "La identidad de RenoBo está fijada por norma y no se podía cambiar: mi trabajo fue rediseñar cómo se aplica."
           - "Es mi favorita porque es la más usada: toda la organización la sigue usando hoy, no solo el equipo de comunicaciones. Incluye plantillas para diagramar rutas, cronologías, procesos, convenios y comparaciones."
           - "También diseñé un prompt para que cualquier persona convierta su contenido en diagramas del kit."
         en:
+          - "RenoBo's identity is set by regulation and couldn't be changed: my job was to redesign how it's applied."
           - "It's my favorite because it's the most used: the whole organization still uses it today, not just the communications team. It includes templates to diagram routes, timelines, processes, agreements and comparisons."
           - "I also wrote a prompt so anyone can turn their content into kit diagrams."
       en_uso: [renobo_aplicacion_01_en-uso.jpg, renobo_aplicacion_02_en-uso.jpg, renobo_aplicacion_03_en-uso.jpg]
@@ -54,9 +56,9 @@ decks:
     archivos: [progresourbano_kitppt_01_portada.jpg, progresourbano_sistema_01_web-y-apps.jpg, progresourbano_sistema_02_app-movil.jpg, progresourbano_kitppt_02_agenda.jpg, progresourbano_kitppt_03_separador.jpg, progresourbano_kitppt_04_tarjetas.jpg, progresourbano_kitppt_05_proceso.jpg, progresourbano_kitppt_06_ciclo.jpg, progresourbano_kitppt_07_matriz.jpg, progresourbano_kitppt_08_antes-despues.jpg, progresourbano_kitppt_09_cronograma.jpg, progresourbano_kitppt_10_cifras.jpg]
     portada: 1
     anio: 2026
-    cliente: Claudia Niño, consultora privada
+    cliente: { es: "Claudia Niño, consultora privada", en: "Claudia Niño, independent consultant" }
     titulo: { es: "Progreso Urbano Consultores", en: "Progreso Urbano Consultores" }
-    porque: { es: "Mi sistema de diseño más ordenado: una misma base para presentaciones, web y apps.", en: "My most organized design system: one foundation for slides, web and apps." }
+    porque: { es: "Mi sistema de diseño más ordenado: una sola base para presentaciones, web y apps.", en: "My most organized design system: one foundation for slides, web and apps." }
     destacada:
       rotulo: { es: "Mi sistema de diseño más ordenado", en: "My most organized design system" }
       texto:
@@ -70,44 +72,52 @@ decks:
     paginas: 35
     portada: 1
     anio: 2026
-    cliente: Personal
+    cliente: { es: "Personal", en: "Personal project" }
     titulo:
       es: "Diseño de una herramienta de innovación pública para la transferencia de conocimiento dentro de RenoBo"
       en: "Designing a public innovation tool for knowledge transfer inside RenoBo"
-    porque: { es: "Mi tesis: datos complejos y tablas de investigación, presentados con claridad.", en: "My thesis: complex data and research tables, presented clearly." }
+    porque: { es: "Mi tesis: datos de investigación complejos y tablas extensas, presentados con claridad y orden.", en: "My thesis: complex research data and dense tables, presented with clarity and order." }
 
   - id: bimco
     paginas: 18
     videos: [6, 7, 9, 10, 11]
     portada: 15
     anio: 2025
-    cliente: RenoBo · Carlos Felipe Reyes, gerente general
+    cliente: { es: "RenoBo · Carlos Felipe Reyes, gerente general", en: "RenoBo · Carlos Felipe Reyes, General Manager" }
     titulo: { es: "H-BIM en proyectos de conservación de patrimonio cultural", en: "H-BIM in cultural heritage conservation projects" }
-    porque: { es: "BIMCO exigía plantillas muy rígidas y poco atractivas; dentro de esas reglas logré una presentación cuidada y con videos.", en: "BIMCO required rigid, unattractive templates; within those rules I built a polished presentation with video." }
+    porque: { es: "BIMCO exigía una plantilla rígida y poco atractiva; dentro de esas reglas logré una presentación cuidada y con video.", en: "BIMCO required a rigid, unappealing template; within those rules I delivered a polished presentation with video." }
+
+  - id: dnpcaf
+    paginas: 5
+    portada: 1
+    anio: 2019
+    cliente: { es: "Departamento Nacional de Planeación (DNP) y CAF, banco de desarrollo de América Latina", en: "National Planning Department (DNP) and CAF, development bank of Latin America" }
+    titulo: { es: "Recomendaciones para fortalecer el espacio GovTech en Colombia", en: "Recommendations to strengthen the GovTech space in Colombia" }
+    porque: { es: "Infografías y diagramas que convierten metodologías de negocio y de política pública en esquemas fáciles de seguir.", en: "Infographics and diagrams that turn business and public-policy methodologies into easy-to-follow visuals." }
 
   - id: celulainnovacion
     paginas: 9
     portada: 2
     anio: 2025
-    cliente: Personal
+    cliente: { es: "Personal", en: "Personal project" }
     titulo: { es: "Célula de Innovación: rompiendo silos organizacionales en RenoBo mediante gestión del conocimiento", en: "Innovation Cell: breaking organizational silos at RenoBo through knowledge management" }
-    porque: { es: "Diagramas e ilustraciones potentes para visualizar datos.", en: "Strong diagrams and illustrations to visualize data." }
+    porque: { es: "Diagramas e ilustraciones que hacen visibles los datos de una investigación sobre gestión del conocimiento.", en: "Diagrams and illustrations that make the data of a knowledge-management study visible." }
 
   - id: calles170
     paginas: 6
     portada: 2
     anio: 2024
-    cliente: Agencia de Renovación del Territorio (ART)
+    cliente: { es: "Agencia de Renovación del Territorio (ART)", en: "Agency for the Renewal of the Territory (ART)" }
     titulo: { es: "Informe: 170 calles de vida y paz", en: "Report: 170 streets of life and peace" }
-    porque: { es: "Texto en alto contraste sobre fotografías complejas, para que todo se lea bien.", en: "High-contrast type over complex photographs, so everything stays readable." }
+    porque: { es: "Texto en alto contraste sobre fotografías complejas, para que todo se lea sin esfuerzo.", en: "High-contrast type over busy photographs, so everything reads effortlessly." }
 
   - id: riosdevida
     paginas: 7
     portada: 1
     anio: 2023
-    cliente: Agencia de Renovación del Territorio (ART)
+    cliente: { es: "Agencia de Renovación del Territorio (ART)", en: "Agency for the Renewal of the Territory (ART)" }
     titulo: { es: "Propuesta Ríos de Vida", en: "Ríos de Vida proposal" }
-    porque: { es: "Una propuesta institucional, sobria y clara, para una entidad del Gobierno nacional.", en: "A sober, clear institutional proposal for a national government agency." }
+    porque: { es: "Una propuesta institucional sobria y clara para una entidad del Gobierno nacional.", en: "A sober, clear institutional proposal for a national government agency." }
 
   - id: modulando
     paginas: 31
@@ -115,4 +125,62 @@ decks:
     anio: 2021
     cliente: Colectivo Modulando
     titulo: { es: "Oslo Urban Week: cities around the world", en: "Oslo Urban Week: cities around the world" }
-    porque: { es: "Una ponencia académica compleja convertida en una presentación de imágenes impactantes.", en: "A complex academic talk turned into a presentation of striking images." }
+    porque: { es: "Una ponencia académica compleja convertida en una secuencia de imágenes de alto impacto.", en: "A complex academic talk turned into a sequence of high-impact images." }
+
+  # ── Académicos: siempre al final ──
+
+  - id: tejidos
+    paginas: 3
+    portada: 1
+    anio: 2020
+    cliente: { es: "Académico", en: "Academic" }
+    titulo: { es: "Póster: comparación de distintos tejidos urbanos alrededor del mundo", en: "Poster: comparing urban fabrics around the world" }
+    porque: { es: "Un póster que compara ciudades con una composición gráfica rigurosa y contrastes de color fuertes.", en: "A poster comparing cities through rigorous graphic composition and bold color contrast." }
+
+  - id: spacesex
+    paginas: 18
+    portada: 13
+    anio: 2021
+    cliente: { es: "Académico", en: "Academic" }
+    titulo: { es: "Un buen chiste: Perreo Espacial", en: "A good joke: Space Perreo" }
+    porque: { es: "Un proyecto en clave de humor, construido desde la ilustración y el moodboard.", en: "A tongue-in-cheek project built through illustration and moodboarding." }
+
+  - id: niarquitecto
+    paginas: 6
+    portada: 1
+    anio: 2019
+    cliente: { es: "Académico", en: "Academic" }
+    titulo: { es: "Presentación personal: ni arquitecto ni diseñador", en: "Personal presentation: neither architect nor designer" }
+    porque: { es: "Mis dibujos a mano, llevados a una presentación con tratamiento digital.", en: "My hand drawings, brought into a presentation with a digital treatment." }
+
+  - id: pdfnovirtuales
+    paginas: 14
+    portada: 1
+    anio: 2021
+    cliente: { es: "Académico", en: "Academic" }
+    titulo: { es: "Tesis de pregrado: espacio virtual como espacio de posibilidad", en: "Bachelor's thesis: virtual space as a space of possibility" }
+    porque: { es: "Mi tesis de pregrado, contada con ilustraciones que mezclan técnicas análogas y digitales.", en: "My bachelor's thesis, told through illustrations that blend analog and digital techniques." }
+
+  - id: cartografiasvirtual
+    paginas: 41
+    portada: 1
+    anio: 2021
+    cliente: { es: "Académico", en: "Academic" }
+    titulo: { es: "Cartografías del habitar virtual", en: "Cartographies of virtual dwelling" }
+    porque: { es: "Una diagramación de alto impacto, pensada para leerse en scroll y no como diapositivas.", en: "A high-impact layout designed to be read by scrolling, not as slides." }
+
+  - id: bvm
+    paginas: 5
+    portada: 1
+    anio: 2021
+    cliente: { es: "Académico", en: "Academic" }
+    titulo: { es: "Banco Virtual de Materiales", en: "Virtual Materials Bank" }
+    porque: { es: "Un diagrama de flujo cuidado que organiza mucha información sin perder claridad.", en: "A carefully crafted flowchart that organizes a lot of information without losing clarity." }
+
+  - id: atlas
+    paginas: 27
+    portada: 1
+    anio: 2021
+    cliente: { es: "Académico", en: "Academic" }
+    titulo: { es: "Atlas de la informalidad como contenido cultural", en: "Atlas of informality as cultural content" }
+    porque: { es: "Un atlas cuidado al detalle, de la primera a la última página.", en: "An atlas crafted down to the last detail, from the first page to the last." }
