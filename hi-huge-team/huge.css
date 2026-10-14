@@ -51,20 +51,10 @@ body.sobre-azul .banda-superior .nombre { color: var(--claro); }
 .huge-destacadas { display: flex; flex-direction: column; gap: clamp(88px, 10vw, 160px); padding-top: clamp(72px, 9vw, 144px); }
 .destacada { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(24px, 3.4vw, 56px); align-items: start; }
 
-.deck { position: relative; border-radius: var(--radio); overflow: hidden; background: var(--oscuro); outline-offset: 4px; }
-.deck .escena { aspect-ratio: 16 / 9; cursor: pointer; }
-.deck .btn { position: absolute; z-index: 2; min-width: 44px; min-height: 44px; padding: 0; border-radius: 50%; background: color-mix(in srgb, var(--oscuro) 55%, transparent); color: var(--claro); border-color: transparent; font-size: 18px; transition: background-color .2s ease, opacity .2s ease; }
-.deck .btn:hover { background: var(--ultramar); }
-.deck-prev, .deck-next { top: 50%; transform: translateY(-50%); }
-.deck-prev { left: 12px; }
-.deck-next { right: 12px; }
-.deck-ampliar { top: 12px; right: 12px; }
-.deck-contador { position: absolute; left: 12px; bottom: 14px; z-index: 2; padding: 5px 9px; border-radius: 6px; background: color-mix(in srgb, var(--oscuro) 70%, transparent); color: var(--claro); font-family: var(--mono); font-size: 12px; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+/* Diapositiva arriba; barra de mandos debajo (.deck-barra, estilos compartidos en componentes.css) */
+.deck { position: relative; outline-offset: 4px; }
+.deck .escena { aspect-ratio: 16 / 9; cursor: pointer; border-radius: var(--radio); background: var(--oscuro); }
 .deck-progreso { position: absolute; left: 0; bottom: 0; z-index: 2; height: 4px; background: var(--ultramar); transition: width .4s var(--curva); }
-@media (hover: hover) {
-  .deck .btn { opacity: 0; }
-  .deck:hover .btn, .deck:focus-within .btn { opacity: 1; }
-}
 
 .destacada .nota { position: sticky; top: calc(var(--alto-header) + 24px); }
 .destacada .meta { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .06em; text-transform: uppercase; color: var(--tenue); }
@@ -101,8 +91,11 @@ body.sobre-azul .banda-superior .nombre { color: var(--claro); }
 .visor-deck .nombre { flex: 1; min-width: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .visor-deck .mandos { flex: none; display: flex; align-items: center; gap: 6px; }
 .visor-deck .contador { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; margin-right: 8px; font-variant-numeric: tabular-nums; }
-.visor-deck .btn { background: transparent; color: var(--claro); border-color: color-mix(in srgb, var(--claro) 50%, transparent); min-width: 44px; min-height: 44px; }
-.visor-deck .btn:hover { background: var(--claro); color: var(--oscuro); }
+.visor-deck .btn { background: transparent; color: var(--claro); border-color: color-mix(in srgb, var(--claro) 50%, transparent); min-width: 44px; min-height: 44px; padding: 0; border-radius: 50%; font-family: var(--grot); font-size: 18px; line-height: 1; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.visor-deck .btn:hover { border-color: color-mix(in srgb, var(--claro) 50%, transparent); }
+@media (hover: hover) { .visor-deck .btn:hover { background: var(--claro); color: var(--oscuro); border-color: var(--claro); } }
+.visor-deck .btn:focus-visible { outline: 2px solid var(--claro); outline-offset: 2px; }
+.visor-deck .btn svg { width: 18px; height: 18px; }
 .visor-deck .escenario { flex: 1; min-height: 0; margin: 0 var(--pad) clamp(16px, 3vw, 40px); cursor: pointer; }
 .visor-deck:fullscreen .escenario { margin: 0; }
 body.visor-abierto { overflow: hidden; }
@@ -133,7 +126,6 @@ body.visor-abierto { overflow: hidden; }
 .sola { padding-top: clamp(32px, 5vw, 72px); }
 .sola .meta { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .06em; text-transform: uppercase; color: var(--tenue); }
 .sola .h1 { margin: 10px 0 clamp(20px, 3vw, 36px); }
-.sola .deck { max-width: min(100%, calc((100svh - var(--alto-header) - 290px) * 16 / 9)); }
+.sola .deck { max-width: min(100%, calc((100svh - var(--alto-header) - 344px) * 16 / 9)); }
 .sola .ayuda { margin-top: 14px; color: var(--tenue); font-size: 14px; }
 .sola .credito { margin-top: 6px; font-size: 14px; }
-@media (hover: none) { .sola .deck .btn { opacity: 1; } }

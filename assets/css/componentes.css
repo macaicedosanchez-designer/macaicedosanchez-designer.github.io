@@ -483,19 +483,30 @@ body.visor-abierto { overflow: hidden; }
 .diapositivas.ratio-3-2 .diapo-escena { aspect-ratio: 925 / 632; }
 
 /* ── Diapositivas: manual tipo presentación (una página a la vez, 16:9) ── */
-.diapositivas { position: relative; background: var(--cemento); border-radius: var(--radio); overflow: hidden; outline-offset: 4px; }
-.diapo-escena { position: relative; aspect-ratio: 16 / 9; cursor: pointer; }
+.diapositivas { position: relative; outline-offset: 4px; }
+.diapo-escena { position: relative; aspect-ratio: 16 / 9; cursor: pointer; background: var(--cemento); border-radius: var(--radio); overflow: hidden; }
 .diapo { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .5s ease; pointer-events: none; }
 .diapo[aria-current="true"] { opacity: 1; z-index: 1; }
 .diapositivas .diapo img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; background: transparent; }
-.diapositivas .diapo-flecha { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; min-width: 48px; min-height: 48px; border-radius: 50%; font-size: 20px; padding: 0; }
-.diapo-prev { left: 14px; }
-.diapo-next { right: 14px; }
-.diapositivas .diapo-pantalla { position: absolute; top: 14px; right: 14px; z-index: 2; min-width: 40px; }
-.diapo-contador { position: absolute; left: 14px; bottom: 14px; z-index: 2; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; background: var(--tinta); color: var(--papel); padding: 6px 10px; }
-.diapo-progreso { position: absolute; left: 0; bottom: 0; height: 6px; z-index: 2; background: var(--ultramar); transition: width .4s ease; }
-.diapositivas:fullscreen { background: #000; border-radius: 0; display: flex; align-items: center; }
-.diapositivas:fullscreen .diapo-escena { width: 100%; height: 100%; aspect-ratio: auto; }
+.diapo-progreso { position: absolute; left: 0; bottom: 0; height: 4px; z-index: 2; background: var(--ultramar); transition: width .4s ease; }
+
+/* Barra de mandos debajo de la diapositiva: contador a la izquierda, ← → ⛶ a la derecha.
+   Mismos mandos que las presentaciones de la página Huge (.deck-barra en huge.css). */
+.diapo-barra, .deck-barra { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.diapo-contador, .deck-contador { margin-right: auto; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; font-variant-numeric: tabular-nums; color: var(--tenue); }
+.diapo-barra .btn, .deck-barra .btn { min-width: 44px; min-height: 44px; padding: 0; border-radius: 50%; font-family: var(--grot); font-size: 18px; line-height: 1; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.diapo-barra .btn:hover, .deck-barra .btn:hover { border-color: var(--linea); }
+@media (hover: hover) {
+  .diapo-barra .btn:hover, .deck-barra .btn:hover { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
+}
+.diapo-barra .btn:focus-visible, .deck-barra .btn:focus-visible { outline: 2px solid var(--acento-texto); outline-offset: 2px; }
+.diapo-barra .btn svg, .deck-barra .btn svg { width: 18px; height: 18px; }
+
+/* Pantalla completa: fondo negro, la diapositiva llena el resto y la barra queda abajo */
+.diapositivas:fullscreen { background: #000; display: flex; flex-direction: column; padding: 0 16px 12px; --tenue: color-mix(in srgb, var(--claro) 70%, transparent); }
+.diapositivas:fullscreen .diapo-escena { flex: 1; min-height: 0; aspect-ratio: auto; background: #000; border-radius: 0; }
+.diapositivas:fullscreen .btn { background: transparent; color: var(--claro); border-color: color-mix(in srgb, var(--claro) 50%, transparent); }
+@media (hover: hover) { .diapositivas:fullscreen .btn:hover { background: var(--claro); color: #000; border-color: var(--claro); } }
 
 /* Bloques del taller y pasos numerados (lista simple, sin clics) */
 .bloques-taller > li { border-top: var(--regla) solid var(--tinta); padding: 20px 0 28px; display: grid; grid-template-columns: minmax(80px, 160px) 1fr; gap: 0 var(--gut); }

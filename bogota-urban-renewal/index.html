@@ -24,7 +24,7 @@ js: [/hi-huge-team/huge.js]
   <p class="meta">RenoBo · Puerto Rico Builders Association · {{ d.anio }}</p>
   <h1 class="h1">{{ d.titulo.en }}</h1>
   <div class="deck" {% include huge-deck.html d=d %} aria-roledescription="presentation" aria-label="{{ d.titulo.en | escape }}"></div>
-  <p class="ayuda"><span lang="es">Usa las flechas o desliza para pasar las diapositivas. ⛶ para verla en grande.</span><span lang="en">Use the arrows or swipe to move through the slides. ⛶ to view it large.</span></p>
+  <p class="ayuda"><span lang="es">Usa las flechas de abajo o desliza para pasar las diapositivas; el último botón la abre en grande.</span><span lang="en">Use the arrows below or swipe to move through the slides; the last button opens it large.</span></p>
   <p class="credito"><span lang="es">Diseño de la presentación: Martín Caicedo Sánchez.</span><span lang="en">Presentation design: Martín Caicedo Sánchez.</span></p>
 </section>
 
@@ -36,7 +36,7 @@ js: [/hi-huge-team/huge.js]
       <span class="contador"></span>
       <button type="button" class="btn v-prev" aria-label="Anterior / Previous">←</button>
       <button type="button" class="btn v-next" aria-label="Siguiente / Next">→</button>
-      <button type="button" class="btn v-grande" aria-label="Pantalla completa / Fullscreen">⛶</button>
+      <button type="button" class="btn v-grande" aria-label="Pantalla completa / Fullscreen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
       <button type="button" class="btn v-cerrar" aria-label="Cerrar / Close">✕</button>
     </div>
   </div>

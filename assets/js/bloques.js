@@ -154,16 +154,19 @@
   });
 
   /* ── diapositivas: manual tipo presentación. Una página a la vez, flechas, teclado, deslizar, pantalla completa.
+        Los mandos van en una barra DEBAJO de la diapositiva (contador · ← → ⛶), nunca encima.
         Solo la primera imagen lleva src; las demás llevan data-src y se cargan al acercarse. ── */
   $$('[data-bloque="diapositivas"]').forEach(function (el) {
     var escena = $('.diapo-escena', el), slides = $$('.diapo', escena), n = slides.length, i = 0;
+    var prog = document.createElement('div'); prog.className = 'diapo-progreso'; escena.appendChild(prog);
+    var barra = document.createElement('div'); barra.className = 'diapo-barra'; el.appendChild(barra);
+    var cont = document.createElement('div'); cont.className = 'diapo-contador'; barra.appendChild(cont);
     function boton(clase, texto, etiqueta) {
-      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn ' + clase; b.textContent = texto; b.setAttribute('aria-label', etiqueta); el.appendChild(b); return b;
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn ' + clase; b.textContent = texto; b.setAttribute('aria-label', etiqueta); barra.appendChild(b); return b;
     }
     var prev = boton('diapo-flecha diapo-prev', '←', 'Anterior'), next = boton('diapo-flecha diapo-next', '→', 'Siguiente');
-    var full = el.requestFullscreen ? boton('diapo-pantalla', '⛶', 'Pantalla completa') : null;
-    var cont = document.createElement('div'); cont.className = 'diapo-contador'; el.appendChild(cont);
-    var prog = document.createElement('div'); prog.className = 'diapo-progreso'; el.appendChild(prog);
+    var full = el.requestFullscreen ? boton('diapo-pantalla', '', 'Pantalla completa') : null;
+    if (full) full.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
     function cargar(k) { var im = $('img', slides[(k + n) % n]); if (im && !im.getAttribute('src') && im.dataset.src) im.src = im.dataset.src; }
     function ir(k) {
       i = (k + n) % n;

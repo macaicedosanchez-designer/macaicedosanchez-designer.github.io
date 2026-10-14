@@ -122,13 +122,17 @@
 
   // ── 4 · Destacadas: presentación dentro de la página ──
   document.querySelectorAll('.deck').forEach(function (el) {
+    // La diapositiva arriba; los mandos en una barra debajo (contador · ← → ⛶), nunca encima de la imagen
     var caja = document.createElement('div'); el.appendChild(caja);
-    var prog = document.createElement('div'); prog.className = 'deck-progreso'; el.appendChild(prog);
-    var cont = document.createElement('div'); cont.className = 'deck-contador'; el.appendChild(cont);
+    var prog = document.createElement('div'); prog.className = 'deck-progreso';
+    var barra = document.createElement('div'); barra.className = 'deck-barra'; el.appendChild(barra);
+    var cont = document.createElement('div'); cont.className = 'deck-contador'; barra.appendChild(cont);
     var e = escenario(caja, function (i, n) { cont.textContent = (i + 1) + ' / ' + n; prog.style.width = ((i + 1) / n * 100) + '%'; });
-    var prev = boton(el, 'deck-flecha deck-prev', '←', 'Anterior / Previous');
-    var next = boton(el, 'deck-flecha deck-next', '→', 'Siguiente / Next');
-    var amp = boton(el, 'deck-ampliar', '⛶', 'Ampliar / Enlarge');
+    caja.appendChild(prog);
+    var prev = boton(barra, 'deck-flecha deck-prev', '←', 'Anterior / Previous');
+    var next = boton(barra, 'deck-flecha deck-next', '→', 'Siguiente / Next');
+    var amp = boton(barra, 'deck-ampliar', '', 'Ampliar / Enlarge');
+    amp.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
     prev.addEventListener('click', function () { e.ir(e.i - 1); });
     next.addEventListener('click', function () { e.ir(e.i + 1); });
     caja.addEventListener('click', function () { e.ir(e.i + 1); });
