@@ -35,8 +35,9 @@ js: [/home/home.js]
   <h2 class="h2" id="titulo-portafolio"><span lang="es">Portafolio</span><span lang="en">Portfolio</span></h2>
   <ol class="filas">
     {%- for a in site.data.areas %}
-    {%- assign lista = site.data.proyectos | where: "area", a.id | where: "publicado", true | sort: "anio" | reverse %}
-    {%- assign portada = lista | first %}
+    {%- assign lista = site.data.proyectos | where: "area", a.id | where: "publicado", true %}
+    {%- assign portada = lista | where: "home", true | first %}
+    {%- unless portada %}{%- assign portada = lista | first %}{%- endunless %}
     <li>
       <a class="fila" href="/{{ a.id }}/" data-evento="area-{{ a.id }}" data-vista="{{ site.media_url }}/{{ portada.banco }}">
         <span class="fila-num">{% include asterisco.html %}0{{ forloop.index }}.</span>

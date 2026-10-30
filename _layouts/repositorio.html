@@ -8,7 +8,7 @@ Todo sale de _data/areas.yml y _data/proyectos.yml. No hay que editar este archi
 para agregar proyectos: basta con darlos de alta en _data/proyectos.yml.
 {%- endcomment -%}
 {%- assign area = site.data.areas | where: "id", page.area | first -%}
-{%- assign principales = site.data.proyectos | where: "area", area.id | where: "publicado", true | sort: "anio" | reverse -%}
+{%- assign principales = site.data.proyectos | where: "area", area.id | where: "publicado", true -%}
 {%- comment -%} Cada área muestra solo sus propios proyectos (los de "area"); "secundarias" ya no se usa en la grilla. {%- endcomment -%}
 {%- assign todos = principales -%}
 
