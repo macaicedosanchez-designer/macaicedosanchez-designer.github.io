@@ -11,6 +11,8 @@
 #   videos    diapositivas que se ven como video: <id>_deck_NN_animacion.mp4
 #   portada   número de la diapositiva que va en la tarjeta de la galería
 #   titulo / anio / cliente / porque   textos de la tarjeta (cliente: texto o { es, en } si lleva cargo)
+#   cliente_publico  (opcional) lo que se muestra en la página pública /diseno-presentaciones/
+#             en vez de "cliente", para no publicar nombres de personas
 #   destacada rótulo, texto (párrafos) y enlace opcional para la sección de arriba
 # ─────────────────────────────────────────────────────────────
 
@@ -21,6 +23,7 @@ decks:
     portada: 2
     anio: 2024
     cliente: { es: "Daniela Guzmán, subgerente de ejecución de proyectos", en: "Daniela Guzmán, Deputy Manager of Project Execution" }
+    cliente_publico: { es: "RenoBo · Puerto Rico Builders Association", en: "RenoBo · Puerto Rico Builders Association" }
     titulo: { es: "Bogotá's approach to urban renewal", en: "Bogotá's approach to urban renewal" }
     porque: { es: "Mi presentación más bonita: urbanismo, mercado inmobiliario y política pública explicados con diagramas y animaciones.", en: "My best-looking presentation: urban planning, real estate and public policy explained through diagrams and animations." }
     destacada:
@@ -57,6 +60,7 @@ decks:
     portada: 1
     anio: 2026
     cliente: { es: "Claudia Niño, consultora privada", en: "Claudia Niño, independent consultant" }
+    cliente_publico: Progreso Urbano Consultores
     titulo: { es: "Progreso Urbano Consultores", en: "Progreso Urbano Consultores" }
     porque: { es: "Mi sistema de diseño más ordenado: una sola base para presentaciones, web y apps.", en: "My most organized design system: one foundation for slides, web and apps." }
     destacada:
@@ -84,6 +88,7 @@ decks:
     portada: 15
     anio: 2025
     cliente: { es: "RenoBo · Carlos Felipe Reyes, gerente general", en: "RenoBo · Carlos Felipe Reyes, General Manager" }
+    cliente_publico: { es: "RenoBo · BIMCO", en: "RenoBo · BIMCO" }
     titulo: { es: "H-BIM en proyectos de conservación de patrimonio cultural", en: "H-BIM in cultural heritage conservation projects" }
     porque: { es: "BIMCO exigía una plantilla rígida y poco atractiva; dentro de esas reglas logré una presentación cuidada y con video.", en: "BIMCO required a rigid, unappealing template; within those rules I delivered a polished presentation with video." }
 

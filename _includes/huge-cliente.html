@@ -1,2 +1,3 @@
-{%- comment -%} Cliente de una presentación de _data/huge.yml: texto simple o { es, en } cuando lleva cargo. Uso: {% include huge-cliente.html d=d %} {%- endcomment -%}
-{%- if include.d.cliente.es -%}<span lang="es">{{ include.d.cliente.es }}</span><span lang="en">{{ include.d.cliente.en }}</span>{%- else -%}{{ include.d.cliente }}{%- endif -%}
+{%- comment -%} Cliente de una presentación de _data/huge.yml: texto simple o { es, en } cuando lleva cargo. Uso: {% include huge-cliente.html d=d %}. Con publico=true usa cliente_publico si existe (página pública /diseno-presentaciones/). {%- endcomment -%}
+{%- assign c = include.d.cliente -%}{%- if include.publico and include.d.cliente_publico -%}{%- assign c = include.d.cliente_publico -%}{%- endif -%}
+{%- if c.es -%}<span lang="es">{{ c.es }}</span><span lang="en">{{ c.en }}</span>{%- else -%}{{ c }}{%- endif -%}

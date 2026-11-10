@@ -1,0 +1,146 @@
+---
+# ─────────────────────────────────────────────────────────────
+# PÁGINA PÚBLICA: DISEÑO DE PRESENTACIONES (/diseno-presentaciones/)
+# La versión para todo el mundo de la página Huge: mismos datos
+# (_data/huge.yml), mismo visor (huge.js), textos para público general
+# y sin nombres de personas (usa cliente_publico cuando existe).
+#
+# 1 saludo azul: "Hola, soy Martín", con el dibujo (igual que la página Huge)
+# 2 cómo trabajo: tres principios
+# 3 destacadas: diapositivas a la izquierda, texto a la derecha
+# 4 galería con filtro (Todas · Clientes · Investigación)
+# 5 cierre: "¿Tienes una presentación difícil?" + Hablemos
+# ─────────────────────────────────────────────────────────────
+layout: base
+permalink: /diseno-presentaciones/
+clase: huge presentaciones
+titulo_es: "Diseño de presentaciones | Martín Caicedo Sánchez"
+titulo_en: "Presentation Design | Martín Caicedo Sánchez"
+descripcion_es: "Presentaciones que convierten temas complejos (urbanismo, política pública, investigación) en diagramas, sistemas y animaciones que cualquiera entiende."
+descripcion_en: "Presentations that turn complex subjects (urban planning, public policy, research) into diagrams, systems and animations anyone can follow."
+imagen: home_portada_01_ilustracion-01.png
+ver_portafolio: true
+css: [/hi-huge-team/huge.css, /diseno-presentaciones/presentaciones.css]
+js: [/hi-huge-team/huge.js, /diseno-presentaciones/presentaciones.js]
+---
+{%- assign m = site.media_url -%}
+{%- assign decks = site.data.huge.decks -%}
+
+<!-- 1 · SALUDO (como en la página Huge: el dibujo a la izquierda, el texto a la derecha) -->
+<section class="huge-saludo">
+  <div class="marco">
+    <div class="texto">
+      <h1 class="saludo entra"><span lang="es">:) Hola,<br>soy Martín</span><span lang="en">:) Hi,<br>I'm Martín</span></h1>
+      <p class="bajada entra"><span lang="es">Diseñador de presentaciones.</span><span lang="en">Presentation designer.</span></p>
+      <p class="bajada entra"><span lang="es">Convierto temas complejos (urbanismo, política pública, investigación) en diagramas, sistemas y animaciones que la gente entiende a la primera.</span><span lang="en">I turn complex subjects (urban planning, public policy, research) into diagrams, systems and animations people get on the first pass.</span></p>
+    </div>
+    <img class="ilustracion entra" src="{{ m }}/home_portada_01_ilustracion-01.png" alt="" width="1600" height="1600" fetchpriority="high">
+  </div>
+</section>
+
+<!-- 2 · CÓMO TRABAJO -->
+<section class="marco pres-principios" aria-labelledby="titulo-principios">
+  <h2 class="h2" id="titulo-principios"><span lang="es">Cómo trabajo</span><span lang="en">How I work</span></h2>
+  <ol>
+    <li>
+      <span class="num">01</span>
+      <h3><span lang="es">Primero la idea, después la diapositiva</span><span lang="en">The idea first, then the slide</span></h3>
+      <p lang="es">Ordeno el contenido hasta que cada lámina tenga una sola cosa que decir. El diseño llega cuando el argumento ya se sostiene.</p>
+      <p lang="en">I edit the content until every slide has one thing to say. Design comes once the argument already holds up.</p>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <h3><span lang="es">Diagramas antes que viñetas</span><span lang="en">Diagrams over bullet points</span></h3>
+      <p lang="es">Procesos, cronologías y comparaciones se entienden mejor dibujados. Cuando ayuda, los animo para que se lean paso a paso.</p>
+      <p lang="en">Processes, timelines and comparisons read better drawn. When it helps, I animate them so they unfold step by step.</p>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <h3><span lang="es">Sistemas que el equipo sigue usando</span><span lang="en">Systems the team keeps using</span></h3>
+      <p lang="es">Entrego plantillas y componentes, no solo un archivo: así la organización puede hacer sus propias presentaciones sin perder la calidad.</p>
+      <p lang="en">I hand over templates and components, not just a file, so the organization can build its own decks without losing quality.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- 3 · DESTACADAS -->
+<div class="marco huge-destacadas" id="destacadas">
+  {%- assign n = 0 %}
+  {%- for d in decks %}
+  {%- if d.destacada %}
+  {%- assign n = n | plus: 1 %}
+  <section class="destacada">
+    <div class="deck" {% include huge-deck.html d=d %} aria-roledescription="presentation" aria-label="{{ d.titulo.en | escape }}"></div>
+    <div class="nota">
+      <p class="meta">0{{ n }} · {% include huge-cliente.html d=d publico=true %} · {{ d.anio }}</p>
+      <h2 class="h2"><span lang="es">{{ d.titulo.es }}</span><span lang="en">{{ d.titulo.en }}</span></h2>
+      <p class="rotulo"><span lang="es">{{ d.destacada.rotulo.es }}</span><span lang="en">{{ d.destacada.rotulo.en }}</span></p>
+      <div class="cuerpo">
+        {%- for p in d.destacada.texto.es %}<p lang="es">{{ p }}</p>{% endfor %}
+        {%- for p in d.destacada.texto.en %}<p lang="en">{{ p }}</p>{% endfor %}
+      </div>
+      {%- if d.destacada.en_uso %}
+      <div class="en-uso" data-base="{{ m }}" data-archivos="{{ d.destacada.en_uso | join: ',' }}" data-titulo-es="{{ d.titulo.es | escape }} · En uso" data-titulo-en="{{ d.titulo.en | escape }} · In use">
+        {%- for f in d.destacada.en_uso %}<button type="button" class="en-uso-foto" aria-label="Ampliar foto {{ forloop.index }} / Enlarge photo {{ forloop.index }}"><img src="{{ m }}/{{ f }}" alt="" loading="lazy"></button>{% endfor %}
+      </div>
+      {%- endif %}
+      {%- if d.destacada.enlace %}
+      <a class="enlace" href="{{ d.destacada.enlace.url }}"><span lang="es">{{ d.destacada.enlace.es }}</span><span lang="en">{{ d.destacada.enlace.en }}</span></a>
+      {%- endif %}
+    </div>
+  </section>
+  {%- endif %}
+  {%- endfor %}
+</div>
+
+<!-- 4 · GALERÍA con filtro -->
+<section class="marco huge-galeria" aria-labelledby="titulo-galeria">
+  <div class="galeria-cabeza">
+    <h2 class="h2" id="titulo-galeria"><span lang="es">Todas las presentaciones</span><span lang="en">All presentations</span></h2>
+    <div class="filtro" role="group" aria-label="Filtrar / Filter">
+      <button type="button" class="btn-pildora chico" data-filtro="todas" aria-pressed="true"><span lang="es">Todas</span><span lang="en">All</span></button>
+      <button type="button" class="btn-pildora chico inactivo" data-filtro="clientes" aria-pressed="false"><span lang="es">Para clientes</span><span lang="en">For clients</span></button>
+      <button type="button" class="btn-pildora chico inactivo" data-filtro="investigacion" aria-pressed="false"><span lang="es">Investigación y academia</span><span lang="en">Research &amp; academia</span></button>
+    </div>
+  </div>
+  <ul class="grilla">
+    {%- for d in decks %}
+    {%- assign c = d.portada | default: 1 %}
+    {%- if d.archivos %}{% assign idx = c | minus: 1 %}{% assign img = d.archivos[idx] %}{% else %}{% capture img %}{{ d.id }}_deck_{% if c < 10 %}0{% endif %}{{ c }}_pagina.jpg{% endcapture %}{% endif %}
+    {%- if d.cliente.es == "Académico" or d.cliente.es == "Personal" %}{% assign tipo = "investigacion" %}{% else %}{% assign tipo = "clientes" %}{% endif %}
+    {%- if d.archivos %}{% assign np = d.archivos.size %}{% else %}{% assign np = d.paginas %}{% endif %}
+    <li data-tipo="{{ tipo }}">
+      <button type="button" class="tarjeta" {% include huge-deck.html d=d %}>
+        <span class="imagen"><img src="{{ m }}/{{ img }}" alt="" loading="lazy">{% if d.videos %}<span class="sello">▶ <span lang="es">con video</span><span lang="en">with video</span></span>{% endif %}</span>
+        <span class="titulo"><span lang="es">{{ d.titulo.es }}</span><span lang="en">{{ d.titulo.en }}</span></span>
+        <span class="datos">{{ d.anio }} · {% include huge-cliente.html d=d publico=true %} · {{ np }} <span lang="es">diapositivas</span><span lang="en">slides</span></span>
+        {%- if d.porque %}<span class="porque"><span lang="es">{{ d.porque.es }}</span><span lang="en">{{ d.porque.en }}</span></span>{% endif %}
+      </button>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<!-- 5 · CIERRE -->
+<section class="marco pres-cierre">
+  <div class="caja">
+    <h2 class="h1"><span lang="es">¿Tienes una presentación difícil?</span><span lang="en">Got a hard presentation to make?</span></h2>
+    <p><span lang="es">Cuéntame qué tienes que explicar y a quién. Lo convertimos en algo que se entienda y se recuerde.</span><span lang="en">Tell me what you need to explain and to whom. We'll turn it into something people understand and remember.</span></p>
+    <a class="btn-pildora claro grande" href="mailto:{{ site.email }}?subject=Presentaci%C3%B3n" data-evento="hablemos-presentaciones"><span lang="es">Hablemos</span><span lang="en">Let's talk</span></a>
+  </div>
+</section>
+
+<!-- Visor a pantalla completa (lo controla huge.js) -->
+<div class="visor-deck" role="dialog" aria-modal="true" aria-label="Presentation" hidden>
+  <div class="barra">
+    <p class="nombre"></p>
+    <div class="mandos">
+      <span class="contador"></span>
+      <button type="button" class="btn v-prev" aria-label="Anterior / Previous">←</button>
+      <button type="button" class="btn v-next" aria-label="Siguiente / Next">→</button>
+      <button type="button" class="btn v-grande" aria-label="Pantalla completa / Fullscreen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      <button type="button" class="btn v-cerrar" aria-label="Cerrar / Close">✕</button>
+    </div>
+  </div>
+  <div class="escenario"></div>
+</div>

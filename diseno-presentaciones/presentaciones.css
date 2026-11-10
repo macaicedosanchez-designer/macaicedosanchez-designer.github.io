@@ -1,0 +1,39 @@
+/* ═══════════════════════════════════════════════════════════════
+   DISEÑO DE PRESENTACIONES (página pública). Se apoya en huge.css
+   (saludo, destacadas, galería, visor) y solo agrega lo propio:
+   principios, filtro de la galería y cierre azul.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 2 · Principios ── */
+.pres-principios { padding-top: clamp(72px, 9vw, 144px); }
+.pres-principios .h2 { margin-bottom: clamp(24px, 3vw, 44px); }
+.pres-principios ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); }
+.pres-principios li { border-top: var(--regla) solid var(--tinta); padding-top: 18px; }
+.pres-principios .num { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .08em; color: var(--acento-texto); }
+.pres-principios h3 { margin: 10px 0 10px; font-size: var(--t-h3); font-weight: 600; letter-spacing: -.02em; line-height: 1.2; text-wrap: balance; }
+.pres-principios p { color: var(--tenue); line-height: 1.55; text-wrap: pretty; }
+
+/* ── 4 · Galería: título + filtro en una fila ── */
+.galeria-cabeza { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 24px; margin-bottom: clamp(24px, 3vw, 44px); }
+.huge-galeria .galeria-cabeza .h2 { margin-bottom: 0; }
+.filtro { display: flex; flex-wrap: wrap; gap: 8px; }
+.huge-galeria .grilla li[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .huge-galeria .grilla li.aparece { animation: aparecer .5s var(--curva) backwards; }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(10px); } }
+}
+
+/* ── 5 · Cierre azul ── */
+.pres-cierre { padding-top: clamp(96px, 11vw, 176px); padding-bottom: clamp(72px, 8vw, 120px); }
+.pres-cierre .caja {
+  background: var(--ultramar); color: var(--claro); border-radius: calc(var(--radio) * 1.5);
+  padding: clamp(36px, 6vw, 96px); display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+}
+.pres-cierre .h1 { max-width: 16ch; }
+.pres-cierre p { max-width: 46ch; font-size: clamp(17px, 1.4vw, 21px); line-height: 1.5; color: color-mix(in srgb, var(--claro) 82%, transparent); }
+.pres-cierre .btn-pildora { margin-top: 8px; }
+
+/* ── Tableta y celular ── */
+@media (max-width: 960px) {
+  .pres-principios ol { grid-template-columns: 1fr; }
+}
